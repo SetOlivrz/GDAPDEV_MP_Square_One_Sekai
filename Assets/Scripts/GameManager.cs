@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    [SerializeField] HandheldCameraBehavior camera;
+   // [SerializeField] HandheldCameraBehavior camera;
     [SerializeField] PlayerController player;
     [SerializeField] EnemySpawner spawner;
     GameObject enemyFound;
@@ -34,31 +34,25 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(player.getCameraFlashBool())
-        {
-            enemyFound = camera.getVisibleTarget();
-            if(enemyFound != null)
-            {
-                enemyFound.GetComponent<EnemyStats>().displayStats();
-                OnHit(enemyFound);
-                //spawner.respawnEnemy(target);
-                //target.SetActive(false);
-                //camera.removeTarget(target);
-            }
-        }
+        //if(player.getCameraFlashBool())
+        //{
+        //    enemyFound = camera.getVisibleTarget();
+        //    if(enemyFound != null)
+        //    {
+        //        enemyFound.GetComponent<Stats>().displayStats();
+        //        OnHit(enemyFound);
+        //        //spawner.respawnEnemy(target);
+        //        //target.SetActive(false);
+        //        //camera.removeTarget(target);
+        //    }
+        //}
     }
 
 
     public void OnHit(GameObject enemy)
     {
         // if conditions for enemy ids corresponding damage
-        enemy.GetComponent<EnemyStats>().stats.HP -= 1;
-
-        if (enemy.GetComponent<EnemyStats>().stats.HP ==0)
-        {
-            enemy.SetActive(false);
-            removeFromEnemyList(enemy);
-        }
+   
     }
 
     public void addToEnemyList(GameObject enemy)

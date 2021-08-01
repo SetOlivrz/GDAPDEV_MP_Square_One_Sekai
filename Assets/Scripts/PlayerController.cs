@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     // Camera control
     private Vector2 lookInput;
     private float cameraPitch;
+    private float touchTime;
+    private float maxSwipeDuration = 0.5f;
 
     // Touch detection
     int leftFingerID, rightFingerID;
@@ -19,6 +21,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private FlashImage flashImage = null;
     [SerializeField] private Color newColor = Color.white;
     [SerializeField] private float flashOpacity = 1;
+
+    private Vector3 fp;   //First touch position
+    private Vector3 lp;   //Last touch position
 
     private bool isFlash = false;
 
@@ -42,14 +47,14 @@ public class PlayerController : MonoBehaviour
         if (rightFingerID != -1)
         {
             // Ony look around if the right finger is being tracked
-            Debug.Log("Rotating");
+           // Debug.Log("Rotating");
             LookAround();
         }
 
         if (leftFingerID != -1)
         {
             // Ony move if the left finger is being tracked
-            Debug.Log("Moving");
+            //Debug.Log("Moving");
             //Move();
         }
     }
@@ -65,12 +70,15 @@ public class PlayerController : MonoBehaviour
             switch (t.phase)
             {
                 case TouchPhase.Began:
+                    touchTime = Time.time;
+                    fp = t.position;
+                    lp = t.position;
 
                     if (t.position.x < halfScreenWidth && leftFingerID == -1)
                     {
                         // Start tracking the right finger if it was not previously being tracked
                         leftFingerID = t.fingerId;
-                        Debug.Log("tracking Left finger");
+                       // Debug.Log("tracking Left finger");
                         flashImage.StartFlash(0.25f, flashOpacity, newColor);
                         isFlash = true;
 
@@ -79,27 +87,45 @@ public class PlayerController : MonoBehaviour
                     {
                         // Start tracking the leftfinger if it was not previously being tracked
                         rightFingerID = t.fingerId;
-                        Debug.Log("tracking Right finger");
+                      //  Debug.Log("tracking Right finger");
                     }
                     break;
-
                 case TouchPhase.Ended:
+                    {
+                        float touchDuration = Time.time - touchTime;
+                        lp = t.position;
+                        if ((Mathf.Abs(lp.x - fp.x) > Screen.height * 0.125 || Mathf.Abs(lp.y - fp.y) > Screen.height * 0.125) && touchDuration < maxSwipeDuration)
+                        {//It's a drag
+
+                            if ((lp.x > fp.x))  //If the movement was to the right)
+                            {   //Right swipe
+                                Debug.Log("Right Swipe");
+                            }
+                            else
+                            {   //Left swipe
+                                Debug.Log("Left Swipe");
+                            }
+
+                        }
+                    }
+                    break;
                 case TouchPhase.Canceled:
 
                     if (t.fingerId == leftFingerID)
                     {
                         // Stop tracking the left finger
                         leftFingerID = -1;
-                        Debug.Log("Stopped tracking left finger");
+                      //  Debug.Log("Stopped tracking left finger");
                     }
                     else if (t.fingerId == rightFingerID)
                     {
                         // Stop tracking the right finger
                         rightFingerID = -1;
-                        Debug.Log("Stopped tracking right finger");
+                        //Debug.Log("Stopped tracking right finger");
                     }
 
                     break;
+
                 case TouchPhase.Moved:
 
                     // Get input for looking around
