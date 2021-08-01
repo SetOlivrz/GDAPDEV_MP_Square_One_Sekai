@@ -42,14 +42,14 @@ public class PlayerController : MonoBehaviour
         if (rightFingerID != -1)
         {
             // Ony look around if the right finger is being tracked
-            Debug.Log("Rotating");
+           // Debug.Log("Rotating");
             LookAround();
         }
 
         if (leftFingerID != -1)
         {
             // Ony move if the left finger is being tracked
-            Debug.Log("Moving");
+            //Debug.Log("Moving");
             //Move();
         }
     }
@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
                     {
                         // Start tracking the right finger if it was not previously being tracked
                         leftFingerID = t.fingerId;
-                        Debug.Log("tracking Left finger");
+                       // Debug.Log("tracking Left finger");
                         flashImage.StartFlash(0.25f, flashOpacity, newColor);
                         isFlash = true;
 
@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
                     {
                         // Start tracking the leftfinger if it was not previously being tracked
                         rightFingerID = t.fingerId;
-                        Debug.Log("tracking Right finger");
+                      //  Debug.Log("tracking Right finger");
                     }
                     break;
 
@@ -90,13 +90,13 @@ public class PlayerController : MonoBehaviour
                     {
                         // Stop tracking the left finger
                         leftFingerID = -1;
-                        Debug.Log("Stopped tracking left finger");
+                      //  Debug.Log("Stopped tracking left finger");
                     }
                     else if (t.fingerId == rightFingerID)
                     {
                         // Stop tracking the right finger
                         rightFingerID = -1;
-                        Debug.Log("Stopped tracking right finger");
+                        //Debug.Log("Stopped tracking right finger");
                     }
 
                     break;
