@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     // Camera control
     private Vector2 lookInput;
     private float cameraPitch;
+    private float touchTime;
+    private float maxSwipeDuration = 0.5f;
 
     // Touch detection
     int leftFingerID, rightFingerID;
@@ -19,6 +21,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private FlashImage flashImage = null;
     [SerializeField] private Color newColor = Color.white;
     [SerializeField] private float flashOpacity = 1;
+
+    private Vector3 fp;   //First touch position
+    private Vector3 lp;   //Last touch position
 
     private bool isFlash = false;
 
@@ -65,6 +70,9 @@ public class PlayerController : MonoBehaviour
             switch (t.phase)
             {
                 case TouchPhase.Began:
+                    touchTime = Time.time;
+                    fp = t.position;
+                    lp = t.position;
 
                     if (t.position.x < halfScreenWidth && leftFingerID == -1)
                     {
@@ -82,8 +90,25 @@ public class PlayerController : MonoBehaviour
                       //  Debug.Log("tracking Right finger");
                     }
                     break;
-
                 case TouchPhase.Ended:
+                    {
+                        float touchDuration = Time.time - touchTime;
+                        lp = t.position;
+                        if ((Mathf.Abs(lp.x - fp.x) > Screen.height * 0.125 || Mathf.Abs(lp.y - fp.y) > Screen.height * 0.125) && touchDuration < maxSwipeDuration)
+                        {//It's a drag
+
+                            if ((lp.x > fp.x))  //If the movement was to the right)
+                            {   //Right swipe
+                                Debug.Log("Right Swipe");
+                            }
+                            else
+                            {   //Left swipe
+                                Debug.Log("Left Swipe");
+                            }
+
+                        }
+                    }
+                    break;
                 case TouchPhase.Canceled:
 
                     if (t.fingerId == leftFingerID)
@@ -100,6 +125,7 @@ public class PlayerController : MonoBehaviour
                     }
 
                     break;
+
                 case TouchPhase.Moved:
 
                     // Get input for looking around
