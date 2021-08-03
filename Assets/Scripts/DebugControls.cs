@@ -10,10 +10,6 @@ public class DebugControls : MonoBehaviour
 	Vector2 rotation = Vector2.zero;
 	public float speed = 3;
 
-
-    public float damage = 10f;
-    public float range = 100f;
-
     private void Start()
     {
 		Cursor.lockState = CursorLockMode.Locked;
@@ -36,8 +32,7 @@ public class DebugControls : MonoBehaviour
         Debug.Log("pew");
 
         RaycastHit hit;
-        //Debug.Log(cam.transform.position.x + " " + cam.transform.position.y + " " + cam.transform.position.z);
-        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
+        if (Physics.SphereCast(cam.transform.position, 5, cam.transform.forward, out hit, 100))
 
         {
             Debug.Log("wahhhhhhhhhhhhhhhhhhhhhh");
