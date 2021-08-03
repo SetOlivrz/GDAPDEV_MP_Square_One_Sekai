@@ -21,7 +21,7 @@ public class Stats : MonoBehaviour
         
     }
     
-    //public void intializeEnemyStats()
+    //public void IntializeEnemyStats()
     //{
     //    switch(gameObject.name)
     //    {

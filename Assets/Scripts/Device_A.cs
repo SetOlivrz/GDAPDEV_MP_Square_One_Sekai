@@ -47,7 +47,7 @@ public class Device_A : MonoBehaviour
             Debug.Log(hit.transform.name);
 
             hit.transform.GetComponent<EnemyBehavior>().TakeDamage(1);
-            hit.transform.GetComponent<EnemyBehavior>().displayStats();
+            hit.transform.GetComponent<EnemyBehavior>().DisplayStats();
         }
     }
 

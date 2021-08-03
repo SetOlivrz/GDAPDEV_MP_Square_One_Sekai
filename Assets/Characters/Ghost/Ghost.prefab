@@ -12,10 +12,9 @@ GameObject:
   - component: {fileID: 8070174331474428690}
   - component: {fileID: 8070174331474428688}
   - component: {fileID: 5929458761459489398}
-  - component: {fileID: 3549726198497820524}
-  - component: {fileID: 3016807053896083969}
+  - component: {fileID: -3042643231614677037}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Ghost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8070174331474428691}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.01, y: -2.65, z: 5}
+  m_LocalPosition: {x: 0, y: 0, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -96,7 +95,7 @@ Animator:
   m_GameObject: {fileID: 8070174331474428691}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e11cf541d69adf043a3e064a88d0a18b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7b92533549d70c64eb60a39eb04fc3c7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -117,22 +116,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cc84b2796bef03479b5e7ccad7d009d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3549726198497820524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8070174331474428691}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 540349fcd4700324381b49d6e3670ca6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ID: ghost
+  player: {fileID: 2321162474207311612, guid: d687aba860e882c4dbfa1ca782b57163, type: 3}
+  ID: 
   HP: 3
   DEF: 0
---- !u!65 &3016807053896083969
+  animator: {fileID: 8070174331474428688}
+--- !u!65 &-3042643231614677037
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,5 +132,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 0.2}
+  m_Size: {x: 3.2, y: 3.2, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
