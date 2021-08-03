@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 lp;   //Last touch position
 
     private bool isShoot = false;
+    private bool isHold = false;
 
     void Start()
     {
@@ -79,8 +80,7 @@ public class PlayerController : MonoBehaviour
                         // Start tracking the right finger if it was not previously being tracked
                         leftFingerID = t.fingerId;
                        // Debug.Log("tracking Left finger");
-                        flashImage.StartFlash(0.25f, flashOpacity, newColor);
-                        isShoot = true;
+                        
 
                     }
                     else if (t.position.x > halfScreenWidth && rightFingerID == -1)
@@ -92,6 +92,12 @@ public class PlayerController : MonoBehaviour
                     break;
                 case TouchPhase.Ended:
                     {
+                        if(!isHold && t.fingerId == leftFingerID)
+                        {
+                            flashImage.StartFlash(0.25f, flashOpacity, newColor);
+                            isShoot = true;
+                        }
+                        
                         float touchDuration = Time.time - touchTime;
                         lp = t.position;
                         if ((Mathf.Abs(lp.x - fp.x) > Screen.height * 0.125 || Mathf.Abs(lp.y - fp.y) > Screen.height * 0.125) && touchDuration < maxSwipeDuration)
@@ -107,6 +113,8 @@ public class PlayerController : MonoBehaviour
                             }
 
                         }
+
+                        isHold = false;
                     }
                     break;
                 case TouchPhase.Canceled:
@@ -141,6 +149,12 @@ public class PlayerController : MonoBehaviour
                     {
                         lookInput = Vector2.zero;
                     }
+
+                    if (t.fingerId == leftFingerID)
+                    {
+                        if(Time.time - touchTime > 1f)
+                        isHold = true;
+                    }
                     break;
             }
         }
@@ -159,5 +173,10 @@ public class PlayerController : MonoBehaviour
     public bool getShootingBool()
     {
         return isShoot;
+    }
+
+    public bool getHoldingBool()
+    {
+        return isHold;
     }
 }

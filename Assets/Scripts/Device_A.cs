@@ -32,6 +32,11 @@ public class Device_A : MonoBehaviour
             Shoot();
             nextShootTime = Time.time + 1f / shootRate;
         }
+
+        if(player.getHoldingBool())
+        {
+            holdShoot();
+        }
     }
 
     public void Shoot()
@@ -46,10 +51,27 @@ public class Device_A : MonoBehaviour
 
             Debug.Log(hit.transform.name);
 
-            hit.transform.GetComponent<EnemyBehavior>().TakeDamage(1);
+            hit.transform.GetComponent<EnemyBehavior>().TakeDamage(10);
             hit.transform.GetComponent<EnemyBehavior>().displayStats();
         }
     }
 
+    public void holdShoot()
+    {
+        Debug.Log("pew");
 
+        RaycastHit hit;
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
+
+        {
+            Debug.Log("wahhhhhhhhhhhhhhhhhhhhhh");
+
+            Debug.Log(hit.transform.name);
+            if(hit.transform.GetComponent<EnemyBehavior>().ID == "Bat")
+            {
+                hit.transform.GetComponent<EnemyBehavior>().TakeDamage(2);
+            }
+            hit.transform.GetComponent<EnemyBehavior>().displayStats();
+        }
+    }
 }
