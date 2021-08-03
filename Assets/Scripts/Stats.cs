@@ -21,46 +21,54 @@ public class Stats : MonoBehaviour
         
     }
     
-    public void intializeEnemyStats()
-    {
-        switch(gameObject.name)
-        {
-            case "Square":
-                {
-                    HP = 3;
-                    DEF = 0;
-                    ID = "Square :>";
-                }; break;
+    //public void intializeEnemyStats()
+    //{
+    //    switch(gameObject.name)
+    //    {
+    //        case "Square":
+    //            {
+    //                HP = 3;
+    //                DEF = 0;
+    //                ID = "Square :>";
+    //            }; break;
 
-            case "Square(Clone)":
-                {
-                    HP = 3;
-                    DEF = 0;
-                    ID = "Square :>";
-                }; break;
-        }
-    }
+    //        case "Square(Clone)":
+    //            {
+    //                HP = 3;
+    //                DEF = 0;
+    //                ID = "Square :>";
+    //            }; break;
 
-    public void TakeDamage(int amount)
-    {
-        if (amount - DEF > 0)
-        {
-            this.HP -= (amount - DEF);
-        }
+    //        case "Bat":
+    //            {
+    //                HP = 4;
+    //                DEF = 0;
+    //                ID = "Bat";
+    //            }; break;
+    //    }
+    //}
 
-        if (this.HP <= 0)
-        {
-            Die();
-        }
+    //public void TakeDamage(int amount)
+    //{
+    //    if (amount - DEF > 0)
+    //    {
+    //        this.HP -= (amount - DEF);
+    //    }
 
-    }
-    public void displayStats()
-    {
-        Debug.Log("Name: " + gameObject.name + "\n" + "HP: "+ HP + "DEF: "+ DEF+"\n");
-    }
+    //    if (this.HP <= 0)
+    //    {
+    //        Die();
+    //    }
 
-    public void Die()
-    {
-        Destroy(gameObject);
-    }
+    //}
+    //public void displayStats()
+    //{
+    //    Debug.Log("Name: " + gameObject.name + "\n" + "HP: "+ HP + "DEF: "+ DEF+"\n");
+    //}
+
+    //public void Die()
+    //{
+        
+    //    Destroy(gameObject);
+    //}
 }

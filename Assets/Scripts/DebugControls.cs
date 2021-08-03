@@ -44,8 +44,8 @@ public class DebugControls : MonoBehaviour
 
             Debug.Log(hit.transform.name);
 
-            hit.transform.GetComponent<Stats>().TakeDamage(1);
-            hit.transform.GetComponent<Stats>().displayStats();
+            hit.transform.GetComponent<EnemyBehavior>().TakeDamage(1);
+            hit.transform.GetComponent<EnemyBehavior>().displayStats();
         }
     }
 }
