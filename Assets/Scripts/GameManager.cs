@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if(player.getCameraFlashBool())
+        //if(player.getShootingBool())
         //{
         //    enemyFound = camera.getVisibleTarget();
         //    if(enemyFound != null)

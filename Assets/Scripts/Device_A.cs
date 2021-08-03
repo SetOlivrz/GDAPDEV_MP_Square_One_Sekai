@@ -9,8 +9,15 @@ public class Device_A : MonoBehaviour
     public float damage = 10f;
     public float range = 100f;
 
+    public float shootRate = 2;
+    public float nextShootTime = 0;
+
     [SerializeField] PlayerController player;
     [SerializeField] Camera cam;
+
+    [SerializeField] private FlashImage flashImage = null;
+
+
 
     void Start()
     {
@@ -20,11 +27,10 @@ public class Device_A : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.getCameraFlashBool())
+        if (player.getShootingBool()&& Time.time >1)
         {
-            Debug.Log("shamana");
-
             Shoot();
+            nextShootTime = Time.time + 1f / shootRate;
         }
     }
 
@@ -40,8 +46,8 @@ public class Device_A : MonoBehaviour
 
             Debug.Log(hit.transform.name);
 
-            hit.transform.GetComponent<Stats>().TakeDamage(1);
-            hit.transform.GetComponent<Stats>().displayStats();
+            hit.transform.GetComponent<EnemyBehavior>().TakeDamage(1);
+            hit.transform.GetComponent<EnemyBehavior>().displayStats();
         }
     }
 

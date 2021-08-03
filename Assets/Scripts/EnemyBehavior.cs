@@ -40,5 +40,66 @@ public class EnemyBehavior : MonoBehaviour
         this.target = target;
         directionToTarget = (target.transform.position - gameObject.transform.position).normalized;
         Debug.DrawRay(gameObject.transform.position, directionToTarget, Color.black, 20);
-    }    
+    }
+
+
+    //-------------------------------------------------------------------------------------------------------------------------//
+
+    public string ID;
+    public int HP;
+    public int DEF;
+    public Animator animator;
+
+
+    public void intializeEnemyStats()
+    {
+        switch (gameObject.name)
+        {
+            case "Square":
+                {
+                    HP = 3;
+                    DEF = 0;
+                    ID = "Square :>";
+                }; break;
+
+            case "Square(Clone)":
+                {
+                    HP = 3;
+                    DEF = 0;
+                    ID = "Square :>";
+                }; break;
+
+            case "Bat":
+                {
+                    HP = 4;
+                    DEF = 0;
+                    ID = "Bat";
+                }; break;
+        }
+    }
+
+    public void TakeDamage(int amount)
+    {
+        animator.SetTrigger("Hurt");
+        if (amount - DEF > 0)
+        {
+            this.HP -= (amount - DEF);
+        }
+
+        if (this.HP <= 0)
+        {
+            Die();
+        }
+
+    }
+    public void displayStats()
+    {
+        Debug.Log("Name: " + gameObject.name + "\n" + "HP: " + HP + "DEF: " + DEF + "\n");
+    }
+
+    public void Die()
+    {
+        animator.SetBool("isDead", true);
+        Destroy(gameObject);
+    }
 }
