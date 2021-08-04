@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour
 {
+
+    [SerializeField] GameObject player;
     float idleTime;
     float timer = 0.0f;
     private GameObject target;
@@ -20,6 +22,7 @@ public class EnemyBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        this.transform.LookAt(player.transform);
         //if (timer < idleTime)
         //{
         //    timer += Time.deltaTime;
@@ -49,9 +52,10 @@ public class EnemyBehavior : MonoBehaviour
     public int HP;
     public int DEF;
     public Animator animator;
+    private bool isDead = false;
 
 
-    public void intializeEnemyStats()
+    public void IntializeEnemyStats()
     {
         switch (gameObject.name)
         {
@@ -80,19 +84,28 @@ public class EnemyBehavior : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
-        animator.SetTrigger("Hurt");
-        if (amount - DEF > 0)
+        if (isDead == false)
         {
-            this.HP -= (amount - DEF);
-        }
+            animator.SetTrigger("takeDamage");
 
-        if (this.HP <= 0)
-        {
-            Die();
+            if (amount - DEF > 0)
+            {
+                this.HP -= (amount - DEF);
+            }
+
+            if (this.HP <= 0)
+            {
+                Die();
+            }
         }
+        else
+        {
+            GetSoul();
+        }
+     
 
     }
-    public void displayStats()
+    public void DisplayStats()
     {
         Debug.Log("Name: " + gameObject.name + "\n" + "HP: " + HP + "DEF: " + DEF + "\n");
     }
@@ -100,6 +113,13 @@ public class EnemyBehavior : MonoBehaviour
     public void Die()
     {
         animator.SetBool("isDead", true);
-        Destroy(gameObject);
+        isDead = true;
     }
+
+    public void GetSoul()
+    {
+        Destroy(this.gameObject);
+    }
+
+    
 }

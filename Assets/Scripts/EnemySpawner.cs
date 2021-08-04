@@ -24,8 +24,21 @@ public class EnemySpawner : MonoBehaviour
             GameObject enemySpawn = GameObject.Instantiate(enemyTemplate, enemySpawnLocList[i].transform.position, Quaternion.identity, null);
             enemySpawn.transform.LookAt(player.transform);
             enemySpawn.name = enemyTemplate.name;
-            enemySpawn.GetComponent<EnemyBehavior>().intializeEnemyStats();
-            enemySpawn.GetComponent<EnemyBehavior>().setTarget(player);
+            if (enemySpawn.GetComponent<EnemyBehavior>() == null)
+            {
+                Transform child;
+                child = enemySpawn.transform.GetChild(0);
+
+                child.GetComponent<EnemyBehavior>().IntializeEnemyStats();
+                child.GetComponent<EnemyBehavior>().setTarget(player);
+            }
+            else
+            {
+                enemySpawn.GetComponent<EnemyBehavior>().IntializeEnemyStats();
+                enemySpawn.GetComponent<EnemyBehavior>().setTarget(player);
+            }
+
+            
           //  targetList.addTarget(enemySpawn);
 
             GameManager.Instance.addToEnemyList(enemySpawn);
