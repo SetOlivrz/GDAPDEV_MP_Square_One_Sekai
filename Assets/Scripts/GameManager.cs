@@ -18,9 +18,11 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-   // [SerializeField] HandheldCameraBehavior camera;
+    // [SerializeField] HandheldCameraBehavior camera;
     [SerializeField] PlayerController player;
     [SerializeField] EnemySpawner spawner;
+    [SerializeField] GameObject soul;
+
     GameObject enemyFound;
 
     public List<GameObject> enemyList;
@@ -28,7 +30,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -46,23 +48,48 @@ public class GameManager : MonoBehaviour
         //        //camera.removeTarget(target);
         //    }
         //}
+        spawnSoul();
     }
 
 
     public void OnHit(GameObject enemy)
     {
         // if conditions for enemy ids corresponding damage
-   
+
     }
 
     public void addToEnemyList(GameObject enemy)
     {
-        enemyList.Add(enemy);
+        Instance.enemyList.Add(enemy);
     }
 
     public void removeFromEnemyList(GameObject enemy)
     {
-        enemyList.Remove(enemy);
+        Instance.enemyList.Remove(enemy);
+    }
+
+    public void spawnSoul()
+    {
+        //Debug.Log(enemyList.Count);
+        for (int i = 0; i < Instance.enemyList.Count; i++)
+        {
+            if (Instance.enemyList[i].GetComponent<EnemyBehavior>().isDead)
+            {
+                Debug.Log("Killed");
+                GameObject soulObj;
+
+                if (Instance.enemyList[i].transform.parent != null)
+                    soulObj = GameObject.Instantiate(soul, Instance.enemyList[i].transform.parent.gameObject.transform.position, Quaternion.identity, Instance.enemyList[i].transform.parent);
+
+                else
+                    soulObj = GameObject.Instantiate(soul, Instance.enemyList[i].gameObject.transform.position, Quaternion.identity, null);
+
+                soulObj.name = soul.name;
+                soul.GetComponent<EnemyBehavior>().IntializeEnemyStats();
+                soul.GetComponent<EnemyBehavior>().setTarget(player.gameObject);
+                Instance.enemyList[i].SetActive(false);
+                Instance.enemyList[i] = soul;
+            }
+        }
     }
 }
-

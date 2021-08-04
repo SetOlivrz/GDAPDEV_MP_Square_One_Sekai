@@ -52,7 +52,7 @@ public class EnemyBehavior : MonoBehaviour
     public int HP;
     public int DEF;
     public Animator animator;
-    private bool isDead = false;
+    public bool isDead = false;
 
 
     public void IntializeEnemyStats()
