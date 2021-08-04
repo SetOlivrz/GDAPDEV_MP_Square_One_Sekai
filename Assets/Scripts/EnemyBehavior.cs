@@ -6,6 +6,8 @@ public class EnemyBehavior : MonoBehaviour
 {
 
     [SerializeField] GameObject player;
+    [SerializeField] GameObject soul;
+
     float idleTime;
     float timer = 0.0f;
     private GameObject target;
@@ -53,6 +55,7 @@ public class EnemyBehavior : MonoBehaviour
     public int DEF;
     public Animator animator;
     private bool isDead = false;
+    GameObject Soul;
 
 
     public void IntializeEnemyStats()
@@ -79,47 +82,67 @@ public class EnemyBehavior : MonoBehaviour
                     DEF = 0;
                     ID = "Bat";
                 }; break;
+
+            case "Pumpkin":
+                {
+                    HP = 4;
+                    DEF = 0;
+                    ID = "Pumpkin";
+                }; break;
+
+            case "Soul":
+                {
+                    HP = 1;
+                    DEF = 0;
+                    ID = "Soul";
+                }; break;
         }
     }
 
     public void TakeDamage(int amount)
     {
-        if (isDead == false)
+        if (this.gameObject.name == "Soul")
         {
-            animator.SetTrigger("takeDamage");
-
-            if (amount - DEF > 0)
-            {
-                this.HP -= (amount - DEF);
-            }
-
-            if (this.HP <= 0)
-            {
-                Die();
-            }
+            // remove instantly if soul
+            Destroy(this.gameObject);
         }
         else
         {
-            GetSoul();
-        }
-     
+            if (isDead == false)
+            {
+                animator.SetTrigger("takeDamage");
 
+                if (amount - DEF > 0)
+                {
+                    this.HP -= (amount - DEF);
+                }
+
+                if (this.HP <= 0)
+                {
+                    animator.SetBool("isDead", true);
+                    isDead = true;
+                }
+            }
+        }
+        
     }
     public void DisplayStats()
     {
         Debug.Log("Name: " + gameObject.name + "\n" + "HP: " + HP + "DEF: " + DEF + "\n");
     }
 
-    public void Die()
+    public void SpawnSoul()
     {
-        animator.SetBool("isDead", true);
-        isDead = true;
-    }
+        if (this.gameObject.name != "Soul")
+        {
+            Soul = GameObject.Instantiate(soul, this.transform.parent.position, Quaternion.identity);
+            Soul.name = soul.name;
+            Soul.transform.LookAt(player.transform);
 
-    public void GetSoul()
-    {
+        }
         Destroy(this.gameObject);
     }
 
+   
     
 }

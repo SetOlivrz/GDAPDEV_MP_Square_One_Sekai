@@ -57,7 +57,7 @@ public class Stats : MonoBehaviour
 
     //    if (this.HP <= 0)
     //    {
-    //        Die();
+    //        SpawnSoul();
     //    }
 
     //}
@@ -66,7 +66,7 @@ public class Stats : MonoBehaviour
     //    Debug.Log("Name: " + gameObject.name + "\n" + "HP: "+ HP + "DEF: "+ DEF+"\n");
     //}
 
-    //public void Die()
+    //public void SpawnSoul()
     //{
         
     //    Destroy(gameObject);
