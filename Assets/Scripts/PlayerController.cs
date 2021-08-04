@@ -126,8 +126,8 @@ public class PlayerController : MonoBehaviour
                                 currentWeapon -= 1;
                             }
 
-                            int weaponCheck = Mathf.Abs((int)currentWeapon % 3);
-                            currentWeapon = (weaponType)weaponCheck;
+                            if ((int)currentWeapon == -1) currentWeapon = (weaponType)2;
+                            else if ((int)currentWeapon == 3) currentWeapon = (weaponType)0;
                             Debug.Log(currentWeapon);
                         }
 
