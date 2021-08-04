@@ -21,27 +21,8 @@ public class EnemySpawner : MonoBehaviour
 
         for(int i = 0; i < enemySpawnLocList.Count; i++)
         {
-            GameObject enemySpawn = GameObject.Instantiate(enemyTemplate, enemySpawnLocList[i].transform.position, Quaternion.identity, null);
-            enemySpawn.transform.LookAt(player.transform);
-            enemySpawn.name = enemyTemplate.name;
-            if (enemySpawn.GetComponent<EnemyBehavior>() == null)
-            {
-                Transform child;
-                child = enemySpawn.transform.GetChild(0);
-
-                child.GetComponent<EnemyBehavior>().IntializeEnemyStats();
-                child.GetComponent<EnemyBehavior>().setTarget(player);
-            }
-            else
-            {
-                enemySpawn.GetComponent<EnemyBehavior>().IntializeEnemyStats();
-                enemySpawn.GetComponent<EnemyBehavior>().setTarget(player);
-            }
-
-            
-          //  targetList.addTarget(enemySpawn);
-
-            GameManager.Instance.addToEnemyList(enemySpawn);
+            float spawnTimeDelay = Random.Range(1f, 10f);
+            StartCoroutine(reviveDelay(spawnTimeDelay, i));
         }
     }
 
@@ -66,7 +47,6 @@ public class EnemySpawner : MonoBehaviour
                 StartCoroutine(reviveDelay(delayTime, i));
             }
         }
-
     }
 
     private IEnumerator reviveDelay(float waitTime, int index)
@@ -74,7 +54,25 @@ public class EnemySpawner : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         GameObject enemySpawn = GameObject.Instantiate(enemyTemplate, enemySpawnLocList[index].transform.position, Quaternion.identity, null);
         enemySpawn.transform.LookAt(player.transform);
-        enemySpawn.GetComponent<EnemyBehavior>().setTarget(player);
+        enemySpawn.name = enemyTemplate.name;
+        //enemySpawn.GetComponent<EnemyBehavior>().setTarget(player);
+
+        if (enemySpawn.GetComponent<EnemyBehavior>() == null)
+        {
+            Transform child;
+            child = enemySpawn.transform.GetChild(0);
+
+            child.GetComponent<EnemyBehavior>().IntializeEnemyStats();
+            child.GetComponent<EnemyBehavior>().setTarget(player);
+        }
+        else
+        {
+            enemySpawn.GetComponent<EnemyBehavior>().IntializeEnemyStats();
+            enemySpawn.GetComponent<EnemyBehavior>().setTarget(player);
+        }
+
         GameManager.Instance.addToEnemyList(enemySpawn);
+
+
     }
 }
