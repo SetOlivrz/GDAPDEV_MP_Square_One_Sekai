@@ -5,9 +5,11 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] List<GameObject> enemySpawnLocList;
-    [SerializeField] GameObject enemyTemplate;
+    [SerializeField] GameObject[] enemyTemplates;
+
     [SerializeField] GameObject player;
 
+    private int numEnemy = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,11 +20,12 @@ public class EnemySpawner : MonoBehaviour
         //    targetHolder.addTarget(enemySpawn);
         //    enemySpawnList.RemoveAt(0);
         //}
-
-        for(int i = 0; i < enemySpawnLocList.Count; i++)
+        for (int i = 0; i < enemySpawnLocList.Count; i++)
         {
+            int enemySpawnTemplateIndex = Random.Range(0, enemyTemplates.Length);
+
             float spawnTimeDelay = Random.Range(1f, 10f);
-            StartCoroutine(reviveDelay(spawnTimeDelay, i));
+            StartCoroutine(reviveDelay(spawnTimeDelay, i, enemySpawnTemplateIndex));
         }
     }
 
@@ -44,17 +47,17 @@ public class EnemySpawner : MonoBehaviour
             if(deadEnemy.transform.position == enemySpawnLocList[i].transform.position)
             {
                 float delayTime = Random.Range(7f, 15f);
-                StartCoroutine(reviveDelay(delayTime, i));
+                StartCoroutine(reviveDelay(delayTime, i, 0));
             }
         }
     }
 
-    private IEnumerator reviveDelay(float waitTime, int index)
+    private IEnumerator reviveDelay(float waitTime, int spawnerIndex, int templateIndex)
     {
         yield return new WaitForSeconds(waitTime);
-        GameObject enemySpawn = GameObject.Instantiate(enemyTemplate, enemySpawnLocList[index].transform.position, Quaternion.identity, null);
+        GameObject enemySpawn = GameObject.Instantiate(enemyTemplates[templateIndex], enemySpawnLocList[spawnerIndex].transform.position, Quaternion.identity, null);
         enemySpawn.transform.LookAt(player.transform);
-        enemySpawn.name = enemyTemplate.name;
+        enemySpawn.name = enemyTemplates[templateIndex].name;
         //enemySpawn.GetComponent<EnemyBehavior>().setTarget(player);
 
         if (enemySpawn.GetComponent<EnemyBehavior>() == null)
