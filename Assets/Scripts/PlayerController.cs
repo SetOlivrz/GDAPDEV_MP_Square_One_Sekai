@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
 
     private bool isShoot = false;
     private bool isHold = false;
+    private bool isSwipe = false;
 
     //private int weaponType = 0;
     private int nWeaponTypes = 3;
@@ -53,6 +54,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         isShoot = false;
+        isSwipe = false;
+        isHold = false;
         // Handles input
         GetTouchInput();
 
@@ -91,11 +94,7 @@ public class PlayerController : MonoBehaviour
                         // Start tracking the right finger if it was not previously being tracked
                         leftFingerID = t.fingerId;
                        // Debug.Log("tracking Left finger");
-                       if(currentWeapon == weaponType.soulCam)
-                        {
-                            flashImage.StartFlash(0.25f, flashOpacity, newColor);
-                            isShoot = true;
-                        }
+                       
                         
 
                     }
@@ -110,7 +109,9 @@ public class PlayerController : MonoBehaviour
                     {
                         float touchDuration = Time.time - touchTime;
                         lp = t.position;
-                        if ((Mathf.Abs(lp.x - fp.x) > Screen.height * 0.125 || Mathf.Abs(lp.y - fp.y) > Screen.height * 0.125) && touchDuration < maxSwipeDuration)
+                        isSwipe = ((Mathf.Abs(lp.x - fp.x) > Screen.height * 0.125 || Mathf.Abs(lp.y - fp.y) > Screen.height * 0.125) && touchDuration < maxSwipeDuration);
+
+                        if(isSwipe)
                         {//It's a drag
 
                             if ((lp.x > fp.x))  //If the movement was to the right)
@@ -125,10 +126,21 @@ public class PlayerController : MonoBehaviour
                                 currentWeapon -= 1;
                             }
 
-                            int weaponCheck = (int)currentWeapon % 3;
+                            int weaponCheck = Mathf.Abs((int)currentWeapon % 3);
                             currentWeapon = (weaponType)weaponCheck;
                             Debug.Log(currentWeapon);
                         }
+
+                        else if(!isSwipe && !isHold)
+                        {
+                            if (currentWeapon == weaponType.soulCam && t.fingerId == leftFingerID)
+                            {
+                                flashImage.StartFlash(0.25f, flashOpacity, newColor);
+                                isShoot = true;
+                            }
+                        }
+
+
                     }
                     break;
                 case TouchPhase.Canceled:
