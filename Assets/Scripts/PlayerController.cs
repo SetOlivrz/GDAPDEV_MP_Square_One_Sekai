@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 lookInput;
     private float cameraPitch;
     private float touchTime;
-    private float maxSwipeDuration = 0.5f;
+    private float maxSwipeDuration = 0.4f;
 
     // Touch detection
     int leftFingerID, rightFingerID;
@@ -26,7 +26,19 @@ public class PlayerController : MonoBehaviour
     private Vector3 lp;   //Last touch position
 
     private bool isShoot = false;
+    private bool isHold = false;
 
+    //private int weaponType = 0;
+    private int nWeaponTypes = 3;
+
+    enum weaponType
+    {
+        soulCam = 0,
+        batCam = 1,
+        pumpkinCam = 2
+    }
+
+    weaponType currentWeapon = 0;
     void Start()
     {
         // id = -1 means the finger is not being tracked
@@ -79,8 +91,12 @@ public class PlayerController : MonoBehaviour
                         // Start tracking the right finger if it was not previously being tracked
                         leftFingerID = t.fingerId;
                        // Debug.Log("tracking Left finger");
-                        flashImage.StartFlash(0.25f, flashOpacity, newColor);
-                        isShoot = true;
+                       if(currentWeapon == weaponType.soulCam)
+                        {
+                            flashImage.StartFlash(0.25f, flashOpacity, newColor);
+                            isShoot = true;
+                        }
+                        
 
                     }
                     else if (t.position.x > halfScreenWidth && rightFingerID == -1)
@@ -100,12 +116,18 @@ public class PlayerController : MonoBehaviour
                             if ((lp.x > fp.x))  //If the movement was to the right)
                             {   //Right swipe
                                 Debug.Log("Right Swipe");
+                                currentWeapon += 1;
                             }
+
                             else
                             {   //Left swipe
                                 Debug.Log("Left Swipe");
+                                currentWeapon -= 1;
                             }
 
+                            int weaponCheck = (int)currentWeapon % 3;
+                            currentWeapon = (weaponType)weaponCheck;
+                            Debug.Log(currentWeapon);
                         }
                     }
                     break;
@@ -129,7 +151,7 @@ public class PlayerController : MonoBehaviour
                 case TouchPhase.Moved:
 
                     // Get input for looking around
-                    if (t.fingerId == rightFingerID)
+                    if (t.fingerId == rightFingerID && (Time.time - touchTime > maxSwipeDuration))
                     {
                         lookInput = t.deltaPosition * cameraSensitivity * Time.deltaTime;
                     }
@@ -141,6 +163,12 @@ public class PlayerController : MonoBehaviour
                     {
                         lookInput = Vector2.zero;
                     }
+
+                    if (t.fingerId == leftFingerID && currentWeapon == weaponType.batCam)
+                    {
+                        if (Time.time - touchTime > 1f)
+                            isHold = true;
+                    }
                     break;
             }
         }
@@ -149,15 +177,24 @@ public class PlayerController : MonoBehaviour
     void LookAround()
     {
         // vertical (pitch) rotation
-        cameraPitch = Mathf.Clamp(cameraPitch - lookInput.y, -45f, 45f);
-        cameraTransform.localRotation = Quaternion.Euler(cameraPitch, 0, 0);
+        
+        {
+            cameraPitch = Mathf.Clamp(cameraPitch - lookInput.y, -45f, 45f);
+            cameraTransform.localRotation = Quaternion.Euler(cameraPitch, 0, 0);
 
-        // horizontal (yaw) rotation
-        transform.Rotate(transform.up, lookInput.x);
+            // horizontal (yaw) rotation
+            transform.Rotate(transform.up, lookInput.x);
+        }
+        
     }
 
     public bool getShootingBool()
     {
         return isShoot;
+    }
+
+    public bool getHoldingBool()
+    {
+        return isHold;
     }
 }

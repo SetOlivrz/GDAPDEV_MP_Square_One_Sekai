@@ -51,5 +51,22 @@ public class Device_A : MonoBehaviour
         }
     }
 
+    public void holdShoot()
+    {
+        Debug.Log("pew");
 
+        RaycastHit hit;
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
+
+        {
+            Debug.Log("wahhhhhhhhhhhhhhhhhhhhhh");
+
+            Debug.Log(hit.transform.name);
+            if (hit.transform.GetComponent<EnemyBehavior>().ID == "Bat")
+            {
+                hit.transform.GetComponent<EnemyBehavior>().TakeDamage(2);
+            }
+            hit.transform.GetComponent<EnemyBehavior>().DisplayStats();
+        }
+    }
 }
