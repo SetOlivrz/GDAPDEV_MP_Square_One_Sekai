@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1633350911913542592
+--- !u!1 &1920000193129252651
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,12 +8,12 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1387557288506821796}
-  - component: {fileID: 3301025746636257285}
-  - component: {fileID: 5417494746650651004}
-  - component: {fileID: 1633350911913542599}
-  - component: {fileID: 1633350911913542598}
-  - component: {fileID: 1633350911913542593}
+  - component: {fileID: 1920000193129252657}
+  - component: {fileID: 1920000193129252662}
+  - component: {fileID: 1920000193129252663}
+  - component: {fileID: 1920000193129252660}
+  - component: {fileID: 1920000193129252661}
+  - component: {fileID: 1920000193129252650}
   m_Layer: 0
   m_Name: Bat
   m_TagString: Untagged
@@ -21,27 +21,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1387557288506821796
+--- !u!4 &1920000193129252657
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1633350911913542592}
+  m_GameObject: {fileID: 1920000193129252651}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -7.75, y: 2.0360303, z: 9.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &3301025746636257285
+--- !u!212 &1920000193129252662
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1633350911913542592}
+  m_GameObject: {fileID: 1920000193129252651}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -8492286351371643537, guid: a81610f6eb49dcf4ababecc31a53e1be, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9245283, g: 0.9245283, b: 0.9245283, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -86,14 +86,14 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &5417494746650651004
+--- !u!95 &1920000193129252663
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1633350911913542592}
+  m_GameObject: {fileID: 1920000193129252651}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 26263d3fd22137b40a45cb906e096eb5, type: 2}
@@ -105,31 +105,31 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1633350911913542599
+--- !u!114 &1920000193129252660
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1633350911913542592}
+  m_GameObject: {fileID: 1920000193129252651}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2cc84b2796bef03479b5e7ccad7d009d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 2321162474207311612, guid: d687aba860e882c4dbfa1ca782b57163, type: 3}
+  player: {fileID: 0}
   soul: {fileID: 4127741029678787563, guid: 5e06e96dc464d9d4b81401d4832235ba, type: 3}
   ID: 
   HP: 0
   DEF: 0
-  animator: {fileID: 5417494746650651004}
---- !u!114 &1633350911913542598
+  animator: {fileID: 1920000193129252663}
+--- !u!114 &1920000193129252661
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1633350911913542592}
+  m_GameObject: {fileID: 1920000193129252651}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 540349fcd4700324381b49d6e3670ca6, type: 3}
@@ -138,13 +138,13 @@ MonoBehaviour:
   ID: 
   HP: 0
   DEF: 0
---- !u!65 &1633350911913542593
+--- !u!65 &1920000193129252650
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1633350911913542592}
+  m_GameObject: {fileID: 1920000193129252651}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
