@@ -50,6 +50,7 @@ public class EnemyBehavior : MonoBehaviour
     public int DEF;
     public Animator animator;
 
+
     public void intializeEnemyStats()
     {
         switch (gameObject.name)
@@ -70,7 +71,7 @@ public class EnemyBehavior : MonoBehaviour
 
             case "Bat":
                 {
-                    HP = 100;
+                    HP = 4;
                     DEF = 0;
                     ID = "Bat";
                 }; break;
