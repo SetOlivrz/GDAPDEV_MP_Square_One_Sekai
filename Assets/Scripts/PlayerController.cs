@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 lp;   //Last touch position
 
     private bool isShoot = false;
+    private bool isExplode = false;
     private bool isHold = false;
     private bool isSwipe = false;
 
@@ -35,8 +36,9 @@ public class PlayerController : MonoBehaviour
     enum weaponType
     {
         soulCam = 0,
-        batCam = 1,
-        pumpkinCam = 2
+        ghostCam = 1,
+        batCam = 2,
+        pumpkinCam = 3
     }
 
     weaponType currentWeapon = 0;
@@ -54,8 +56,9 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         isShoot = false;
-        isSwipe = false;
+        isExplode = false;
         isHold = false;
+        isSwipe = false;
         // Handles input
         GetTouchInput();
 
@@ -113,34 +116,22 @@ public class PlayerController : MonoBehaviour
 
                         if(isSwipe)
                         {//It's a drag
-
-                            if ((lp.x > fp.x))  //If the movement was to the right)
-                            {   //Right swipe
-                                Debug.Log("Right Swipe");
-                                currentWeapon += 1;
-                            }
-
-                            else
-                            {   //Left swipe
-                                Debug.Log("Left Swipe");
-                                currentWeapon -= 1;
-                            }
-
-                            if ((int)currentWeapon == -1) currentWeapon = (weaponType)2;
-                            else if ((int)currentWeapon == 3) currentWeapon = (weaponType)0;
-                            Debug.Log(currentWeapon);
+                            changeWeapon();
                         }
 
                         else if(!isSwipe && !isHold)
                         {
-                            if (currentWeapon == weaponType.soulCam && t.fingerId == leftFingerID)
+                            if (currentWeapon == weaponType.ghostCam && t.fingerId == leftFingerID)
                             {
                                 flashImage.StartFlash(0.25f, flashOpacity, newColor);
                                 isShoot = true;
                             }
+
+                            else if(currentWeapon == weaponType.pumpkinCam && t.fingerId == leftFingerID)
+                            {
+                                isExplode = true;
+                            }
                         }
-
-
                     }
                     break;
                 case TouchPhase.Canceled:
@@ -186,6 +177,32 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void changeWeapon()
+    {
+        if ((lp.x > fp.x))  //If the movement was to the right)
+        {   //Right swipe
+            Debug.Log("Right Swipe");
+            currentWeapon += 1;
+        }
+
+        else
+        {   //Left swipe
+            Debug.Log("Left Swipe");
+            currentWeapon -= 1;
+        }
+
+        if((int)currentWeapon == 4)
+        {
+            currentWeapon = (weaponType)0;
+        }
+
+        else if ((int)currentWeapon == -1)
+        {
+            currentWeapon = (weaponType)3;
+        }
+        Debug.Log(currentWeapon);
+    }
+
     void LookAround()
     {
         // vertical (pitch) rotation
@@ -208,5 +225,10 @@ public class PlayerController : MonoBehaviour
     public bool getHoldingBool()
     {
         return isHold;
+    }
+
+    public bool getExplosionBool()
+    {
+        return isExplode;
     }
 }
