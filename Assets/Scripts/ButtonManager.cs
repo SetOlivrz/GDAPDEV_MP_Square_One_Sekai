@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class ButtonManager : MonoBehaviour
 {
 
-    [SerializeField] private FlashImage flashImage = null;
-    Color newColor = Color.white;
-    int flashOpacity = 1;
-    bool isShoot = false;
+    
+    
+    public bool click = false;
+    public bool hold = false;
 
     // Start is called before the first frame update
     void Start()
@@ -19,12 +21,27 @@ public class ButtonManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isShoot = false;
+        click = false;
+
+        if(hold == true)
+        {
+            //Debug.Log("Holding button");
+        }
     }
 
     public void Capture()
     {
-        flashImage.StartFlash(0.25f, flashOpacity, newColor);
-        isShoot = true;
+        //Debug.Log("releasing button");
+        hold = false;
+        click = true;
+
     }
+
+    public void Hold()
+    {
+        
+        hold = true;
+    }
+
+
 }

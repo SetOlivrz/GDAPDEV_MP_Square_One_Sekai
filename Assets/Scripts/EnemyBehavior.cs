@@ -73,11 +73,25 @@ public class EnemyBehavior : MonoBehaviour
                     ID = "Square :>";
                 }; break;
 
+            case "Ghost":
+                {
+                    HP = 100;
+                    DEF = 0;
+                    ID = "Ghost";
+                }; break;
+
             case "Bat":
                 {
-                    HP = 4;
+                    HP = 100;
                     DEF = 0;
                     ID = "Bat";
+                }; break;
+
+            case "Pumpkin":
+                {
+                    HP = 100;
+                    DEF = 0;
+                    ID = "Pumpkin";
                 }; break;
         }
     }
