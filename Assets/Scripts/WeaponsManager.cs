@@ -2,24 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Device_A : MonoBehaviour
+public class WeaponsManager : MonoBehaviour
 {
     // Start is called before the first frame update
 
     public float damage = 10f;
     public float range = 100f;
 
-    public float shootRate = 0.1f;
-    public float explodeRate = 2;
+    public float shootRate = 1000000.5f;
+    public float explodeRate = 1.5f;
     public float nextShootTime = 0;
     public float nextExplodeTime = 0;
-
+    
+    [SerializeField] ButtonManager button;
     [SerializeField] PlayerController player;
     [SerializeField] Camera cam;
-
     [SerializeField] private FlashImage flashImage = null;
 
-
+    Color newColor = Color.white;
+    int flashOpacity = 1;
 
     void Start()
     {
@@ -29,34 +30,35 @@ public class Device_A : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.getShootingBool()&& Time.time >nextShootTime)
+        if (button.click && GestureManager.Instance.getCurrentWeapon() == GestureManager.weaponType.ghostCam && Time.time >nextShootTime)
         {
             Shoot();
-            nextShootTime = Time.time + shootRate;
+            nextShootTime = Time.time + (1.0f/shootRate);
+            flashImage.StartFlash(0.25f, flashOpacity, newColor);
         }
 
-        else if(player.getHoldingBool())
+        else if(button.hold && GestureManager.Instance.getCurrentWeapon() == GestureManager.weaponType.batCam)
         {
             holdShoot();
         }
 
-        else if(player.getExplosionBool() && Time.time > nextExplodeTime)
+        else if(button.click && GestureManager.Instance.getCurrentWeapon() == GestureManager.weaponType.pumpkinCam && Time.time > nextExplodeTime)
         {
             explodeShoot();
-            nextExplodeTime = Time.time + explodeRate;
+            nextExplodeTime = Time.time + (1.0f /explodeRate);
         }
     }
 
     public void Shoot()
     {
-        Debug.Log("pew");
+        Debug.Log("using ghostcam");
 
         RaycastHit hit;
        if( Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
         {
             if (hit.transform.GetComponent<EnemyBehavior>().ID == "Ghost")
             {
-                Debug.Log("wahhhhhhhhhhhhhhhhhhhhhh");
+                Debug.Log("click");
 
                 Debug.Log(hit.transform.GetComponent<EnemyBehavior>().ID);
 
@@ -69,13 +71,13 @@ public class Device_A : MonoBehaviour
 
     public void holdShoot()
     {
-        Debug.Log("wwwwwwww");
+        Debug.Log("using batcam");
 
         RaycastHit hit;
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
 
         {
-            Debug.Log("hnggggggggggggggg");
+            Debug.Log("wwwwwwwwwwwwwww");
 
             Debug.Log(hit.transform.name);
             if (hit.transform.GetComponent<EnemyBehavior>().ID == "Bat")
@@ -89,7 +91,7 @@ public class Device_A : MonoBehaviour
 
     public void explodeShoot()
     {
-        Debug.Log("BANG");
+        Debug.Log("using pumpkin cam");
 
         RaycastHit hit;
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
