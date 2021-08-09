@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GestureManager : MonoBehaviour
 {
-
     public static GestureManager Instance;
 
     private void Awake()
@@ -20,6 +19,7 @@ public class GestureManager : MonoBehaviour
     }
 
     private Touch trackedFinger1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,20 +29,15 @@ public class GestureManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.touchCount>0)
-        {
-            trackedFinger1 = Input.GetTouch(0);
-        }
+        
     }
 
     private void OnDrawGizmos()
     {
-        if (Input.touchCount>0)
+        if (Input.touchCount > 0)
         {
-            Debug.Log("tats");
-            Ray ray = Camera.main.ScreenPointToRay(trackedFinger1.position);
-            Gizmos.DrawIcon(ray.GetPoint(5), "ghost");
-
+                Ray ray = Camera.main.ScreenPointToRay(trackedFinger1.position);
+                Gizmos.DrawIcon(ray.GetPoint(10), "ghost");
         }
     }
 }
