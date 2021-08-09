@@ -2,8 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerShoot : MonoBehaviour
+
+[System.Serializable]
+public class SwipeProperty
 {
+
+    public float minSwipeDistance = 2f;
+    public float swipeTime = 0.7f;
+
+
     // Start is called before the first frame update
     void Start()
     {
