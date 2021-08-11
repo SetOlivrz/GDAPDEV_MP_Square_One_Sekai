@@ -66,23 +66,9 @@ public class EnemyBehavior : MonoBehaviour
     {
         switch (gameObject.name)
         {
-            case "Square":
-                {
-                    HP = 3;
-                    DEF = 0;
-                    ID = "Square :>";
-                }; break;
-
-            case "Square(Clone)":
-                {
-                    HP = 3;
-                    DEF = 0;
-                    ID = "Square :>";
-                }; break;
-
             case "Ghost":
                 {
-                    HP = 100;
+                    HP = 3;
                     DEF = 0;
                     ID = "Ghost";
                 }; break;

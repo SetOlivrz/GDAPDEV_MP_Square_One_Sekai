@@ -34,6 +34,12 @@ public class GestureManager : MonoBehaviour
 
     private Touch trackedFinger1;
 
+    [SerializeField] GameObject FlashCam;
+    [SerializeField] GameObject SonicCam;
+    [SerializeField] GameObject PumpCam;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -118,6 +124,7 @@ public class GestureManager : MonoBehaviour
         if ((int)currentWeapon == 4)
         {
             currentWeapon = (weaponType)0;
+            SwitchCam();
         }
 
         else if ((int)currentWeapon == -1)
@@ -125,11 +132,28 @@ public class GestureManager : MonoBehaviour
             currentWeapon = (weaponType)3;
         }
         Debug.Log(currentWeapon);
+        SwitchCam();
+
     }
 
     public weaponType getCurrentWeapon()
     {
         return currentWeapon;
+    }
+
+    public void SwitchCam()
+    {
+        this.FlashCam.SetActive(false);
+        this.SonicCam.SetActive(false);
+        this.PumpCam.SetActive(false);
+
+        switch((int)currentWeapon)
+        {
+            case 0: break;
+            case 1: FlashCam.SetActive(true); break;
+            case 2: SonicCam.SetActive(true); break;
+            case 3: PumpCam.SetActive(true); break;
+        }
     }
 
 }

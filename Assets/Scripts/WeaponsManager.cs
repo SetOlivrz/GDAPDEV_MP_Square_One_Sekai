@@ -15,7 +15,6 @@ public class WeaponsManager : MonoBehaviour
     public float nextExplodeTime = 0;
     
     [SerializeField] ButtonManager button;
-    [SerializeField] PlayerController player;
     [SerializeField] Camera cam;
     [SerializeField] private FlashImage flashImage = null;
 
@@ -131,5 +130,7 @@ public class WeaponsManager : MonoBehaviour
             
         }
     }
+
+ 
 
 }

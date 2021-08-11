@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
         }
     }
     // [SerializeField] HandheldCameraBehavior camera;
-    [SerializeField] PlayerController player;
+    [SerializeField] GameObject player;
     [SerializeField] EnemySpawner spawner;
     [SerializeField] GameObject soul;
 
