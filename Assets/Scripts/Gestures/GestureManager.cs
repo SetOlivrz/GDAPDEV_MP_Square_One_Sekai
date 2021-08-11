@@ -51,7 +51,7 @@ public class GestureManager : MonoBehaviour
         if (Input.touchCount > 0)
         {
                 Ray ray = Camera.main.ScreenPointToRay(trackedFinger1.position);
-                Gizmos.DrawIcon(ray.GetPoint(10), "ghost");
+                Gizmos.DrawIcon(ray.GetPoint(100), "ghost");
         }
     }
 
@@ -61,21 +61,39 @@ public class GestureManager : MonoBehaviour
         {
             for (int i = 0; i < Input.touchCount; i++)
             {
-                Touch t = Input.GetTouch(i);
-                if (t.phase == TouchPhase.Began)
+                trackedFinger1 = Input.GetTouch(i);
+                if (trackedFinger1.phase == TouchPhase.Began)
                 {
                     touchTime = Time.time;
-                    fp = t.position;
-                    lp = t.position;
+                    fp = trackedFinger1.position;
+                    lp = trackedFinger1.position;
                 }
 
-                if (t.phase == TouchPhase.Ended)
+                if (trackedFinger1.phase == TouchPhase.Ended)
                 {
                     float touchDuration = Time.time - touchTime;
-                    lp = t.position;
+                    lp = trackedFinger1.position;
                     if ((Mathf.Abs(lp.x - fp.x) > Screen.height * 0.125 || Mathf.Abs(lp.y - fp.y) > Screen.height * 0.125) && touchDuration < 0.35f) //touch moved distance and hold time
                     {
                         changeWeapon();
+                    }
+
+                    else
+                    {
+                        Debug.Log("Touch");
+                        Ray ray = Camera.main.ScreenPointToRay(trackedFinger1.position);
+                        RaycastHit hit = new RaycastHit();
+
+                        if(Physics.Raycast(ray, out hit, Mathf.Infinity))
+                        {
+                            Debug.Log("Touching " + hit.transform.name);
+                            if(hit.transform.name == "Soul")
+                            {
+                                Debug.Log("Destroy");
+                                GameManager.Instance.enemyList.Remove(hit.transform.gameObject);
+                                Destroy(hit.transform.gameObject);
+                            }    
+                        }
                     }
 
                 }
@@ -113,4 +131,5 @@ public class GestureManager : MonoBehaviour
     {
         return currentWeapon;
     }
+
 }
