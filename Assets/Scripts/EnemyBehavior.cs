@@ -60,29 +60,16 @@ public class EnemyBehavior : MonoBehaviour
     public int DEF;
     public Animator animator;
     public bool isDead = false;
+    public bool spawnSoul = false;
 
 
     public void IntializeEnemyStats()
     {
         switch (gameObject.name)
         {
-            case "Square":
-                {
-                    HP = 3;
-                    DEF = 0;
-                    ID = "Square :>";
-                }; break;
-
-            case "Square(Clone)":
-                {
-                    HP = 3;
-                    DEF = 0;
-                    ID = "Square :>";
-                }; break;
-
             case "Ghost":
                 {
-                    HP = 100;
+                    HP = 3;
                     DEF = 0;
                     ID = "Ghost";
                 }; break;
@@ -154,6 +141,10 @@ public class EnemyBehavior : MonoBehaviour
     public void GetSoul()
     {
         Destroy(this.gameObject);
+    }
+    public void TurnToSoul()
+    {
+        spawnSoul = true;
     }
 
     

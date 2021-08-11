@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
         }
     }
     // [SerializeField] HandheldCameraBehavior camera;
-    [SerializeField] PlayerController player;
+    [SerializeField] GameObject player;
     [SerializeField] EnemySpawner spawner;
     [SerializeField] GameObject soul;
 
@@ -83,19 +83,30 @@ public class GameManager : MonoBehaviour
 
     public void spawnSoul()
     {
-        //Debug.Log(enemyList.Count);
+        GameObject soulObj;
         for (int i = 0; i < Instance.enemyList.Count; i++)
         {
-            if (Instance.enemyList[i].GetComponent<EnemyBehavior>().isDead)
+            if (Instance.enemyList[i].GetComponent<EnemyBehavior>() == null)
+            {
+                Transform child;
+                child = Instance.enemyList[i].transform.GetChild(0);
+                Debug.Log(enemyList[i].transform.childCount);
+                Debug.Log(Instance.enemyList[i].name);
+                if (child.GetComponentInChildren<EnemyBehavior>().spawnSoul)
+                {
+                    soulObj = GameObject.Instantiate(soul, child.position, Quaternion.identity, Instance.enemyList[i].transform.parent);
+                    soulObj.name = soul.name;
+                    soulObj.GetComponent<EnemyBehavior>().IntializeEnemyStats();
+                    soulObj.GetComponent<EnemyBehavior>().setTarget(player.gameObject);
+                    Instance.enemyList[i].SetActive(false);
+                    Instance.enemyList[i] = soulObj;
+
+                }
+            }
+            else if(Instance.enemyList[i].GetComponent<EnemyBehavior>().spawnSoul)
             {
                 Debug.Log("Killed");
-                GameObject soulObj;
-
-                if (Instance.enemyList[i].transform.parent != null)
-                    soulObj = GameObject.Instantiate(soul, Instance.enemyList[i].transform.parent.gameObject.transform.position, Quaternion.identity, Instance.enemyList[i].transform.parent);
-
-                else
-                    soulObj = GameObject.Instantiate(soul, Instance.enemyList[i].gameObject.transform.position, Quaternion.identity, null);
+                soulObj = GameObject.Instantiate(soul, Instance.enemyList[i].gameObject.transform.position, Quaternion.identity, null);
 
                 soulObj.name = soul.name;
                 soulObj.GetComponent<EnemyBehavior>().IntializeEnemyStats();
