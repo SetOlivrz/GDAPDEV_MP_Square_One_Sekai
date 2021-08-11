@@ -10,6 +10,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] GameObject player;
 
     private int numEnemy = 0;
+    private bool isSpawnInitial = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +33,7 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     public List<GameObject> getSpawnLocList()
@@ -76,6 +77,8 @@ public class EnemySpawner : MonoBehaviour
 
         GameManager.Instance.addToEnemyList(enemySpawn);
 
+        if (GameManager.Instance.gameStart == false)
+            GameManager.Instance.gameStart = true;
 
     }
 }

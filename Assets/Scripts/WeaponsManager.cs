@@ -30,6 +30,10 @@ public class WeaponsManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(GestureManager.Instance.getCurrentWeapon() == GestureManager.weaponType.soulCam)
+        {
+            Capture();
+        }
         if (button.click && GestureManager.Instance.getCurrentWeapon() == GestureManager.weaponType.ghostCam && Time.time >nextShootTime)
         {
             Shoot();
@@ -49,6 +53,27 @@ public class WeaponsManager : MonoBehaviour
         }
     }
 
+    public void Capture()
+    {
+        Debug.Log("using soulcam");
+
+        RaycastHit hit;
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
+
+        {
+            Debug.Log("weewoo");
+
+            Debug.Log(hit.transform.name);
+            //if (hit.transform.GetComponent<EnemyBehavior>().ID == "Soul")
+            if(hit.transform.name == "Soul")
+            {
+                Debug.Log("Destroy");
+                GameManager.Instance.enemyList.Remove(hit.transform.gameObject);
+                Destroy(hit.transform.gameObject);
+            }
+
+        }
+    }
     public void Shoot()
     {
         Debug.Log("using ghostcam");
