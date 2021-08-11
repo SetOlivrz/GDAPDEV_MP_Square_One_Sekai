@@ -32,7 +32,7 @@ public class WeaponsManager : MonoBehaviour
     {
         if(GestureManager.Instance.getCurrentWeapon() == GestureManager.weaponType.soulCam)
         {
-            Capture();
+            //Capture();
         }
         if (button.click && GestureManager.Instance.getCurrentWeapon() == GestureManager.weaponType.ghostCam && Time.time >nextShootTime)
         {
@@ -59,7 +59,6 @@ public class WeaponsManager : MonoBehaviour
 
         RaycastHit hit;
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
-
         {
             Debug.Log("weewoo");
 
@@ -71,7 +70,6 @@ public class WeaponsManager : MonoBehaviour
                 GameManager.Instance.enemyList.Remove(hit.transform.gameObject);
                 Destroy(hit.transform.gameObject);
             }
-
         }
     }
     public void Shoot()
@@ -128,8 +126,9 @@ public class WeaponsManager : MonoBehaviour
             if (hit.transform.GetComponent<EnemyBehavior>().ID == "Pumpkin")
             {
                 hit.transform.GetComponent<EnemyBehavior>().TakeDamage(30);
+                hit.transform.GetComponent<EnemyBehavior>().DisplayStats();
             }
-            hit.transform.GetComponent<EnemyBehavior>().DisplayStats();
+            
         }
     }
 

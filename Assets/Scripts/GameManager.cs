@@ -98,10 +98,10 @@ public class GameManager : MonoBehaviour
                     soulObj = GameObject.Instantiate(soul, Instance.enemyList[i].gameObject.transform.position, Quaternion.identity, null);
 
                 soulObj.name = soul.name;
-                soul.GetComponent<EnemyBehavior>().IntializeEnemyStats();
-                soul.GetComponent<EnemyBehavior>().setTarget(player.gameObject);
+                soulObj.GetComponent<EnemyBehavior>().IntializeEnemyStats();
+                soulObj.GetComponent<EnemyBehavior>().setTarget(player.gameObject);
                 Instance.enemyList[i].SetActive(false);
-                Instance.enemyList[i] = soul;
+                Instance.enemyList[i] = soulObj;
             }
         }
     }
