@@ -84,15 +84,17 @@ public class GameManager : MonoBehaviour
     public void spawnSoul()
     {
         GameObject soulObj;
-        //Debug.Log(enemyList.Count);
         for (int i = 0; i < Instance.enemyList.Count; i++)
         {
-            if (Instance.enemyList[i].transform.childCount >0)
+            if (Instance.enemyList[i].GetComponent<EnemyBehavior>() == null)
             {
                 Transform child;
-                if (Instance.enemyList[i].transform.GetChild(0).GetComponent<EnemyBehavior>().spawnSoul)
+                child = Instance.enemyList[i].transform.GetChild(0);
+                Debug.Log(enemyList[i].transform.childCount);
+                Debug.Log(Instance.enemyList[i].name);
+                if (child.GetComponentInChildren<EnemyBehavior>().spawnSoul)
                 {
-                    soulObj = GameObject.Instantiate(soul, Instance.enemyList[i].transform.parent.gameObject.transform.position, Quaternion.identity, Instance.enemyList[i].transform.parent);
+                    soulObj = GameObject.Instantiate(soul, child.position, Quaternion.identity, Instance.enemyList[i].transform.parent);
                     soulObj.name = soul.name;
                     soulObj.GetComponent<EnemyBehavior>().IntializeEnemyStats();
                     soulObj.GetComponent<EnemyBehavior>().setTarget(player.gameObject);
@@ -101,7 +103,7 @@ public class GameManager : MonoBehaviour
 
                 }
             }
-            else if (Instance.enemyList[i].GetComponent<EnemyBehavior>().spawnSoul)
+            else if(Instance.enemyList[i].GetComponent<EnemyBehavior>().spawnSoul)
             {
                 Debug.Log("Killed");
                 soulObj = GameObject.Instantiate(soul, Instance.enemyList[i].gameObject.transform.position, Quaternion.identity, null);
