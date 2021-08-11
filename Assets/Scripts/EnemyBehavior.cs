@@ -16,7 +16,7 @@ public class EnemyBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        idleTime = Random.Range(7.0f, 10.0f);
+        idleTime = Random.Range(8.0f, 12.0f);
     }
 
     // Update is called once per frame
@@ -30,7 +30,7 @@ public class EnemyBehavior : MonoBehaviour
 
         else if(GameManager.Instance.gameStart == true && this.ID != "")
         {
-            Debug.Log(this.gameObject.name + " damages player, ID: " + this.ID);
+            //Debug.Log(this.gameObject.name + " damages player, ID: " + this.ID);
             GameManager.Instance.takeDamage(5.0f);
             timer = 0.0f;
         }

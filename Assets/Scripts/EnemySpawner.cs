@@ -25,7 +25,7 @@ public class EnemySpawner : MonoBehaviour
         {
             int enemySpawnTemplateIndex = Random.Range(0, enemyTemplates.Length);
 
-            float spawnTimeDelay = Random.Range(1f, 10f);
+            float spawnTimeDelay = Random.Range(6f, 7f);
             StartCoroutine(reviveDelay(spawnTimeDelay, i, enemySpawnTemplateIndex));
         }
     }
