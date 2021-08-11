@@ -60,6 +60,7 @@ public class EnemyBehavior : MonoBehaviour
     public int DEF;
     public Animator animator;
     public bool isDead = false;
+    public bool spawnSoul = false;
 
 
     public void IntializeEnemyStats()
@@ -140,6 +141,10 @@ public class EnemyBehavior : MonoBehaviour
     public void GetSoul()
     {
         Destroy(this.gameObject);
+    }
+    public void TurnToSoul()
+    {
+        spawnSoul = true;
     }
 
     
