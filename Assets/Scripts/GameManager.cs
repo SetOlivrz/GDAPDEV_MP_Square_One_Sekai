@@ -26,7 +26,8 @@ public class GameManager : MonoBehaviour
     GameObject enemyFound;
 
     public List<GameObject> enemyList;
-
+    private float hp = 100;
+    public bool gameStart = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,8 +35,21 @@ public class GameManager : MonoBehaviour
     }
 
     // Update is called once per frame
+
     void Update()
     {
+        if(hp <= 0 && gameStart == true)
+        {
+            hp = 0;
+            Debug.Log("you lose");
+            gameStart = false;
+        }
+
+        else if(gameStart == true && enemyList.Count == 0)
+        {
+            Debug.Log("you win");
+            gameStart = false;
+        }
         //if(player.getShootingBool())
         //{
         //    enemyFound = camera.getVisibleTarget();
@@ -50,8 +64,7 @@ public class GameManager : MonoBehaviour
         //}
         spawnSoul();
     }
-
-
+    
     public void OnHit(GameObject enemy)
     {
         // if conditions for enemy ids corresponding damage
@@ -91,5 +104,11 @@ public class GameManager : MonoBehaviour
                 Instance.enemyList[i] = soul;
             }
         }
+    }
+
+    public void takeDamage(float damage)
+    {
+        hp -= damage;
+        Debug.Log("Hp: " + hp);
     }
 }

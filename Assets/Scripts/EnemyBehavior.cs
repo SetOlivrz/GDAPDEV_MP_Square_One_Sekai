@@ -16,17 +16,24 @@ public class EnemyBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        idleTime = Random.RandomRange(4f, 7.5f);
+        idleTime = Random.Range(7.0f, 10.0f);
     }
 
     // Update is called once per frame
     void Update()
     {
         this.transform.LookAt(player.transform);
-        //if (timer < idleTime)
-        //{
-        //    timer += Time.deltaTime;
-        //}
+        if (timer < idleTime)
+        {
+           timer += Time.deltaTime;
+        }
+
+        else if(GameManager.Instance.gameStart == true && this.ID != "")
+        {
+            Debug.Log(this.gameObject.name + " damages player, ID: " + this.ID);
+            GameManager.Instance.takeDamage(5.0f);
+            timer = 0.0f;
+        }
 
         //else if(target != null)
         //{
@@ -92,6 +99,20 @@ public class EnemyBehavior : MonoBehaviour
                     HP = 100;
                     DEF = 0;
                     ID = "Pumpkin";
+                }; break;
+
+            case "Eyeball":
+                {
+                    HP = 100;
+                    DEF = 0;
+                    ID = "Eyeball";
+                }; break;
+
+            case "Soul":
+                {
+                    HP = 100;
+                    DEF = 0;
+                    ID = "Soul";
                 }; break;
         }
     }
