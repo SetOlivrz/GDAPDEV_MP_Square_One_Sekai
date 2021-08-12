@@ -6,7 +6,6 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] List<GameObject> enemySpawnLocList;
     [SerializeField] GameObject[] enemyTemplates;
-    [SerializeField] GameObject boss = null;
 
     [SerializeField] GameObject player;
 
@@ -26,7 +25,7 @@ public class EnemySpawner : MonoBehaviour
 
             int enemySpawnTemplateIndex = Random.Range(0, enemyTemplates.Length);
 
-            float spawnTimeDelay = Random.Range(2.5f, 3.5f);
+            float spawnTimeDelay = Random.Range(3f, 5f);
             StartCoroutine(SpawnDelay(spawnTimeDelay, nSpawns, enemySpawnTemplateIndex));
     }
 
@@ -82,8 +81,8 @@ public class EnemySpawner : MonoBehaviour
         GameManager.Instance.addToEnemyList(enemySpawn);
         nSpawns++;
 
-        if (GameManager.Instance.gamePhase == 0)
-            GameManager.Instance.gamePhase = 1;
+        if (GameManager.Instance.gameStart == false)
+            GameManager.Instance.gameStart = true;
 
         if(nSpawns < enemySpawnLocList.Count)
         {
@@ -93,16 +92,5 @@ public class EnemySpawner : MonoBehaviour
             StartCoroutine(SpawnDelay(spawnTimeDelay, nSpawns, enemySpawnTemplateIndex));
         }
 
-    }
-
-    public GameObject spawnBoss()
-    {
-        if (boss != null)
-        {
-            GameObject bossObj = GameObject.Instantiate(boss, (player.transform.position + (player.transform.forward.normalized * 10)), Quaternion.identity, null);
-            return bossObj;
-        }
-
-        else return null;
     }
 }

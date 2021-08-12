@@ -78,38 +78,34 @@ public class WeaponsManager : MonoBehaviour
         RaycastHit hit;
        if( Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
         {
-            if (hit.transform.TryGetComponent(out EnemyBehavior EB))
+            if (hit.transform.GetComponent<EnemyBehavior>().ID == "Ghost")
             {
-                if (EB.ID == "Ghost")
-                {
-                    Debug.Log("click");
+                Debug.Log("click");
 
-                    Debug.Log(EB.ID);
+                Debug.Log(hit.transform.GetComponent<EnemyBehavior>().ID);
 
-                    EB.TakeDamage(1);
-                    EB.DisplayStats();
-                }
-            } 
+                hit.transform.GetComponent<EnemyBehavior>().TakeDamage(1);
+                hit.transform.GetComponent<EnemyBehavior>().DisplayStats();
+            }
+                
         }
     }
 
     public void holdShoot()
     {
-        //Debug.Log("using batcam");
+        Debug.Log("using batcam");
 
         RaycastHit hit;
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
 
         {
-            //Debug.Log("wwwwwwwwwwwwwww");
+            Debug.Log("wwwwwwwwwwwwwww");
 
             Debug.Log(hit.transform.name);
-
-            if (hit.transform.TryGetComponent(out EnemyBehavior EB))
+            if (hit.transform.GetComponent<EnemyBehavior>().ID == "Bat")
             {
-                if(EB.ID == "Bat")
-                EB.TakeDamage(2);
-                EB.DisplayStats();
+                hit.transform.GetComponent<EnemyBehavior>().TakeDamage(2);
+                hit.transform.GetComponent<EnemyBehavior>().DisplayStats();
             }
             
         }
@@ -126,16 +122,11 @@ public class WeaponsManager : MonoBehaviour
             Debug.Log("KACHOW");
 
             Debug.Log(hit.transform.name);
-
-            if(hit.transform.TryGetComponent(out EnemyBehavior EB))
+            if (hit.transform.GetComponent<EnemyBehavior>().ID == "Pumpkin")
             {
-                if (EB.ID == "Pumpkin")
-                {
-                    EB.TakeDamage(30);
-                    EB.DisplayStats();
-                }
+                hit.transform.GetComponent<EnemyBehavior>().TakeDamage(30);
+                hit.transform.GetComponent<EnemyBehavior>().DisplayStats();
             }
-            
             
         }
     }

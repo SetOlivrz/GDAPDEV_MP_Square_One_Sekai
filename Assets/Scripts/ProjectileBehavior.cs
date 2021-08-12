@@ -9,15 +9,7 @@ public class ProjectileBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (this.transform.parent.gameObject.TryGetComponent(out EnemyBehavior EB))
-        {
-            target =  EB.getTarget();
-        }
-
-        else if(this.transform.parent.gameObject.TryGetComponent(out BossBehavior BB))
-        {
-            target = BB.getTarget();
-        }
+        target = this.transform.parent.gameObject.GetComponent<EnemyBehavior>().getTarget();
     }
 
     // Update is called once per frame
@@ -37,7 +29,7 @@ public class ProjectileBehavior : MonoBehaviour
         Debug.Log("Collided with: " + collisionObj.name);
         if(collisionObj.name == "Player")
         {
-            //GameManager.Instance.takeDamage(5.0f);
+            GameManager.Instance.takeDamage(5.0f);
             Destroy(this.gameObject);
         }
     }

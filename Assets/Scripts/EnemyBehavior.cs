@@ -29,11 +29,11 @@ public class EnemyBehavior : MonoBehaviour
            timer += Time.deltaTime;
         }
 
-        else if(GameManager.Instance.gamePhase == 1 && this.ID != "" && this.ID != "Soul")
+        else if(GameManager.Instance.gameStart == true && this.ID != "")
         {
             //Debug.Log(this.gameObject.name + " damages player, ID: " + this.ID);
             //GameManager.Instance.takeDamage(5.0f);
-            ThrowProjectile();
+            //ThrowProjectile();
             timer = 0.0f;
         }
 
