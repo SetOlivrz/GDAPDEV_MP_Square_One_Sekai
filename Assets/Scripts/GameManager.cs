@@ -31,12 +31,12 @@ public class GameManager : MonoBehaviour
 
 
 
-
+    GameObject enemyBoss;
     GameObject enemyFound;
 
     public List<GameObject> enemyList;
     private float hp = 100;
-    public bool gameStart = false;
+    public int gamePhase = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,17 +47,30 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (hp <= 0 && gameStart == true)
+        if (hp <= 0 && gamePhase != -1)
         {
             hp = 0;
             Debug.Log("you lose");
-            gameStart = false;
+            gamePhase = -1;
         }
 
-        else if (gameStart == true && enemyList.Count == 0)
+        else if (gamePhase == 1 && enemyList.Count == 0)
         {
-            Debug.Log("you win");
-            gameStart = false;
+            Debug.Log("boss fight");
+            gamePhase = 2;
+            enemyBoss = spawner.spawnBoss();
+            enemyBoss.GetComponent<BossBehavior>().setTarget(player);
+
+        }
+
+        if (gamePhase == 2)
+        {
+            if (enemyBoss == null)
+            {
+                Debug.Log("you win");
+                gamePhase = 2;
+                enemyBoss = spawner.spawnBoss();
+            }
         }
         //if(player.getShootingBool())
         //{
@@ -151,11 +164,7 @@ public class GameManager : MonoBehaviour
 
     public void SpawnDeadParticles(string name)
     {
-<<<<<<< HEAD
         switch (name)
-=======
-        switch(name)
->>>>>>> 2c98967a6f45caa92f9eeeed844fcdced2ad7a88
         {
             case "Ghost": ghost_particle.Play(); break;
             case "Bat": bat_particle.Play(); break;

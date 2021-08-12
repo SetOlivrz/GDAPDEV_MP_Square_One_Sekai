@@ -5107,13 +5107,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 8349518234294137630, guid: 58a1cf9f500c61041972295b8d07b561, type: 3}
+  projectile: {fileID: 4127357307035094258, guid: 89e98fc1b898a164c938f76b023685fa, type: 3}
   ID: 
   HP: 5
   DEF: 0
   animator: {fileID: 7790864253353414440}
   isDead: 0
   spawnSoul: 0
-  particle: {fileID: 2110709840318568117, guid: 5881935babf68804daac3ab2fd967c72, type: 3}
 --- !u!65 &7790864253353414442
 BoxCollider:
   m_ObjectHideFlags: 0
