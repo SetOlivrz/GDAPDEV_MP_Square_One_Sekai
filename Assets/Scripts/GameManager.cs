@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 
@@ -58,9 +58,9 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("boss fight");
             gamePhase = 2;
-            enemyBoss = spawner.spawnBoss();
-            enemyBoss.GetComponent<BossBehavior>().setTarget(player);
-
+            //enemyBoss = spawner.spawnBoss();
+            //GetComponent<BossBehavior>().setTarget(player);
+            SceneManager.LoadScene("MainMenu");
         }
 
         if (gamePhase == 2)
@@ -135,8 +135,6 @@ public class GameManager : MonoBehaviour
                     Instance.enemyList[i].SetActive(false);
                     Instance.enemyList[i] = soulObj;
                     Destroy(holder);
-
-
                 }
             }
             else if (Instance.enemyList[i].GetComponent<EnemyBehavior>().spawnSoul)
