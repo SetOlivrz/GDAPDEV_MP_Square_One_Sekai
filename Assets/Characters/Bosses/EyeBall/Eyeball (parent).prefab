@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 5616760660960208343}
   - component: {fileID: 3353307912968400957}
   - component: {fileID: 5526177258073924858}
-  - component: {fileID: 4581055535540569698}
+  - component: {fileID: 5633671656945475073}
   m_Layer: 0
   m_Name: Eyeball
   m_TagString: Untagged
@@ -150,7 +150,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.78125, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4581055535540569698
+--- !u!114 &5633671656945475073
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -159,17 +159,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6560003883969565006}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cc84b2796bef03479b5e7ccad7d009d, type: 3}
+  m_Script: {fileID: 11500000, guid: b248fc4916367634998e5520adec0d72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 8349518234294137630, guid: 58a1cf9f500c61041972295b8d07b561, type: 3}
-  ID: 
-  HP: 2
-  DEF: 0
-  animator: {fileID: 3353307912968400957}
-  isDead: 0
-  spawnSoul: 0
-  particle: {fileID: 2110709840318568117, guid: 02a8a864e8967d64a8cb253487d483bd, type: 3}
+  projectile: {fileID: 0}
 --- !u!1 &7831128362327345967
 GameObject:
   m_ObjectHideFlags: 0
