@@ -100,7 +100,7 @@ public class EnemySpawner : MonoBehaviour
         if (boss != null)
         {
             GameObject bossObj = GameObject.Instantiate(boss, (player.transform.position + (player.transform.forward.normalized * 10)), Quaternion.identity, null);
-            return bossObj;
+            return bossObj.transform.GetChild(0).gameObject;
         }
 
         else return null;
