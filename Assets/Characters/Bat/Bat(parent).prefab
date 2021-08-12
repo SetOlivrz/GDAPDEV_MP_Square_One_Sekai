@@ -118,6 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2321162474207311612, guid: d687aba860e882c4dbfa1ca782b57163, type: 3}
+  projectile: {fileID: 4127357307035094258, guid: 89e98fc1b898a164c938f76b023685fa, type: 3}
   ID: 
   HP: 0
   DEF: 0
