@@ -23,6 +23,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] EnemySpawner spawner;
     [SerializeField] GameObject soul;
 
+    [SerializeField] ParticleSystem ghost_particle;
+    [SerializeField] ParticleSystem bat_particle;
+    [SerializeField] ParticleSystem pumpkin_particle;
+    [SerializeField] ParticleSystem eyeball_particle;
+
+
+
+
+
     GameObject enemyFound;
 
     public List<GameObject> enemyList;
@@ -38,14 +47,14 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if(hp <= 0 && gameStart == true)
+        if (hp <= 0 && gameStart == true)
         {
             hp = 0;
             Debug.Log("you lose");
             gameStart = false;
         }
 
-        else if(gameStart == true && enemyList.Count == 0)
+        else if (gameStart == true && enemyList.Count == 0)
         {
             Debug.Log("you win");
             gameStart = false;
@@ -64,7 +73,7 @@ public class GameManager : MonoBehaviour
         //}
         spawnSoul();
     }
-    
+
     public void OnHit(GameObject enemy)
     {
         // if conditions for enemy ids corresponding damage
@@ -84,9 +93,11 @@ public class GameManager : MonoBehaviour
     public void spawnSoul()
     {
         GameObject soulObj;
+        GameObject holder;
+
         for (int i = 0; i < Instance.enemyList.Count; i++)
         {
-            if (Instance.enemyList[i] ==  null)
+            if (Instance.enemyList[i] == null)
             {
                 Instance.removeFromEnemyList(enemyList[i]);
             }
@@ -94,20 +105,28 @@ public class GameManager : MonoBehaviour
             {
                 Transform child;
                 child = Instance.enemyList[i].transform.GetChild(0);
+
                 Debug.Log(enemyList[i].transform.childCount);
                 Debug.Log(Instance.enemyList[i].name);
+
                 if (child.GetComponentInChildren<EnemyBehavior>().spawnSoul)
                 {
                     soulObj = GameObject.Instantiate(soul, child.position, Quaternion.identity, Instance.enemyList[i].transform.parent);
                     soulObj.name = soul.name;
                     soulObj.GetComponent<EnemyBehavior>().IntializeEnemyStats();
                     soulObj.GetComponent<EnemyBehavior>().setTarget(player.gameObject);
+
+
+                    holder = child.gameObject;
+
                     Instance.enemyList[i].SetActive(false);
                     Instance.enemyList[i] = soulObj;
+                    Destroy(holder);
+
 
                 }
             }
-            else if(Instance.enemyList[i].GetComponent<EnemyBehavior>().spawnSoul)
+            else if (Instance.enemyList[i].GetComponent<EnemyBehavior>().spawnSoul)
             {
                 Debug.Log("Killed");
                 soulObj = GameObject.Instantiate(soul, Instance.enemyList[i].gameObject.transform.position, Quaternion.identity, null);
@@ -115,8 +134,11 @@ public class GameManager : MonoBehaviour
                 soulObj.name = soul.name;
                 soulObj.GetComponent<EnemyBehavior>().IntializeEnemyStats();
                 soulObj.GetComponent<EnemyBehavior>().setTarget(player.gameObject);
+                holder = Instance.enemyList[i];
+
                 Instance.enemyList[i].SetActive(false);
                 Instance.enemyList[i] = soulObj;
+                Destroy(holder);
             }
         }
     }
@@ -125,5 +147,21 @@ public class GameManager : MonoBehaviour
     {
         hp -= damage;
         Debug.Log("Hp: " + hp);
+    }
+
+    public void SpawnDeadParticles(string name)
+    {
+<<<<<<< HEAD
+        switch (name)
+=======
+        switch(name)
+>>>>>>> 2c98967a6f45caa92f9eeeed844fcdced2ad7a88
+        {
+            case "Ghost": ghost_particle.Play(); break;
+            case "Bat": bat_particle.Play(); break;
+            case "Pumpkin": pumpkin_particle.Play(); break;
+            case "Eyeball": eyeball_particle.Play(); break;
+
+        }
     }
 }
