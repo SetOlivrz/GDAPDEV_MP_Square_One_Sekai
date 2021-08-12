@@ -151,7 +151,11 @@ public class GameManager : MonoBehaviour
 
     public void SpawnDeadParticles(string name)
     {
+<<<<<<< HEAD
+        switch (name)
+=======
         switch(name)
+>>>>>>> 2c98967a6f45caa92f9eeeed844fcdced2ad7a88
         {
             case "Ghost": ghost_particle.Play(); break;
             case "Bat": bat_particle.Play(); break;
