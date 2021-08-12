@@ -23,12 +23,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] EnemySpawner spawner;
     [SerializeField] GameObject soul;
 
-    GameObject enemyBoss;
     GameObject enemyFound;
 
     public List<GameObject> enemyList;
     private float hp = 100;
-    public int gamePhase = 0;
+    public bool gameStart = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,30 +38,17 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if(hp <= 0 && gamePhase != -1)
+        if(hp <= 0 && gameStart == true)
         {
             hp = 0;
             Debug.Log("you lose");
-            gamePhase = -1;
+            gameStart = false;
         }
 
-        else if(gamePhase == 1 && enemyList.Count == 0)
+        else if(gameStart == true && enemyList.Count == 0)
         {
-            Debug.Log("boss fight");
-            gamePhase = 2;
-            enemyBoss = spawner.spawnBoss();
-            enemyBoss.GetComponent<BossBehavior>().setTarget(player);
-            
-        }
-
-        if(gamePhase == 2)
-        {
-            if(enemyBoss == null)
-            {
-                Debug.Log("you win");
-                gamePhase = 2;
-                enemyBoss = spawner.spawnBoss();
-            }
+            Debug.Log("you win");
+            gameStart = false;
         }
         //if(player.getShootingBool())
         //{
