@@ -10,6 +10,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] GameObject player;
 
     private int numEnemy = 0;
+    int nSpawns = 0;
     private bool isSpawnInitial = false;
     // Start is called before the first frame update
     void Start()
@@ -21,13 +22,11 @@ public class EnemySpawner : MonoBehaviour
         //    targetHolder.addTarget(enemySpawn);
         //    enemySpawnList.RemoveAt(0);
         //}
-        for (int i = 0; i < enemySpawnLocList.Count; i++)
-        {
+
             int enemySpawnTemplateIndex = Random.Range(0, enemyTemplates.Length);
 
-            float spawnTimeDelay = Random.Range(6f, 7f);
-            StartCoroutine(reviveDelay(spawnTimeDelay, i, enemySpawnTemplateIndex));
-        }
+            float spawnTimeDelay = Random.Range(3f, 5f);
+            StartCoroutine(SpawnDelay(spawnTimeDelay, nSpawns, enemySpawnTemplateIndex));
     }
 
     // Update is called once per frame
@@ -48,12 +47,12 @@ public class EnemySpawner : MonoBehaviour
             if(deadEnemy.transform.position == enemySpawnLocList[i].transform.position)
             {
                 float delayTime = Random.Range(7f, 15f);
-                StartCoroutine(reviveDelay(delayTime, i, 0));
+                StartCoroutine(SpawnDelay(delayTime, i, 0));
             }
         }
     }
 
-    private IEnumerator reviveDelay(float waitTime, int spawnerIndex, int templateIndex)
+    private IEnumerator SpawnDelay(float waitTime, int spawnerIndex, int templateIndex)
     {
         yield return new WaitForSeconds(waitTime);
         GameObject enemySpawn = GameObject.Instantiate(enemyTemplates[templateIndex], enemySpawnLocList[spawnerIndex].transform.position, Quaternion.identity, null);
@@ -80,9 +79,18 @@ public class EnemySpawner : MonoBehaviour
         }
 
         GameManager.Instance.addToEnemyList(enemySpawn);
+        nSpawns++;
 
         if (GameManager.Instance.gameStart == false)
             GameManager.Instance.gameStart = true;
+
+        if(nSpawns < enemySpawnLocList.Count)
+        {
+            int enemySpawnTemplateIndex = Random.Range(0, enemyTemplates.Length);
+
+            float spawnTimeDelay = Random.Range(3f, 5f);
+            StartCoroutine(SpawnDelay(spawnTimeDelay, nSpawns, enemySpawnTemplateIndex));
+        }
 
     }
 }
