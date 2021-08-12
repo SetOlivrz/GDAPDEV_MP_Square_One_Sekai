@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class BossBehavior : MonoBehaviour
 {
-    float attackRate;
-    float attackTimer = 2.0f;
+    float attackRate = 2.0f;
+    float attackTimer = 0.0f;
     [SerializeField] GameObject projectile;
     GameObject target = null;
     int attackHand = -1;
+
+    [SerializeField] public List<GameObject> SpawnLocList;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +23,9 @@ public class BossBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(attackTimer < attackRate)
+        this.transform.LookAt(target.transform.position);
+
+        if (attackTimer < attackRate)
         {
             attackTimer += Time.deltaTime;
         }    
@@ -54,5 +60,13 @@ public class BossBehavior : MonoBehaviour
     public GameObject getTarget()
     {
         return target;
+    }
+    public void goToSpawnPoints()
+    {
+
+        int index = Random.Range(0, SpawnLocList.Count - 1);
+
+        this.transform.parent.position = SpawnLocList[index].transform.position;
+        Debug.Log("move to" + SpawnLocList[index].name);
     }
 }
