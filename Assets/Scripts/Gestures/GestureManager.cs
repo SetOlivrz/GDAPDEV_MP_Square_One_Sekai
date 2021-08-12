@@ -103,7 +103,16 @@ public class GestureManager : MonoBehaviour
                                 Destroy(hit.transform.gameObject);
                                 PlayerData.nCollectedSouls++;
                                 PlayerData.gold += 5;
-                            }    
+                            }
+                            else if (hit.transform.name == "Eyeball(Boss)")
+                            {
+                                hit.transform.gameObject.GetComponent<BossBehavior>().TakeDamage(PlayerData.tapDMG);
+                                hit.transform.gameObject.GetComponent<BossBehavior>().DisplayStats();
+                            }
+                            else if (hit.transform.name == "Eyeball(soul)")
+                            {
+                                GameManager.Instance.gamePhase = 3;
+                            }
                         }
                     }
 
@@ -173,7 +182,7 @@ public class GestureManager : MonoBehaviour
                 case 3: filmColor = Color.blue; break;
             }
 
-            filmColor.a = 0.3f;
+            filmColor.a = 1f;
             weaponsPanel.GetComponent<Image>().color = filmColor;
         }
         

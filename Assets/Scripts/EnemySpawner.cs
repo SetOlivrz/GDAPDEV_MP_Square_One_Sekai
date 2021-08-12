@@ -99,7 +99,7 @@ public class EnemySpawner : MonoBehaviour
     {
         if (boss != null)
         {
-            GameObject bossObj = GameObject.Instantiate(boss, enemySpawnLocList[2].transform.position, Quaternion.identity, null);
+            GameObject bossObj = GameObject.Instantiate(boss, enemySpawnLocList[0].transform.position, Quaternion.identity, null);
             bossObj = bossObj.transform.GetChild(0).gameObject;
             bossObj.GetComponent<BossBehavior>().SpawnLocList = enemySpawnLocList;
             return bossObj;

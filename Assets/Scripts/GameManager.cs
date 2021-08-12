@@ -28,6 +28,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] ParticleSystem pumpkin_particle;
     [SerializeField] ParticleSystem eyeball_particle;
 
+    [SerializeField] GameObject Boss1;
+
+
 
 
 
@@ -47,6 +50,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        // if dead -> phase -1
         if (hp <= 0 && gamePhase != -1)
         {
             hp = 0;
@@ -54,23 +58,28 @@ public class GameManager : MonoBehaviour
             gamePhase = -1;
         }
 
+        // if start and defeat all enemy -> phase 2
         else if (gamePhase == 1 && enemyList.Count == 0)
         {
             Debug.Log("boss fight");
             gamePhase = 2;
-            //enemyBoss = spawner.spawnBoss();
-            //GetComponent<BossBehavior>().setTarget(player);
-            SceneManager.LoadScene("MainMenu");
+            enemyBoss = spawner.spawnBoss();
+            enemyBoss.GetComponent<BossBehavior>().setTarget(player);
         }
 
+        // phase 2 -> boss
         if (gamePhase == 2)
         {
-            if (enemyBoss == null)
+            if (enemyBoss.GetComponent<BossBehavior>().HP <= 0)
             {
                 Debug.Log("you win");
-                gamePhase = 2;
-                enemyBoss = spawner.spawnBoss();
+                gamePhase = 3;
             }
+        }
+
+        if (gamePhase == 3)
+        {
+            SceneManager.LoadScene("MainMenu");
         }
         //if(player.getShootingBool())
         //{
@@ -84,7 +93,7 @@ public class GameManager : MonoBehaviour
         //        //camera.removeTarget(target);
         //    }
         //}
-        spawnSoul();
+        checkForDeadEnemies();
     }
 
     public void OnHit(GameObject enemy)
@@ -103,7 +112,7 @@ public class GameManager : MonoBehaviour
         Instance.enemyList.Remove(enemy);
     }
 
-    public void spawnSoul()
+    public void checkForDeadEnemies()
     {
         GameObject soulObj;
         GameObject holder;
@@ -149,6 +158,26 @@ public class GameManager : MonoBehaviour
 
                 Instance.enemyList[i].SetActive(false);
                 Instance.enemyList[i] = soulObj;
+                Destroy(holder);
+            }
+        }
+
+        if (Boss1.scene.IsValid() && Boss1.GetComponent<BossBehavior>() == null)
+        {
+            Transform child;
+            child = Boss1.transform.GetChild(0);
+
+
+            if (child.GetComponent<EnemyBehavior>().spawnSoul)
+            {
+                soulObj = GameObject.Instantiate(soul, child.position, Quaternion.identity, Boss1.transform.parent);
+                soulObj.name = "Eyeball(soul)";
+                soulObj.GetComponent<EnemyBehavior>().IntializeEnemyStats();
+                soulObj.GetComponent<EnemyBehavior>().setTarget(player.gameObject);
+
+
+                holder = Boss1.gameObject;
+                Boss1.SetActive(false);
                 Destroy(holder);
             }
         }
