@@ -6,6 +6,7 @@ public class EnemyBehavior : MonoBehaviour
 {
 
     [SerializeField] GameObject player;
+    [SerializeField] GameObject projectile;
     float idleTime;
     float timer = 0.0f;
     private GameObject target;
@@ -31,7 +32,8 @@ public class EnemyBehavior : MonoBehaviour
         else if(GameManager.Instance.gameStart == true && this.ID != "")
         {
             //Debug.Log(this.gameObject.name + " damages player, ID: " + this.ID);
-            GameManager.Instance.takeDamage(5.0f);
+            //GameManager.Instance.takeDamage(5.0f);
+            ThrowProjectile();
             timer = 0.0f;
         }
 
@@ -52,7 +54,10 @@ public class EnemyBehavior : MonoBehaviour
         Debug.DrawRay(gameObject.transform.position, directionToTarget, Color.black, 20);
     }
 
-
+    public GameObject getTarget()
+    {
+        return target;
+    }
     //-------------------------------------------------------------------------------------------------------------------------//
 
     public string ID;
@@ -147,5 +152,8 @@ public class EnemyBehavior : MonoBehaviour
         spawnSoul = true;
     }
 
-    
+    public void ThrowProjectile()
+    {
+        GameObject.Instantiate(projectile, this.transform);
+    }
 }
