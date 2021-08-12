@@ -33,7 +33,7 @@ public class EnemyBehavior : MonoBehaviour
         {
             //Debug.Log(this.gameObject.name + " damages player, ID: " + this.ID);
             //GameManager.Instance.takeDamage(5.0f);
-            ThrowProjectile();
+            //ThrowProjectile();
             timer = 0.0f;
         }
 
