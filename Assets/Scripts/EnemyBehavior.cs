@@ -61,7 +61,7 @@ public class EnemyBehavior : MonoBehaviour
     //-------------------------------------------------------------------------------------------------------------------------//
 
     public string ID;
-    public int HP;
+    public float HP;
     public int DEF;
     public Animator animator;
     public bool isDead = false;
@@ -109,7 +109,7 @@ public class EnemyBehavior : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(float amount)
     {
         if (isDead == false)
         {

@@ -25,4 +25,53 @@ public class MainMenuUI : MonoBehaviour
         SceneManager.LoadScene("Level 1");
     }
 
+    public void upgradeCam1()
+    {
+        if(PlayerData.gold > 50)
+        {
+            PlayerData.weapon1DMG *= 1.25f;
+
+            PlayerData.gold -= 50;
+            goldTxt.text = PlayerData.gold.ToString() + "G";
+            Debug.Log("Upgraded Cam1");
+        }
+        
+    }
+
+    public void upgradeCam2()
+    {
+        if (PlayerData.gold >= 50)
+        {
+            PlayerData.weapon2DMG *= 1.25f;
+
+            PlayerData.gold -= 50;
+            goldTxt.text = PlayerData.gold.ToString() + "G";
+            Debug.Log("Upgraded Cam2");
+        }
+    }
+
+    public void upgradeCam3()
+    {
+        if (PlayerData.gold >= 50)
+        {
+            PlayerData.weapon3DMG *= 1.25f;
+
+            PlayerData.gold -= 50;
+            goldTxt.text = PlayerData.gold.ToString() + "G";
+            Debug.Log("Upgraded Cam3");
+        }
+    }
+
+    public void upgradeHP()
+    {
+        if (PlayerData.gold >= 50)
+        {
+            PlayerData.playerHP += 10.0f;
+
+            PlayerData.gold -= 50;
+            goldTxt.text = PlayerData.gold.ToString() + "G";
+            Debug.Log("Upgraded HP");
+        }
+            
+    }
 }

@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     GameObject enemyFound;
 
     public List<GameObject> enemyList;
-    private float hp = 100;
+    private float hp = PlayerData.playerHP;
     public int gamePhase = 0;
     // Start is called before the first frame update
     void Start()

@@ -47,10 +47,6 @@ public class WeaponsManager : MonoBehaviour
 
         else if(button.hold && GestureManager.Instance.getCurrentWeapon() == GestureManager.weaponType.batCam)
         {
-            if (pumpVFX.isPlaying)
-            {
-                pumpVFX.Stop();
-            }
             if (!sonicVFX.isPlaying)
             {
                 Debug.Log("sonic vfx");
@@ -61,10 +57,7 @@ public class WeaponsManager : MonoBehaviour
 
         else if(button.click && GestureManager.Instance.getCurrentWeapon() == GestureManager.weaponType.pumpkinCam && Time.time > nextExplodeTime)
         {
-            if (sonicVFX.isPlaying)
-            {
-                sonicVFX.Stop();
-            }
+
             if (pumpVFX.isPlaying == false)
             {
                 pumpVFX.Play();
@@ -108,7 +101,7 @@ public class WeaponsManager : MonoBehaviour
 
                     Debug.Log(EB.ID);
 
-                    EB.TakeDamage(1);
+                    EB.TakeDamage(PlayerData.weapon1DMG);
                     EB.DisplayStats();
                 }
             } 
@@ -130,7 +123,7 @@ public class WeaponsManager : MonoBehaviour
             if (hit.transform.TryGetComponent(out EnemyBehavior EB))
             {
                 if(EB.ID == "Bat")
-                EB.TakeDamage(2);
+                EB.TakeDamage(PlayerData.weapon2DMG);
                 EB.DisplayStats();
             }
             
@@ -153,7 +146,7 @@ public class WeaponsManager : MonoBehaviour
             {
                 if (EB.ID == "Pumpkin")
                 {
-                    EB.TakeDamage(30);
+                    EB.TakeDamage(PlayerData.weapon3DMG);
                     EB.DisplayStats();
                 }
             }
