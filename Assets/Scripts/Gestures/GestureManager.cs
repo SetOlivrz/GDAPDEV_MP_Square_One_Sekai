@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GestureManager : MonoBehaviour
 {
-
+    [SerializeField] GameObject weaponsPanel;
     public static GestureManager Instance;
 
     float touchTime;
@@ -18,6 +19,8 @@ public class GestureManager : MonoBehaviour
         pumpkinCam = 3
     }
 
+
+    private Color filmColor;
     public weaponType currentWeapon = 0;
 
     private void Awake()
@@ -135,7 +138,7 @@ public class GestureManager : MonoBehaviour
         }
         Debug.Log(currentWeapon);
         SwitchCam();
-
+        SwitchFilm();
     }
 
     public weaponType getCurrentWeapon()
@@ -158,4 +161,18 @@ public class GestureManager : MonoBehaviour
         }
     }
 
+    public void SwitchFilm()
+    {
+        switch ((int)currentWeapon)
+        {
+            case 0: filmColor = Color.white; break;
+            case 1: filmColor = Color.red; break;
+            case 2: filmColor = Color.green; break;
+            case 3: filmColor = Color.blue; break;
+        }
+
+        filmColor.a = 0.3f;
+        weaponsPanel.GetComponent<Image>().color = filmColor;
+        
+    }
 }
