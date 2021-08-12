@@ -98,6 +98,8 @@ public class GestureManager : MonoBehaviour
                                 Debug.Log("Destroy");
                                 GameManager.Instance.enemyList.Remove(hit.transform.gameObject);
                                 Destroy(hit.transform.gameObject);
+                                PlayerData.nCollectedSouls++;
+                                PlayerData.gold += 5;
                             }    
                         }
                     }
