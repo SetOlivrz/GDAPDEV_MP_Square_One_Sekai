@@ -23,6 +23,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] EnemySpawner spawner;
     [SerializeField] GameObject soul;
 
+    [SerializeField] ParticleSystem ghost_particle;
+    [SerializeField] ParticleSystem bat_particle;
+    [SerializeField] ParticleSystem pumpkin_particle;
+    [SerializeField] ParticleSystem eyeball_particle;
+
+
+
+
+
     GameObject enemyFound;
 
     public List<GameObject> enemyList;
@@ -84,6 +93,8 @@ public class GameManager : MonoBehaviour
     public void spawnSoul()
     {
         GameObject soulObj;
+        GameObject holder;
+
         for (int i = 0; i < Instance.enemyList.Count; i++)
         {
             if (Instance.enemyList[i] ==  null)
@@ -94,16 +105,24 @@ public class GameManager : MonoBehaviour
             {
                 Transform child;
                 child = Instance.enemyList[i].transform.GetChild(0);
+
                 Debug.Log(enemyList[i].transform.childCount);
                 Debug.Log(Instance.enemyList[i].name);
+
                 if (child.GetComponentInChildren<EnemyBehavior>().spawnSoul)
                 {
                     soulObj = GameObject.Instantiate(soul, child.position, Quaternion.identity, Instance.enemyList[i].transform.parent);
                     soulObj.name = soul.name;
                     soulObj.GetComponent<EnemyBehavior>().IntializeEnemyStats();
                     soulObj.GetComponent<EnemyBehavior>().setTarget(player.gameObject);
+
+
+                    holder = child.gameObject;
+
                     Instance.enemyList[i].SetActive(false);
                     Instance.enemyList[i] = soulObj;
+                    Destroy(holder);
+
 
                 }
             }
@@ -115,8 +134,11 @@ public class GameManager : MonoBehaviour
                 soulObj.name = soul.name;
                 soulObj.GetComponent<EnemyBehavior>().IntializeEnemyStats();
                 soulObj.GetComponent<EnemyBehavior>().setTarget(player.gameObject);
+                holder = Instance.enemyList[i];
+
                 Instance.enemyList[i].SetActive(false);
                 Instance.enemyList[i] = soulObj;
+                Destroy(holder);
             }
         }
     }
@@ -125,5 +147,17 @@ public class GameManager : MonoBehaviour
     {
         hp -= damage;
         Debug.Log("Hp: " + hp);
+    }
+
+    public void SpawnDeadParticles(string name)
+    {
+        switch(name)
+        {
+            case "Ghost": ghost_particle.Play(); break;
+            case "Bat": bat_particle.Play(); break;
+            case "Pumpkin": pumpkin_particle.Play(); break;
+            case "Eyeball": eyeball_particle.Play(); break;
+
+        }
     }
 }

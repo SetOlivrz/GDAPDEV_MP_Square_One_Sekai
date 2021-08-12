@@ -61,10 +61,13 @@ public class EnemyBehavior : MonoBehaviour
     public Animator animator;
     public bool isDead = false;
     public bool spawnSoul = false;
+    [SerializeField] ParticleSystem particle;
 
 
     public void IntializeEnemyStats()
     {
+        particle.Play();
+
         switch (gameObject.name)
         {
             case "Ghost":
@@ -106,6 +109,7 @@ public class EnemyBehavior : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
+
         if (isDead == false)
         {
             animator.SetTrigger("takeDamage");
@@ -138,13 +142,12 @@ public class EnemyBehavior : MonoBehaviour
         isDead = true;
     }
 
-    public void GetSoul()
-    {
-        Destroy(this.gameObject);
-    }
+
     public void TurnToSoul()
     {
+
         spawnSoul = true;
+
     }
 
     
