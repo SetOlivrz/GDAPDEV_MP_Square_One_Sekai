@@ -122,7 +122,7 @@ public class EnemyBehavior : MonoBehaviour
         }
         else
         {
-            GetSoul();
+            //GetSoul();
         }
      
 

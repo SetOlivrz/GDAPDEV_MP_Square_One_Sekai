@@ -86,7 +86,11 @@ public class GameManager : MonoBehaviour
         GameObject soulObj;
         for (int i = 0; i < Instance.enemyList.Count; i++)
         {
-            if (Instance.enemyList[i].GetComponent<EnemyBehavior>() == null)
+            if (Instance.enemyList[i] ==  null)
+            {
+                Instance.removeFromEnemyList(enemyList[i]);
+            }
+            else if (Instance.enemyList[i].GetComponent<EnemyBehavior>() == null)
             {
                 Transform child;
                 child = Instance.enemyList[i].transform.GetChild(0);

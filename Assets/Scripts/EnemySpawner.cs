@@ -68,9 +68,13 @@ public class EnemySpawner : MonoBehaviour
 
             child.GetComponent<EnemyBehavior>().IntializeEnemyStats();
             child.GetComponent<EnemyBehavior>().setTarget(player);
+
+
+            enemySpawn = enemySpawn.transform.GetChild(0).gameObject;
         }
         else
         {
+            Debug.Log("no child");
             enemySpawn.GetComponent<EnemyBehavior>().IntializeEnemyStats();
             enemySpawn.GetComponent<EnemyBehavior>().setTarget(player);
         }
