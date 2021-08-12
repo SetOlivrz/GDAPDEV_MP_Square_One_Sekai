@@ -29,6 +29,7 @@ public class WeaponsManager : MonoBehaviour
 
     void Start()
     {
+        //Debug.Log(sonicVFX.gameObject.name);
     }
 
     // Update is called once per frame
@@ -47,23 +48,32 @@ public class WeaponsManager : MonoBehaviour
 
         else if(button.hold && GestureManager.Instance.getCurrentWeapon() == GestureManager.weaponType.batCam)
         {
-            if (!sonicVFX.isPlaying)
-            {
-                Debug.Log("sonic vfx");
-                sonicVFX.Play();
-            }
+            if(!(sonicVFX.gameObject.activeSelf))
+                sonicVFX.gameObject.SetActive(true);
+
             holdShoot();
         }
 
         else if(button.click && GestureManager.Instance.getCurrentWeapon() == GestureManager.weaponType.pumpkinCam && Time.time > nextExplodeTime)
         {
 
-            if (pumpVFX.isPlaying == false)
-            {
-                pumpVFX.Play();
-            }
+            if (!(pumpVFX.gameObject.activeSelf))
+                pumpVFX.gameObject.SetActive(true);
+
             explodeShoot();
             nextExplodeTime = Time.time + (1.0f /explodeRate);
+        }
+        else
+        {
+            if(sonicVFX.gameObject.activeInHierarchy == true)
+            {
+                sonicVFX.gameObject.SetActive(false);
+            }
+
+            if (pumpVFX.gameObject.activeInHierarchy == true && !(pumpVFX.IsAlive()))
+            {
+                pumpVFX.gameObject.SetActive(false);
+            }
         }
     }
 
