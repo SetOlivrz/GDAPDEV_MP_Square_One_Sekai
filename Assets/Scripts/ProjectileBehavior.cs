@@ -5,7 +5,7 @@ using UnityEngine;
 public class ProjectileBehavior : MonoBehaviour
 {
     GameObject target;
-    private float moveSpeed = 30;
+    private float moveSpeed = 20;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +23,7 @@ public class ProjectileBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        this.transform.LookAt(target.transform);
         gameObject.transform.position += (target.transform.position - this.transform.position).normalized * moveSpeed * Time.deltaTime;
     }
 
