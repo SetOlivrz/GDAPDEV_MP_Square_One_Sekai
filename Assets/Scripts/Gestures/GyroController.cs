@@ -7,15 +7,15 @@ public class GyroController : MonoBehaviour
     private bool gyroEnabled;
     private Gyroscope gyro;
 
-    private GameObject cameraContainer;
+    [SerializeField]private GameObject cameraContainer;
     private Quaternion rot;
 
     // Start is called before the first frame update
     void Start()
     {
-        cameraContainer = new GameObject("Camera Container");
-        cameraContainer.transform.position = transform.position;
-        transform.SetParent(cameraContainer.transform);
+        //cameraContainer = new GameObject("Camera Container");
+        //cameraContainer.transform.position = transform.position;
+        //transform.SetParent(cameraContainer.transform);
 
         gyroEnabled = EnableGyro();
     }
