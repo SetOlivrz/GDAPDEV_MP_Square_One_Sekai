@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GestureManager : MonoBehaviour
 {
-    [SerializeField] GameObject weaponsPanel;
+    [SerializeField] GameObject weaponsPanel = null;
     public static GestureManager Instance;
 
     float touchTime;
@@ -163,16 +163,20 @@ public class GestureManager : MonoBehaviour
 
     public void SwitchFilm()
     {
-        switch ((int)currentWeapon)
+        if(weaponsPanel!=null)
         {
-            case 0: filmColor = Color.white; break;
-            case 1: filmColor = Color.red; break;
-            case 2: filmColor = Color.green; break;
-            case 3: filmColor = Color.blue; break;
-        }
+            switch ((int)currentWeapon)
+            {
+                case 0: filmColor = Color.white; break;
+                case 1: filmColor = Color.red; break;
+                case 2: filmColor = Color.green; break;
+                case 3: filmColor = Color.blue; break;
+            }
 
-        filmColor.a = 0.3f;
-        weaponsPanel.GetComponent<Image>().color = filmColor;
+            filmColor.a = 0.3f;
+            weaponsPanel.GetComponent<Image>().color = filmColor;
+        }
+        
         
     }
 }
