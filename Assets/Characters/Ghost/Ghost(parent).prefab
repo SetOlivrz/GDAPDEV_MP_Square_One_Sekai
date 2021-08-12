@@ -119,13 +119,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 8349518234294137630, guid: 58a1cf9f500c61041972295b8d07b561, type: 3}
+  projectile: {fileID: 4127357307035094258, guid: 89e98fc1b898a164c938f76b023685fa, type: 3}
   ID: 
   HP: 3
   DEF: 0
   animator: {fileID: 4204569407220768839}
   isDead: 0
   spawnSoul: 0
-  particle: {fileID: 8400466110207993602}
 --- !u!65 &4204569407220768833
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -325,10 +325,5 @@ PrefabInstance:
 --- !u!4 &7092772676178863091 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 842273368991814212, guid: 0e30b3c26a059cb47ae1e84022cafa71, type: 3}
-  m_PrefabInstance: {fileID: 7628759127216075191}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &8400466110207993602 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 2110709840318568117, guid: 0e30b3c26a059cb47ae1e84022cafa71, type: 3}
   m_PrefabInstance: {fileID: 7628759127216075191}
   m_PrefabAsset: {fileID: 0}

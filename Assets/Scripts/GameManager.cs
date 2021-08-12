@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
 
 
 
-
+    GameObject enemyBoss;
     GameObject enemyFound;
 
     public List<GameObject> enemyList;
