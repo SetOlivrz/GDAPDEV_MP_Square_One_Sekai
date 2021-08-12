@@ -18,12 +18,17 @@ public class WeaponsManager : MonoBehaviour
     [SerializeField] Camera cam;
     [SerializeField] private FlashImage flashImage = null;
 
+    [SerializeField] ParticleSystem flashCam;
+    [SerializeField] ParticleSystem sonicVFX;
+    [SerializeField] ParticleSystem pumpVFX;
+
+
+
     Color newColor = Color.white;
     int flashOpacity = 1;
 
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -42,11 +47,28 @@ public class WeaponsManager : MonoBehaviour
 
         else if(button.hold && GestureManager.Instance.getCurrentWeapon() == GestureManager.weaponType.batCam)
         {
+            if (pumpVFX.isPlaying)
+            {
+                pumpVFX.Stop();
+            }
+            if (!sonicVFX.isPlaying)
+            {
+                Debug.Log("sonic vfx");
+                sonicVFX.Play();
+            }
             holdShoot();
         }
 
         else if(button.click && GestureManager.Instance.getCurrentWeapon() == GestureManager.weaponType.pumpkinCam && Time.time > nextExplodeTime)
         {
+            if (sonicVFX.isPlaying)
+            {
+                sonicVFX.Stop();
+            }
+            if (pumpVFX.isPlaying == false)
+            {
+                pumpVFX.Play();
+            }
             explodeShoot();
             nextExplodeTime = Time.time + (1.0f /explodeRate);
         }
