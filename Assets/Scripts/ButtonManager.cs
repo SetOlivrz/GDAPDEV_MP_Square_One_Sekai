@@ -71,16 +71,18 @@ public class ButtonManager : MonoBehaviour
     {
         Time.timeScale = 1;
         Debug.Log(" game paused");
-        PopupPanel.SetActive(false);
-        PausePanel.SetActive(false);
-
+        if(PopupPanel != null)
+            PopupPanel.SetActive(false);
+        if (PausePanel != null)
+            PausePanel.SetActive(false);
     }
+
 
     public void QuitToMenu()
     {
 
         Time.timeScale = 1;
-        SceneManager.LoadScene("TitleScreen");
+        SceneManager.LoadScene("MainMenu");
 
     }
 

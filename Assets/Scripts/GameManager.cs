@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] ResultsManager resultsManager;
     [SerializeField] GameObject victoryPopup;
     [SerializeField] GameObject defeatPopup;
+    [SerializeField] GameObject bossFightPopup;
     GameObject enemyBossInstance;
     GameObject enemyFound;
 
@@ -65,7 +66,7 @@ public class GameManager : MonoBehaviour
         }
 
         // if start and defeat all enemy -> phase 2
-        else if (gamePhase == 1 && enemyList.Count == 0)
+        else if (gamePhase == 1 && enemyList.Count == 0 && spawner.nSpawns >= spawner.getSpawnLocList().Count)
         {
             Debug.Log("boss fight");
             gamePhase = 2;
@@ -87,6 +88,7 @@ public class GameManager : MonoBehaviour
         if (gamePhase == 3 && !isResultsDisplayed)
         {
             resultsManager.updateInfo();
+            victoryPopup.transform.parent.gameObject.SetActive(true);
             victoryPopup.SetActive(true);
             isResultsDisplayed = true;
         }
@@ -94,6 +96,7 @@ public class GameManager : MonoBehaviour
         else if(gamePhase == -1 && !isResultsDisplayed)
         {
             resultsManager.updateInfo();
+            defeatPopup.transform.parent.gameObject.SetActive(true);
             defeatPopup.SetActive(true);
             isResultsDisplayed = true;
         }
