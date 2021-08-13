@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
 
     public bool levelComplete = false;
     private bool enemyBossDead = false;
+    private bool isResultsDisplayed = false;
 
 
 
@@ -82,17 +83,16 @@ public class GameManager : MonoBehaviour
         }
 
 
-        if (gamePhase == 3)
+        if (gamePhase == 3 && !isResultsDisplayed)
         {
-
             victoryPopup.SetActive(true);
-            gamePhase = 0;
+            isResultsDisplayed = true;
         }
         
-        else if(gamePhase == -1)
+        else if(gamePhase == -1 && !isResultsDisplayed)
         {
             defeatPopup.SetActive(true);
-            gamePhase = 0;
+            isResultsDisplayed = true;
         }
         //if(player.getShootingBool())
         //{
