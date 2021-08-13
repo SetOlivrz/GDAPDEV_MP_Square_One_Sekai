@@ -7,10 +7,22 @@ using UnityEngine.EventSystems;
 public class ButtonManager : MonoBehaviour
 {
 
-    
-    
+    public static ButtonManager Instance;
+
     public bool click = false;
     public bool hold = false;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     // Start is called before the first frame update
     void Start()

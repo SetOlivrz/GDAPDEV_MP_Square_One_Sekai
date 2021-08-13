@@ -7,6 +7,7 @@ public class EnemyBehavior : MonoBehaviour
 
     [SerializeField] GameObject player;
     [SerializeField] GameObject projectile;
+
     float idleTime;
     float timer = 0.0f;
     private GameObject target;
