@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1576084525615858278}
   - component: {fileID: 1576084525615858273}
   - component: {fileID: 1576084525615858272}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Soul
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,13 +118,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 8349518234294137630, guid: 58a1cf9f500c61041972295b8d07b561, type: 3}
+  projectile: {fileID: 0}
   ID: 
   HP: 1
   DEF: 0
   animator: {fileID: 1576084525615858278}
   isDead: 0
   spawnSoul: 0
-  particle: {fileID: 2110709840318568117, guid: 31ef914ac497aae4dadbc2b0ee19f127, type: 3}
 --- !u!65 &1576084525615858272
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -150,7 +150,7 @@ GameObject:
   - component: {fileID: 3705862506392619267}
   - component: {fileID: 333505892780699079}
   - component: {fileID: 8139052907021506291}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: spotter
   m_TagString: Untagged
   m_Icon: {fileID: 0}

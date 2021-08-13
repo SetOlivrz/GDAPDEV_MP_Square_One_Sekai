@@ -30,16 +30,18 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject Boss1;
 
-
-
-
-
     GameObject enemyBoss;
     GameObject enemyFound;
 
     public List<GameObject> enemyList;
     private float hp = PlayerData.playerHP;
     public int gamePhase = 0;
+
+    public bool levelComplete = false;
+
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -70,9 +72,9 @@ public class GameManager : MonoBehaviour
         // phase 2 -> boss
         if (gamePhase == 2)
         {
-            if (enemyBoss.GetComponent<BossBehavior>().HP <= 0)
+            if (levelComplete)
             {
-                Debug.Log("you win");
+                levelComplete = false;
                 gamePhase = 3;
             }
         }

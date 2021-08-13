@@ -4,21 +4,24 @@ using UnityEngine;
 
 public class BossBehavior : MonoBehaviour
 {
+    [SerializeField] public List<GameObject> SpawnLocList;
+    [SerializeField] GameObject projectile;
+
+    GameObject target = null;
+
     float attackRate = 2.0f;
     float attackTimer = 0.0f;
-    [SerializeField] GameObject projectile;
-    GameObject target = null;
     int attackHand = -1;
-
-    [SerializeField] public List<GameObject> SpawnLocList;
-
 
     public string ID;
     public float HP;
     public int DEF;
-    public Animator animator;
+
     public bool isDead = false;
     public bool spawnSoul = false;
+
+    public Animator animator;
+
 
 
 
@@ -85,38 +88,11 @@ public class BossBehavior : MonoBehaviour
         {
             case "Eyeball(Boss)":
                 {
-                    HP = 500;
+                    HP = 100;
                     DEF = 0;
                     ID = "Eyeball(Boss)";
                 }; break;
 
-            case "Bat":
-                {
-                    HP = 100;
-                    DEF = 0;
-                    ID = "Bat";
-                }; break;
-
-            case "Pumpkin":
-                {
-                    HP = 100;
-                    DEF = 0;
-                    ID = "Pumpkin";
-                }; break;
-
-            case "Eyeball":
-                {
-                    HP = 100;
-                    DEF = 0;
-                    ID = "Eyeball";
-                }; break;
-
-            case "Soul":
-                {
-                    HP = 100;
-                    DEF = 0;
-                    ID = "Soul";
-                }; break;
         }
     }
 

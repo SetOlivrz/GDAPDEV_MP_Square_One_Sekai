@@ -4905,7 +4905,7 @@ GameObject:
   - component: {fileID: 7833638948429306079}
   - component: {fileID: 8500410650477992169}
   - component: {fileID: 8265991998565099371}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: spotter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5001,7 +5001,7 @@ GameObject:
   - component: {fileID: 7790864253353414440}
   - component: {fileID: 7790864253353414443}
   - component: {fileID: 7790864253353414442}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pumpkin
   m_TagString: Untagged
   m_Icon: {fileID: 0}

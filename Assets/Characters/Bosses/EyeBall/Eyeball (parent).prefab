@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 3353307912968400957}
   - component: {fileID: 5526177258073924858}
   - component: {fileID: 5633671656945475073}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eyeball(Boss)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +162,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b248fc4916367634998e5520adec0d72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 7531309561169113518, guid: 2253d088e226ea14d8eb7a4890515d56, type: 3}
   SpawnLocList:
   - {fileID: 0}
   - {fileID: 0}
@@ -177,12 +176,13 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  projectile: {fileID: 7531309561169113518, guid: 2253d088e226ea14d8eb7a4890515d56, type: 3}
   ID: 
   HP: 500
   DEF: 0
-  animator: {fileID: 3353307912968400957}
   isDead: 0
   spawnSoul: 0
+  animator: {fileID: 3353307912968400957}
 --- !u!1 &7831128362327345967
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,7 +195,7 @@ GameObject:
   - component: {fileID: 3897226047145219311}
   - component: {fileID: 762975973892628104}
   - component: {fileID: 241762589890695075}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: spotter
   m_TagString: Untagged
   m_Icon: {fileID: 0}

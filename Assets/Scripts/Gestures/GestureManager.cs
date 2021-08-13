@@ -111,7 +111,7 @@ public class GestureManager : MonoBehaviour
                             }
                             else if (hit.transform.name == "Eyeball(soul)")
                             {
-                                GameManager.Instance.gamePhase = 3;
+                                GameManager.Instance.levelComplete = true;
                             }
                         }
                     }
