@@ -38,7 +38,9 @@ public class ProjectileBehavior : MonoBehaviour
         Debug.Log("Collided with: " + collisionObj.name);
         if (collisionObj.name == "Player")
         {
-            //GameManager.Instance.takeDamage(5.0f);
+            if(collisionObj.GetComponent<ShieldBehavior>().shieldState != true)
+                GameManager.Instance.takeDamage(5.0f);
+
             Destroy(this.gameObject);
         }
     }
