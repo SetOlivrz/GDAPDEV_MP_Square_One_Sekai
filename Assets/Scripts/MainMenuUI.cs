@@ -34,6 +34,8 @@ public class MainMenuUI : MonoBehaviour
             PlayerData.gold -= 50;
             goldTxt.text = PlayerData.gold.ToString() + "G";
             Debug.Log("Upgraded Cam1");
+
+            AudioManager.Instance.playPurchaseUpgradeSound();
         }
         
     }
@@ -47,6 +49,8 @@ public class MainMenuUI : MonoBehaviour
             PlayerData.gold -= 50;
             goldTxt.text = PlayerData.gold.ToString() + "G";
             Debug.Log("Upgraded Cam2");
+
+            AudioManager.Instance.playPurchaseUpgradeSound();
         }
     }
 
@@ -59,6 +63,8 @@ public class MainMenuUI : MonoBehaviour
             PlayerData.gold -= 50;
             goldTxt.text = PlayerData.gold.ToString() + "G";
             Debug.Log("Upgraded Cam3");
+
+            AudioManager.Instance.playPurchaseUpgradeSound();
         }
     }
 
