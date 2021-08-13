@@ -28,9 +28,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] ParticleSystem pumpkin_particle;
     [SerializeField] ParticleSystem eyeball_particle;
 
-    [SerializeField] GameObject Boss1;
 
-    GameObject enemyBoss;
+    GameObject enemyBossInstance;
     GameObject enemyFound;
 
     public List<GameObject> enemyList;
@@ -38,6 +37,8 @@ public class GameManager : MonoBehaviour
     public int gamePhase = 0;
 
     public bool levelComplete = false;
+    private bool enemyBossDead = false;
+
 
 
 
@@ -45,7 +46,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        hp = PlayerData.playerHP;
     }
 
     // Update is called once per frame
@@ -65,8 +66,8 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("boss fight");
             gamePhase = 2;
-            enemyBoss = spawner.spawnBoss();
-            enemyBoss.GetComponent<BossBehavior>().setTarget(player);
+            enemyBossInstance = spawner.spawnBoss();
+            enemyBossInstance.GetComponent<BossBehavior>().setTarget(player);
         }
 
         // phase 2 -> boss
@@ -141,7 +142,7 @@ public class GameManager : MonoBehaviour
                     soulObj.GetComponent<EnemyBehavior>().setTarget(player.gameObject);
 
 
-                    holder = child.gameObject;
+                    holder = child.transform.parent.gameObject;
 
                     Instance.enemyList[i].SetActive(false);
                     Instance.enemyList[i] = soulObj;
@@ -156,7 +157,7 @@ public class GameManager : MonoBehaviour
                 soulObj.name = soul.name;
                 soulObj.GetComponent<EnemyBehavior>().IntializeEnemyStats();
                 soulObj.GetComponent<EnemyBehavior>().setTarget(player.gameObject);
-                holder = Instance.enemyList[i];
+                holder = Instance.enemyList[i].transform.parent.gameObject;
 
                 Instance.enemyList[i].SetActive(false);
                 Instance.enemyList[i] = soulObj;
@@ -164,23 +165,24 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (Boss1.scene.IsValid() && Boss1.GetComponent<BossBehavior>() == null)
+        if (enemyBossInstance != null && enemyBossDead != true)
         {
-            Transform child;
-            child = Boss1.transform.GetChild(0);
+            //Transform child;
+            //child = enemyBossInstance.transform.GetChild(0);
 
 
-            if (child.GetComponent<EnemyBehavior>().spawnSoul)
+            if (enemyBossInstance.GetComponent<BossBehavior>().spawnSoul)
             {
-                soulObj = GameObject.Instantiate(soul, child.position, Quaternion.identity, Boss1.transform.parent);
-                soulObj.name = "Eyeball(soul)";
+                soulObj = GameObject.Instantiate(soul, enemyBossInstance.transform.position, Quaternion.identity, null);
+                soulObj.name = "Eyeball(Soul)";
                 soulObj.GetComponent<EnemyBehavior>().IntializeEnemyStats();
                 soulObj.GetComponent<EnemyBehavior>().setTarget(player.gameObject);
 
 
-                holder = Boss1.gameObject;
-                Boss1.SetActive(false);
+                holder = enemyBossInstance.transform.parent.gameObject;
+                enemyBossInstance.SetActive(false);
                 Destroy(holder);
+                enemyBossDead = true;
             }
         }
     }
