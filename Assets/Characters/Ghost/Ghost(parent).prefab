@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4204569407220768839}
   - component: {fileID: 4204569407220768838}
   - component: {fileID: 4204569407220768833}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ghost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 3063630738961789324}
   - component: {fileID: 2679656701391887978}
   - component: {fileID: 424753555022860986}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: spotter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
