@@ -67,6 +67,6 @@ public class ResultsManager : MonoBehaviour
         UIEnemyKills[0].text = "Enemies Killed: " + totalEnemyKills.ToString();
         UIEnemyKills[1].text = "Enemies Killed: " + totalEnemyKills.ToString();
         UIBossKills.text = "Bosses Killed: " + totalBossKills.ToString();
-        UIEnemiesRemaining.text = "Enemies Remaning: " + totalEnemiesRemaining.ToString();
+        UIEnemiesRemaining.text = "Mobs Remaning: " + totalEnemiesRemaining.ToString();
     }
 }
