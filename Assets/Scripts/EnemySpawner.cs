@@ -11,7 +11,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] GameObject player;
 
     private int numEnemy = 0;
-    int nSpawns = 0;
+    public int nSpawns = 0;
     private bool isSpawnInitial = false;
     // Start is called before the first frame update
     void Start()
