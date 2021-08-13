@@ -28,7 +28,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] ParticleSystem pumpkin_particle;
     [SerializeField] ParticleSystem eyeball_particle;
 
-
+    [SerializeField] GameObject victoryPopup;
+    [SerializeField] GameObject defeatPopup;
     GameObject enemyBossInstance;
     GameObject enemyFound;
 
@@ -71,7 +72,7 @@ public class GameManager : MonoBehaviour
         }
 
         // phase 2 -> boss
-        if (gamePhase == 2)
+        else if (gamePhase == 2)
         {
             if (levelComplete)
             {
@@ -80,9 +81,18 @@ public class GameManager : MonoBehaviour
             }
         }
 
+
         if (gamePhase == 3)
         {
-            SceneManager.LoadScene("MainMenu");
+
+            victoryPopup.SetActive(true);
+            gamePhase = 0;
+        }
+        
+        else if(gamePhase == -1)
+        {
+            defeatPopup.SetActive(true);
+            gamePhase = 0;
         }
         //if(player.getShootingBool())
         //{
