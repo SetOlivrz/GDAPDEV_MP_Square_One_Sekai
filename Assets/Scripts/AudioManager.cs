@@ -21,6 +21,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioClip flashCamSound;
     [SerializeField] AudioClip sonicCamSound;
     [SerializeField] AudioClip pumpCamSound;
+
+    [SerializeField] AudioClip purchaseUpgradeSound;
     // Start is called before the first frame update
 
     void Start()
@@ -74,5 +76,13 @@ public class AudioManager : MonoBehaviour
         }
 
         else Debug.Log("Error playing pumpCamSound");
+    }
+
+    public void playPurchaseUpgradeSound()
+    {
+        if(purchaseUpgradeSound != null)
+        {
+            AudioSource.PlayClipAtPoint(purchaseUpgradeSound, Camera.main.gameObject.transform.position, 1);
+        }
     }
 }
