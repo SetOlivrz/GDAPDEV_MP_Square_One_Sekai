@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     GameObject enemyFound;
 
     public List<GameObject> enemyList;
-    private float hp = PlayerData.playerHP;
+    public float hp = PlayerData.playerHP;
     public int gamePhase = 0;
 
     public bool levelComplete = false;
