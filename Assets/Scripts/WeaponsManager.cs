@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WeaponsManager : MonoBehaviour
 {
@@ -13,7 +14,10 @@ public class WeaponsManager : MonoBehaviour
     public float explodeRate = 1.5f;
     public float nextShootTime = 0;
     public float nextExplodeTime = 0;
-    
+
+    [SerializeField] GameObject weaponsPanel = null;
+    private Color filmColor;
+
     [SerializeField] ButtonManager button;
     [SerializeField] Camera cam;
     [SerializeField] private FlashImage flashImage = null;
@@ -22,43 +26,67 @@ public class WeaponsManager : MonoBehaviour
     [SerializeField] ParticleSystem sonicVFX;
     [SerializeField] ParticleSystem pumpVFX;
 
+    [SerializeField] GameObject FlashCam;
+    [SerializeField] GameObject SonicCam;
+    [SerializeField] GameObject PumpCam;
 
+    private enum weaponType
+    {
+        soulCam = 0,
+        ghostCam = 1,
+        batCam = 2,
+        pumpkinCam = 3
+    }
+
+    private weaponType currentWeapon = 0;
 
     Color newColor = Color.white;
     int flashOpacity = 1;
 
     void Start()
     {
-        //Debug.Log(sonicVFX.gameObject.name);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(GestureManager.Instance.getCurrentWeapon() == GestureManager.weaponType.soulCam)
+        if (GestureManager.Instance.onSwipe.isSwiping == true)
+        {
+            switchWeapon();
+        }
+
+        if (currentWeapon == weaponType.soulCam)
         {
             //Capture();
         }
-        if (button.click && GestureManager.Instance.getCurrentWeapon() == GestureManager.weaponType.ghostCam && Time.time >nextShootTime)
+        if (button.click && currentWeapon == weaponType.ghostCam && Time.time >nextShootTime)
         {
             Shoot();
             nextShootTime = Time.time + (1.0f/shootRate);
             flashImage.StartFlash(0.25f, flashOpacity, newColor);
         }
 
-        else if(button.hold && GestureManager.Instance.getCurrentWeapon() == GestureManager.weaponType.batCam)
+        else if(button.hold && currentWeapon == weaponType.batCam)
         {
             if(!(sonicVFX.gameObject.activeSelf))
+            {
                 sonicVFX.gameObject.SetActive(true);
+            }
+                
 
             holdShoot();
         }
 
-        else if(button.click && GestureManager.Instance.getCurrentWeapon() == GestureManager.weaponType.pumpkinCam && Time.time > nextExplodeTime)
+        else if(button.click && currentWeapon == weaponType.pumpkinCam && Time.time > nextExplodeTime)
         {
 
             if (!(pumpVFX.gameObject.activeSelf))
+            {
                 pumpVFX.gameObject.SetActive(true);
+                pumpVFX.Play();
+            }
+                
 
             explodeShoot();
             nextExplodeTime = Time.time + (1.0f /explodeRate);
@@ -166,6 +194,56 @@ public class WeaponsManager : MonoBehaviour
         }
     }
 
- 
+    private void switchWeapon()
+    {
+        currentWeapon += GestureManager.Instance.onSwipe.direction;
 
+        if ((int)currentWeapon == 4)
+        {
+            currentWeapon = (weaponType)0;
+        }
+
+        else if ((int)currentWeapon == -1)
+        {
+            currentWeapon = (weaponType)3;
+        }
+        Debug.Log(currentWeapon);
+
+        SwitchCam();
+        SwitchFilm();
+    }
+
+    private void SwitchCam()
+    {
+        this.FlashCam.SetActive(false);
+        this.SonicCam.SetActive(false);
+        this.PumpCam.SetActive(false);
+
+        switch ((int)currentWeapon)
+        {
+            case 0: break;
+            case 1: FlashCam.SetActive(true); break;
+            case 2: SonicCam.SetActive(true); break;
+            case 3: PumpCam.SetActive(true); break;
+        }
+    }
+
+    public void SwitchFilm()
+    {
+        if (weaponsPanel != null)
+        {
+            switch ((int)currentWeapon)
+            {
+                case 0: filmColor = Color.white; break;
+                case 1: filmColor = Color.red; break;
+                case 2: filmColor = Color.green; break;
+                case 3: filmColor = Color.blue; break;
+            }
+
+            filmColor.a = 1f;
+            weaponsPanel.GetComponent<Image>().color = filmColor;
+        }
+
+
+    }
 }

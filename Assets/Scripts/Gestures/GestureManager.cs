@@ -1,27 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+
 
 public class GestureManager : MonoBehaviour
 {
-    [SerializeField] GameObject weaponsPanel = null;
+    
     public static GestureManager Instance;
 
     float touchTime;
     private Vector3 fp;   //First touch position
     private Vector3 lp;   //Last touch position
-    public enum weaponType
-    {
-        soulCam = 0,
-        ghostCam = 1,
-        batCam = 2,
-        pumpkinCam = 3
-    }
-
-
-    private Color filmColor;
-    public weaponType currentWeapon = 0;
+    
 
     private void Awake()
     {
@@ -37,21 +27,30 @@ public class GestureManager : MonoBehaviour
 
     private Touch trackedFinger1;
 
-    [SerializeField] GameObject FlashCam;
-    [SerializeField] GameObject SonicCam;
-    [SerializeField] GameObject PumpCam;
 
 
+    public class SwipeAction
+    {
+        public bool isSwiping = false;
+        public int direction = 0;   // right = 1 : left = -1
+    }
 
+    public SwipeAction onSwipe;
     // Start is called before the first frame update
     void Start()
     {
-        
+        onSwipe = new SwipeAction();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(onSwipe.isSwiping)
+        {
+            onSwipe.isSwiping = false;
+            onSwipe.direction = 0;
+        }
+
         handleTouchInput();
     }
 
@@ -84,7 +83,19 @@ public class GestureManager : MonoBehaviour
                     lp = trackedFinger1.position;
                     if ((Mathf.Abs(lp.x - fp.x) > Screen.height * 0.125 || Mathf.Abs(lp.y - fp.y) > Screen.height * 0.125) && touchDuration < 0.35f) //touch moved distance and hold time
                     {
-                        changeWeapon();
+                        onSwipe.isSwiping = true;
+                        if ((lp.x > fp.x))  //If the movement was to the right)
+                        {   //Right swipe
+                            Debug.Log("Right Swipe");
+                            onSwipe.direction = 1;
+                        }
+
+                        else
+                        {   //Left swipe
+                            Debug.Log("Left Swipe");
+                            onSwipe.direction = -1;
+                        }
+                        //changeWeapon();
                     }
 
                     else
@@ -121,71 +132,61 @@ public class GestureManager : MonoBehaviour
         }
     }
 
-    private void changeWeapon()
-    {
-        if ((lp.x > fp.x))  //If the movement was to the right)
-        {   //Right swipe
-            Debug.Log("Right Swipe");
-            currentWeapon += 1;
-        }
+    //private void changeWeapon()
+    //{
+        
 
-        else
-        {   //Left swipe
-            Debug.Log("Left Swipe");
-            currentWeapon -= 1;
-        }
+    //    if ((int)currentWeapon == 4)
+    //    {
+    //        currentWeapon = (weaponType)0;
+    //        //SwitchCam();
+    //    }
 
-        if ((int)currentWeapon == 4)
-        {
-            currentWeapon = (weaponType)0;
-            SwitchCam();
-        }
+    //    else if ((int)currentWeapon == -1)
+    //    {
+    //        currentWeapon = (weaponType)3;
+    //    }
+    //    Debug.Log(currentWeapon);
+    //    //SwitchCam();
+    //    //SwitchFilm();
+    //}
 
-        else if ((int)currentWeapon == -1)
-        {
-            currentWeapon = (weaponType)3;
-        }
-        Debug.Log(currentWeapon);
-        SwitchCam();
-        SwitchFilm();
-    }
+    //public weaponType getCurrentWeapon()
+    //{
+    //    return currentWeapon;
+    //}
 
-    public weaponType getCurrentWeapon()
-    {
-        return currentWeapon;
-    }
+    //public void SwitchCam()
+    //{
+    //    this.FlashCam.SetActive(false);
+    //    this.SonicCam.SetActive(false);
+    //    this.PumpCam.SetActive(false);
 
-    public void SwitchCam()
-    {
-        this.FlashCam.SetActive(false);
-        this.SonicCam.SetActive(false);
-        this.PumpCam.SetActive(false);
+    //    switch((int)currentWeapon)
+    //    {
+    //        case 0: break;
+    //        case 1: FlashCam.SetActive(true); break;
+    //        case 2: SonicCam.SetActive(true); break;
+    //        case 3: PumpCam.SetActive(true); break;
+    //    }
+    //}
 
-        switch((int)currentWeapon)
-        {
-            case 0: break;
-            case 1: FlashCam.SetActive(true); break;
-            case 2: SonicCam.SetActive(true); break;
-            case 3: PumpCam.SetActive(true); break;
-        }
-    }
+    //public void SwitchFilm()
+    //{
+    //    if(weaponsPanel!=null)
+    //    {
+    //        switch ((int)currentWeapon)
+    //        {
+    //            case 0: filmColor = Color.white; break;
+    //            case 1: filmColor = Color.red; break;
+    //            case 2: filmColor = Color.green; break;
+    //            case 3: filmColor = Color.blue; break;
+    //        }
 
-    public void SwitchFilm()
-    {
-        if(weaponsPanel!=null)
-        {
-            switch ((int)currentWeapon)
-            {
-                case 0: filmColor = Color.white; break;
-                case 1: filmColor = Color.red; break;
-                case 2: filmColor = Color.green; break;
-                case 3: filmColor = Color.blue; break;
-            }
-
-            filmColor.a = 1f;
-            weaponsPanel.GetComponent<Image>().color = filmColor;
-        }
+    //        filmColor.a = 1f;
+    //        weaponsPanel.GetComponent<Image>().color = filmColor;
+    //    }
         
         
-    }
+    //}
 }
