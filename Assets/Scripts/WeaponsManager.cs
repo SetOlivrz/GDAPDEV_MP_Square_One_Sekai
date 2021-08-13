@@ -84,15 +84,7 @@ public class WeaponsManager : MonoBehaviour
                 GameManager.Instance.enemyList.Remove(hit.transform.gameObject);
                 Destroy(hit.transform.gameObject);
             }
-            else if (hit.transform.name == "Eyeball(Boss)")
-            {
-                hit.transform.gameObject.GetComponent<BossBehavior>().TakeDamage(PlayerData.tapDMG);
-                hit.transform.gameObject.GetComponent<BossBehavior>().DisplayStats();
-            }
-            else if (hit.transform.name == "Eyeball(soul)")
-            {
-                GameManager.Instance.gamePhase = 3;
-            }
+            
         }
     }
     public void Shoot()

@@ -81,7 +81,7 @@ public class EnemyBehavior : MonoBehaviour
 
             case "Bat":
                 {
-                    HP = 100;
+                    HP = 6;
                     DEF = 0;
                     ID = "Bat";
                 }; break;

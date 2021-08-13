@@ -278,6 +278,7 @@ MonoBehaviour:
   bat_particle: {fileID: 0}
   pumpkin_particle: {fileID: 0}
   eyeball_particle: {fileID: 0}
+  Boss1: {fileID: 1620857879932306034, guid: bb3fd75e3710dcb45b254602f2e2ffb9, type: 3}
   enemyList: []
   gamePhase: 0
 --- !u!4 &199153848
@@ -599,7 +600,7 @@ GameObject:
   - component: {fileID: 785498090}
   - component: {fileID: 785498089}
   - component: {fileID: 785498088}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Marker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1917,7 +1918,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 139325439260454542, guid: 33590b99179351b4a9d6353fa2706032, type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 63
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 139325439260454543, guid: 33590b99179351b4a9d6353fa2706032, type: 3}
       propertyPath: m_RootOrder
@@ -2008,6 +2009,10 @@ PrefabInstance:
       propertyPath: cameraContainer
       value: 
       objectReference: {fileID: 880688265}
+    - target: {fileID: 3690122500188175483, guid: 58a1cf9f500c61041972295b8d07b561, type: 3}
+      propertyPath: near clip plane
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 3690122500188175483, guid: 58a1cf9f500c61041972295b8d07b561, type: 3}
       propertyPath: m_CullingMask.m_Bits
       value: 119
