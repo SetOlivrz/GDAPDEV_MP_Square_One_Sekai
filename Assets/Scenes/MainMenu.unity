@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1527,7 +1527,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1267172269}
         m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
-        m_MethodName: QuitToMenu
+        m_MethodName: QuitToTitleScreen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2030,6 +2030,7 @@ MonoBehaviour:
   hold: 0
   PopupPanel: {fileID: 0}
   PausePanel: {fileID: 0}
+  BossPanel: {fileID: 0}
 --- !u!1 &1428293506
 GameObject:
   m_ObjectHideFlags: 0

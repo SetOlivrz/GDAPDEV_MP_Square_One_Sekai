@@ -15,6 +15,7 @@ public class ButtonManager : MonoBehaviour
 
     [SerializeField] GameObject PopupPanel;
     [SerializeField] GameObject PausePanel;
+    [SerializeField] GameObject BossPanel;
 
     private void Awake()
     {
@@ -71,10 +72,13 @@ public class ButtonManager : MonoBehaviour
     {
         Time.timeScale = 1;
         Debug.Log(" game paused");
+
         if(PopupPanel != null)
             PopupPanel.SetActive(false);
         if (PausePanel != null)
             PausePanel.SetActive(false);
+        if (BossPanel != null)
+            BossPanel.SetActive(false);
     }
 
 
@@ -84,6 +88,11 @@ public class ButtonManager : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
 
+    }
+
+    public void QuitToTitleScreen()
+    {
+        SceneManager.LoadScene("TitleScreen");
     }
 
 
