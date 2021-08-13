@@ -222,7 +222,7 @@ public class WeaponsManager : MonoBehaviour
 
         
             SwitchCam();
-            SwitchFilm();
+            //SwitchFilm();
      
             
     }
