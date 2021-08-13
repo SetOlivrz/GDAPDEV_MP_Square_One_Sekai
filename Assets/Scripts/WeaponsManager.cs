@@ -62,6 +62,7 @@ public class WeaponsManager : MonoBehaviour
         }
         if (button.click && currentWeapon == weaponType.ghostCam && Time.time >nextShootTime)
         {
+            AudioManager.Instance.playFlashCamSound();
             Shoot();
             nextShootTime = Time.time + (1.0f/shootRate);
             flashImage.StartFlash(0.25f, flashOpacity, newColor);
@@ -69,6 +70,7 @@ public class WeaponsManager : MonoBehaviour
 
         else if(button.hold && currentWeapon == weaponType.batCam)
         {
+            AudioManager.Instance.playSonicCamSound();
             if(!(sonicVFX.gameObject.activeSelf))
             {
                 sonicVFX.gameObject.SetActive(true);
@@ -80,7 +82,7 @@ public class WeaponsManager : MonoBehaviour
 
         else if(button.click && currentWeapon == weaponType.pumpkinCam && Time.time > nextExplodeTime)
         {
-
+            AudioManager.Instance.playPumpCamSound();
             if (!(pumpVFX.gameObject.activeSelf))
             {
                 pumpVFX.gameObject.SetActive(true);
