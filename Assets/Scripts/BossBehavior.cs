@@ -121,6 +121,7 @@ public class BossBehavior : MonoBehaviour
 
     public void Die()
     {
+        PlayerData.nEnemyBossesKilled++;
         animator.SetBool("isDead", true);
         isDead = true;
     }

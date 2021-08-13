@@ -140,6 +140,7 @@ public class EnemyBehavior : MonoBehaviour
 
     public void Die()
     {
+        PlayerData.nEnemyMonstersKilled++;
         animator.SetBool("isDead", true);
         isDead = true;
     }

@@ -60,6 +60,7 @@ public class EnemySpawner : MonoBehaviour
         enemySpawn.name = enemyTemplates[templateIndex].name;
         //enemySpawn.GetComponent<EnemyBehavior>().setTarget(player);
 
+        if(GameManager.Instance.gamePhase != -1 && GameManager.Instance.gamePhase != 3)
         if (enemySpawn.GetComponent<EnemyBehavior>() == null)
         {
             Transform child;

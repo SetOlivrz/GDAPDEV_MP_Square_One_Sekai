@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] ParticleSystem pumpkin_particle;
     [SerializeField] ParticleSystem eyeball_particle;
 
+    [SerializeField] ResultsManager resultsManager;
     [SerializeField] GameObject victoryPopup;
     [SerializeField] GameObject defeatPopup;
     GameObject enemyBossInstance;
@@ -85,12 +86,14 @@ public class GameManager : MonoBehaviour
 
         if (gamePhase == 3 && !isResultsDisplayed)
         {
+            resultsManager.updateInfo();
             victoryPopup.SetActive(true);
             isResultsDisplayed = true;
         }
         
         else if(gamePhase == -1 && !isResultsDisplayed)
         {
+            resultsManager.updateInfo();
             defeatPopup.SetActive(true);
             isResultsDisplayed = true;
         }
