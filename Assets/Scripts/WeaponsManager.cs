@@ -30,6 +30,11 @@ public class WeaponsManager : MonoBehaviour
     [SerializeField] GameObject SonicCam;
     [SerializeField] GameObject PumpCam;
 
+    [SerializeField] GameObject TriggerButton;
+    [SerializeField] GameObject Shield;
+
+
+
     [SerializeField] Text Mode;
 
     private enum weaponType
@@ -47,7 +52,8 @@ public class WeaponsManager : MonoBehaviour
 
     void Start()
     {
-        
+
+        Mode.text = "TAP MODE";
     }
 
     // Update is called once per frame
@@ -214,8 +220,11 @@ public class WeaponsManager : MonoBehaviour
         }
         Debug.Log(currentWeapon);
 
-        SwitchCam();
-        SwitchFilm();
+        
+            SwitchCam();
+            SwitchFilm();
+     
+            
     }
 
     private void SwitchCam()
@@ -226,15 +235,22 @@ public class WeaponsManager : MonoBehaviour
 
         switch ((int)currentWeapon)
         {
-            case 0: Mode.text = ("TAP MODE");
+            case 0: TriggerButton.SetActive(false);
+                    Mode.text = ("TAP MODE");
                     break;
-            case 1: FlashCam.SetActive(true);
+            case 1:
+                    TriggerButton.SetActive(true); 
+                    FlashCam.SetActive(true);
                     Mode.text = ("FLASH MODE"); 
                     break;
-            case 2: SonicCam.SetActive(true);
+            case 2:
+                    TriggerButton.SetActive(true); 
+                    SonicCam.SetActive(true);
                     Mode.text = ("SONIC MODE");
                     break;
-            case 3: PumpCam.SetActive(true); 
+            case 3:
+                    TriggerButton.SetActive(true); 
+                    PumpCam.SetActive(true); 
                     Mode.text = ("PUMP MODE");
                     break;
         }

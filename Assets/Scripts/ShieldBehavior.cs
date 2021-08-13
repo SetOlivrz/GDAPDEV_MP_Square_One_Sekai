@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class ShieldBehavior : MonoBehaviour
 {
     [SerializeField] GameObject shieldObject;
+    [SerializeField] Text mode;
+
 
     public bool shieldState = false;
     bool active = true;
@@ -25,6 +27,7 @@ public class ShieldBehavior : MonoBehaviour
             {
                 shieldState = active;
                 shieldObject.SetActive(true);
+                mode.text = ("SHIELD MODE");
             }
             else if (GestureManager.Instance.twoFingerHold == false && shieldObject.activeInHierarchy == true)
             {
