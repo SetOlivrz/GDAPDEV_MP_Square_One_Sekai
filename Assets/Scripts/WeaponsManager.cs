@@ -86,9 +86,10 @@ public class WeaponsManager : MonoBehaviour
             if (!(pumpVFX.gameObject.activeSelf))
             {
                 pumpVFX.gameObject.SetActive(true);
-                pumpVFX.Play();
             }
-                
+            pumpVFX.Play();
+
+
 
             explodeShoot();
             nextExplodeTime = Time.time + (1.0f /explodeRate);
