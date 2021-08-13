@@ -30,6 +30,8 @@ public class WeaponsManager : MonoBehaviour
     [SerializeField] GameObject SonicCam;
     [SerializeField] GameObject PumpCam;
 
+    [SerializeField] Text Mode;
+
     private enum weaponType
     {
         soulCam = 0,
@@ -224,10 +226,17 @@ public class WeaponsManager : MonoBehaviour
 
         switch ((int)currentWeapon)
         {
-            case 0: break;
-            case 1: FlashCam.SetActive(true); break;
-            case 2: SonicCam.SetActive(true); break;
-            case 3: PumpCam.SetActive(true); break;
+            case 0: Mode.text = ("TAP MODE");
+                    break;
+            case 1: FlashCam.SetActive(true);
+                    Mode.text = ("FLASH MODE"); 
+                    break;
+            case 2: SonicCam.SetActive(true);
+                    Mode.text = ("SONIC MODE");
+                    break;
+            case 3: PumpCam.SetActive(true); 
+                    Mode.text = ("PUMP MODE");
+                    break;
         }
     }
 

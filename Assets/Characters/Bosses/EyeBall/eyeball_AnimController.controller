@@ -63,8 +63,7 @@ AnimatorState:
   m_Name: eyeball_death
   m_Speed: 1
   m_CycleOffset: 0
-  m_Transitions:
-  - {fileID: -4757303220721302092}
+  m_Transitions: []
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -278,9 +277,6 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: -7743742167788352178}
     m_Position: {x: 580, y: 230, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: -8767708630405057336}
-    m_Position: {x: 726.7307, y: 351.6895, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -265499179247444944}
     m_Position: {x: 330, y: 290, z: 0}

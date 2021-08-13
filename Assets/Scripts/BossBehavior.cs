@@ -82,13 +82,13 @@ public class BossBehavior : MonoBehaviour
         Debug.Log("move to" + SpawnLocList[index].name);
     }
 
-    public void IntializeEnemyStats()
+    public void IntializeBossStats()
     {
         switch (gameObject.name)
         {
             case "Eyeball(Boss)":
                 {
-                    HP = 100;
+                    HP = 20;
                     DEF = 0;
                     ID = "Eyeball(Boss)";
                 }; break;

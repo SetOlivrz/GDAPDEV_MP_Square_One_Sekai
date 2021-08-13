@@ -186,8 +186,12 @@ public class GestureManager : MonoBehaviour
                                 hit.transform.gameObject.GetComponent<BossBehavior>().TakeDamage(PlayerData.tapDMG);
                                 hit.transform.gameObject.GetComponent<BossBehavior>().DisplayStats();
                             }
-                            else if (hit.transform.name == "Eyeball(soul)")
+                            else if (hit.transform.name == "Eyeball(Soul)")
                             {
+                                Debug.Log("Destroy");
+                                Destroy(hit.transform.gameObject);
+                                PlayerData.nCollectedSouls+= 100;
+                                PlayerData.gold += 100;
                                 GameManager.Instance.levelComplete = true;
                             }
                         }
