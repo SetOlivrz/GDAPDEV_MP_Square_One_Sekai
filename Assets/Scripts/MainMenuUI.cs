@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
 public class MainMenuUI : MonoBehaviour
 {
     [SerializeField] Text goldTxt;
@@ -80,4 +79,6 @@ public class MainMenuUI : MonoBehaviour
         }
             
     }
+
+    
 }
