@@ -88,7 +88,7 @@ public class BossBehavior : MonoBehaviour
         {
             case "Eyeball(Boss)":
                 {
-                    HP = 20;
+                    HP = 150;
                     DEF = 0;
                     ID = "Eyeball(Boss)";
                 }; break;
