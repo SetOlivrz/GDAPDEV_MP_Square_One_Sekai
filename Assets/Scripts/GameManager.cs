@@ -70,6 +70,9 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("boss fight");
             gamePhase = 2;
+            Time.timeScale = 0;
+            bossFightPopup.transform.parent.gameObject.SetActive(true);
+            bossFightPopup.SetActive(true);
             enemyBossInstance = spawner.spawnBoss();
             enemyBossInstance.GetComponent<BossBehavior>().setTarget(player);
         }
