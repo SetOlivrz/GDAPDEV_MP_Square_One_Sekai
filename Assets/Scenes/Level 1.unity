@@ -342,6 +342,49 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3995611998637621556, guid: 081896097a6cf9940983fe08d253c6bb, type: 3}
   m_PrefabInstance: {fileID: 3995611997745188434}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &184339325
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 184339326}
+  - component: {fileID: 184339327}
+  m_Layer: 0
+  m_Name: AssetBundleManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &184339326
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184339325}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1580531365}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &184339327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184339325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8d1a5592d33b7645bc8f2557e3c5ae4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &199153846
 GameObject:
   m_ObjectHideFlags: 0
@@ -1238,10 +1281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerAudioSource: {fileID: 3690122499708129830}
-  flashCamSound: {fileID: 8300000, guid: af15198ff20bbf045ba91c2678c4809e, type: 3}
-  sonicCamSound: {fileID: 8300000, guid: ea3e942f5d2e8cd40912e95611151db9, type: 3}
-  pumpCamSound: {fileID: 8300000, guid: 5a22ea6b17ca6a942842f9139c0b1231, type: 3}
-  purchaseUpgradeSound: {fileID: 8300000, guid: 2dce5e5a900c0df45826df323ec500be, type: 3}
+  assetManager: {fileID: 184339327}
 --- !u!4 &825156848 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 139325439260454543, guid: 33590b99179351b4a9d6353fa2706032, type: 3}
@@ -2061,6 +2101,7 @@ Transform:
   - {fileID: 8657579923900671049}
   - {fileID: 1053872223}
   - {fileID: 818497547}
+  - {fileID: 184339326}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

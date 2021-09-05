@@ -4,6 +4,19 @@ using UnityEngine;
 using System.IO;
 public class AssetBundleManager : MonoBehaviour
 {
+
+    public static AssetBundleManager Instance;
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -42,7 +55,7 @@ public class AssetBundleManager : MonoBehaviour
 
         if(ret == null)
         {
-            Debug.Log(bundleName + "does not exist");
+            Debug.Log(bundleName + " does not exist");
         }
 
         else
