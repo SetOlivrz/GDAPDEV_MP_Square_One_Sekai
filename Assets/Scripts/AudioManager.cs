@@ -5,6 +5,7 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] AudioSource playerAudioSource;
+    AssetBundleManager assetManager;
     public static AudioManager Instance;
 
     private void Awake()
@@ -18,16 +19,20 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    [SerializeField] AudioClip flashCamSound;
-    [SerializeField] AudioClip sonicCamSound;
-    [SerializeField] AudioClip pumpCamSound;
+    AudioClip flashCamSound;
+    AudioClip sonicCamSound;
+    AudioClip pumpCamSound;
 
-    [SerializeField] AudioClip purchaseUpgradeSound;
+    AudioClip purchaseUpgradeSound;
     // Start is called before the first frame update
 
     void Start()
     {
-        
+        assetManager = AssetBundleManager.Instance;
+        flashCamSound = assetManager.GetAsset<AudioClip>("sounds", "camera-shutter-click-08");
+        sonicCamSound = assetManager.GetAsset<AudioClip>("sounds", "Sonic Cam");
+        pumpCamSound = assetManager.GetAsset<AudioClip>("sounds", "Pump Cam");
+        purchaseUpgradeSound = assetManager.GetAsset<AudioClip>("sounds", "Upgrade Purchase");
     }
 
     // Update is called once per frame
