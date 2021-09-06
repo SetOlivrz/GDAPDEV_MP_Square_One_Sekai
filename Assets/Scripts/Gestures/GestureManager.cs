@@ -8,6 +8,13 @@ public class GestureManager : MonoBehaviour
     
     public static GestureManager Instance;
 
+
+    public TapProperty tapProperty;
+    public SwipeProperty swipeProperty;
+    public SpreadProperty spreadProperty;
+    public RotateProperty rotateProperty;
+
+
     float touchTime;
     private Vector3 fp;   //First touch position
     private Vector3 lp;   //Last touch position

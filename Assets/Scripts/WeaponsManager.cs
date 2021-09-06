@@ -31,7 +31,15 @@ public class WeaponsManager : MonoBehaviour
     [SerializeField] GameObject PumpCam;
 
     [SerializeField] GameObject TriggerButton;
+
+    // shield
     [SerializeField] GameObject Shield;
+
+
+    public bool shieldState = false;
+    bool active = true;
+    bool invalid = false;
+
 
 
 
@@ -52,14 +60,32 @@ public class WeaponsManager : MonoBehaviour
 
     void Start()
     {
-
+        Shield.SetActive(false);
         Mode.text = "TAP MODE";
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (GestureManager.Instance.onSwipe.isSwiping == true)
+
+        if (!ButtonManager.Instance.click && !ButtonManager.Instance.hold)
+        {
+            if (GestureHandler.Instance.twoFingerHold == true && Shield.activeInHierarchy == false)
+            {
+                shieldState = active;
+                Shield.SetActive(true);
+                Mode.text = ("SHIELD MODE");
+            }
+            else if (GestureHandler.Instance.twoFingerHold == false && Shield.activeInHierarchy == true)
+            {
+                shieldState = !active;
+                Shield.SetActive(false);
+                GestureHandler.Instance.swipeDirection = 0;
+                switchWeapon();
+            }
+        }
+
+        if (GestureHandler.Instance.onSwipe == true)
         {
             switchWeapon();
         }
@@ -207,7 +233,7 @@ public class WeaponsManager : MonoBehaviour
 
     private void switchWeapon()
     {
-        currentWeapon += GestureManager.Instance.onSwipe.direction;
+        currentWeapon += GestureHandler.Instance.swipeDirection;
 
         if ((int)currentWeapon == 4)
         {
@@ -218,11 +244,8 @@ public class WeaponsManager : MonoBehaviour
         {
             currentWeapon = (weaponType)3;
         }
-        Debug.Log(currentWeapon);
-
-        
-            SwitchCam();
-            //SwitchFilm();
+        Debug.Log(currentWeapon);        
+        SwitchCam();
      
             
     }
