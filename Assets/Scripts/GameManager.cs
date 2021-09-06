@@ -58,28 +58,42 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         // if dead -> phase -1
-        if (hp <= 0 && gamePhase != -1)
+        if (gamePhase == -1)
         {
-            hp = 0;
-            Debug.Log("you lose");
-            gamePhase = -1;
+            if(!isResultsDisplayed)
+            {
+                resultsManager.updateInfo();
+                defeatPopup.transform.parent.gameObject.SetActive(true);
+                defeatPopup.SetActive(true);
+                isResultsDisplayed = true;
+            }
         }
 
-        // if start and defeat all enemy -> phase 2
-        else if (gamePhase == 1 && enemyList.Count == 0 && spawner.nSpawns >= spawner.getSpawnLocList().Count)
+        
+        else if (gamePhase == 1) //wave clear phase
         {
-            Debug.Log("boss fight");
-            gamePhase = 2;
-            Time.timeScale = 0;
-            bossFightPopup.transform.parent.gameObject.SetActive(true);
-            bossFightPopup.SetActive(true);
-            enemyBossInstance = spawner.spawnBoss();
-            enemyBossInstance.GetComponent<BossBehavior>().setTarget(player);
+            // if 
+            if (hp <= 0)
+            {
+                PlayerLose();
+            }
+
+            // if defeat all enemy -> phase 2
+            if (enemyList.Count == 0 && spawner.nSpawns >= spawner.getSpawnLocList().Count)
+            {
+                InitiateBossFight();
+            }
+            
         }
 
         // phase 2 -> boss
         else if (gamePhase == 2)
         {
+            if (hp <= 0)
+            {
+                PlayerLose();
+            }
+
             if (levelComplete)
             {
                 levelComplete = false;
@@ -88,21 +102,17 @@ public class GameManager : MonoBehaviour
         }
 
 
-        if (gamePhase == 3 && !isResultsDisplayed)
+        if (gamePhase == 3)
         {
-            resultsManager.updateInfo();
-            victoryPopup.transform.parent.gameObject.SetActive(true);
-            victoryPopup.SetActive(true);
-            isResultsDisplayed = true;
+            if(!isResultsDisplayed)
+            {
+                resultsManager.updateInfo();
+                victoryPopup.transform.parent.gameObject.SetActive(true);
+                victoryPopup.SetActive(true);
+                isResultsDisplayed = true;
+            }
         }
-        
-        else if(gamePhase == -1 && !isResultsDisplayed)
-        {
-            resultsManager.updateInfo();
-            defeatPopup.transform.parent.gameObject.SetActive(true);
-            defeatPopup.SetActive(true);
-            isResultsDisplayed = true;
-        }
+
         //if(player.getShootingBool())
         //{
         //    enemyFound = camera.getVisibleTarget();
@@ -116,6 +126,24 @@ public class GameManager : MonoBehaviour
         //    }
         //}
         checkForDeadEnemies();
+    }
+
+    private void InitiateBossFight()
+    {
+        Debug.Log("boss fight");
+        gamePhase = 2;
+        Time.timeScale = 0;
+        bossFightPopup.transform.parent.gameObject.SetActive(true);
+        bossFightPopup.SetActive(true);
+        enemyBossInstance = spawner.spawnBoss();
+        enemyBossInstance.GetComponent<BossBehavior>().setTarget(player);
+    }
+
+    private void PlayerLose()
+    {
+        hp = 0;
+        Debug.Log("you lose");
+        gamePhase = -1;
     }
 
     public void OnHit(GameObject enemy)

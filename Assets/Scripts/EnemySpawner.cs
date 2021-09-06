@@ -6,7 +6,7 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] List<GameObject> enemySpawnLocList;
     [SerializeField] GameObject[] enemyTemplates;
-    [SerializeField] GameObject boss = null;
+    [SerializeField] GameObject bossTemplate = null;
 
     [SerializeField] GameObject player;
 
@@ -98,10 +98,10 @@ public class EnemySpawner : MonoBehaviour
 
     public GameObject spawnBoss()
     {
-        if (boss != null)
+        if (bossTemplate != null)
         {
-            GameObject bossObj = GameObject.Instantiate(boss, enemySpawnLocList[0].transform.position, Quaternion.identity, null);
-            bossObj.name = boss.name;
+            GameObject bossObj = GameObject.Instantiate(bossTemplate, enemySpawnLocList[0].transform.position, Quaternion.identity, null);
+            bossObj.name = bossTemplate.name;
             bossObj = bossObj.transform.GetChild(0).gameObject;
             bossObj.GetComponent<BossBehavior>().IntializeBossStats();
             bossObj.GetComponent<BossBehavior>().SpawnLocList = enemySpawnLocList;
