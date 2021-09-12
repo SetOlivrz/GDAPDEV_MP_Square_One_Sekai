@@ -6,6 +6,8 @@ public class ProjectileBehavior : MonoBehaviour
 {
     GameObject target;
     private float moveSpeed = 20;
+
+    [SerializeField] GameObject equipmentManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +40,7 @@ public class ProjectileBehavior : MonoBehaviour
         Debug.Log("Collided with: " + collisionObj.name);
         if (collisionObj.name == "Player")
         {
-            if(collisionObj.GetComponent<ShieldBehavior>().shieldState != true)
+            if(equipmentManager.GetComponent<WeaponsManager>().shieldState != true)
                 GameManager.Instance.takeDamage(5.0f);
 
             Destroy(this.gameObject);

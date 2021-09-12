@@ -71,6 +71,7 @@ public class EnemyBehavior : MonoBehaviour
 
     public void IntializeEnemyStats()
     {
+       
         switch (gameObject.name)
         {
             case "Ghost":

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -221,7 +221,7 @@ RectTransform:
   - {fileID: 4521999615737052444}
   - {fileID: 1463270465}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -490,7 +490,7 @@ MonoBehaviour:
   - {fileID: 4667176235619577110, guid: 792d2e224c4cc6648b8b758ba7949f74, type: 3}
   - {fileID: 5003276402320310493, guid: 0cf38e2125bafc844aabd7f228636100, type: 3}
   - {fileID: 1645647086217346171, guid: 8f606baab1c0a264c996e63a2da260d8, type: 3}
-  boss: {fileID: 1620857879932306034, guid: bb3fd75e3710dcb45b254602f2e2ffb9, type: 3}
+  bossTemplate: {fileID: 0}
   player: {fileID: 880688265}
   nSpawns: 0
 --- !u!4 &366205168
@@ -1281,7 +1281,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerAudioSource: {fileID: 3690122499708129830}
-  assetManager: {fileID: 184339327}
 --- !u!4 &825156848 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 139325439260454543, guid: 33590b99179351b4a9d6353fa2706032, type: 3}
@@ -1480,21 +1479,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HPBar: {fileID: 1636187362}
---- !u!114 &880688268
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 880688265}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13ad3c24500675141a6ea5e65f301787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shieldObject: {fileID: 883221233}
-  mode: {fileID: 873459585}
-  shieldState: 0
 --- !u!65 &880688269
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1620,7 +1604,7 @@ GameObject:
   - component: {fileID: 897877988}
   - component: {fileID: 897877987}
   m_Layer: 0
-  m_Name: WeaponManager
+  m_Name: Equipment Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1656,6 +1640,7 @@ MonoBehaviour:
   PumpCam: {fileID: 445834481}
   TriggerButton: {fileID: 1079341118}
   Shield: {fileID: 883221233}
+  shieldState: 0
   Mode: {fileID: 873459585}
 --- !u!4 &897877988
 Transform:
@@ -2103,7 +2088,7 @@ Transform:
   - {fileID: 818497547}
   - {fileID: 184339326}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1636187362 stripped
 MonoBehaviour:
@@ -2906,8 +2891,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2110688601}
-  - component: {fileID: 2110688600}
-  - component: {fileID: 2110688602}
+  - component: {fileID: 2110688603}
   m_Layer: 0
   m_Name: GestureManager
   m_TagString: Untagged
@@ -2915,18 +2899,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2110688600
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2110688599}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dcc1153e659ef14cb284fa4ff829c20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &2110688601
 Transform:
   m_ObjectHideFlags: 0
@@ -2942,7 +2914,7 @@ Transform:
   m_Father: {fileID: 1580531365}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2110688602
+--- !u!114 &2110688603
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2951,9 +2923,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 2110688599}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6a49f6c2e9f2f043b77738abf4b3caa, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b3605d67971287419d258fba518a368, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tapProperty:
+    tapTime: 0.7
+    tapMaxDistance: 0.1
+  swipeProperty:
+    minSwipeDistance: 2
+    swipeTime: 0.7
+  spreadProperty:
+    MinDistanceChange: 0.3
+  rotateProperty:
+    minDistance: 0.4
+    minAngleChange: 4
+  onSwipe: 0
+  swipeDirection: 0
   twoFingerHold: 0
 --- !u!1001 &139325440519587662
 PrefabInstance:
@@ -4079,7 +4064,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 631500385}
     m_Modifications:
     - target: {fileID: 7557782586577447373, guid: 5a00558317143eb4786fc02731f04fd8, type: 3}
       propertyPath: m_AnchorMax.x
@@ -4111,7 +4096,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7557782587452198669, guid: 5a00558317143eb4786fc02731f04fd8, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7557782587452198669, guid: 5a00558317143eb4786fc02731f04fd8, type: 3}
       propertyPath: m_AnchorMax.x
