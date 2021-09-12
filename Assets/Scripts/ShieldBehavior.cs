@@ -23,13 +23,13 @@ public class ShieldBehavior : MonoBehaviour
     {
         if (!ButtonManager.Instance.click && !ButtonManager.Instance.hold)
         {
-            if (GestureManager.Instance.twoFingerHold == true && shieldObject.activeInHierarchy == false)
+            if (GestureHandler.Instance.twoFingerHold == true && shieldObject.activeInHierarchy == false)
             {
                 shieldState = active;
                 shieldObject.SetActive(true);
                 mode.text = ("SHIELD MODE");
             }
-            else if (GestureManager.Instance.twoFingerHold == false && shieldObject.activeInHierarchy == true)
+            else if (GestureHandler.Instance.twoFingerHold == false && shieldObject.activeInHierarchy == true)
             {
                 shieldState = !active;
                 shieldObject.SetActive(false);
