@@ -15,7 +15,7 @@ public class HealthScript : MonoBehaviour
     {
         if (this.gameObject.GetComponent<EnemyBehavior>() ==  null)
         {
-            this.hp =  this.gameObject.GetComponent<BossBehavior>().HP;
+            this.hp =  this.gameObject.GetComponent<EnemyBehavior>().HP;
         }
         else
         {
@@ -31,7 +31,7 @@ public class HealthScript : MonoBehaviour
     {
         if (this.gameObject.GetComponent<EnemyBehavior>() == null)
         {
-            this.hp = this.gameObject.GetComponent<BossBehavior>().HP;
+            this.hp = this.gameObject.GetComponent<EnemyBehavior>().HP;
         }
         else
         {

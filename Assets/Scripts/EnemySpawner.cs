@@ -10,8 +10,8 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField] GameObject player;
 
-    private int numEnemy = 0;
-    public int nSpawns = 0;
+    private int numEnemy = 0; // enemy alive
+    public int totalSpawn = 0;  // number of totalSpawn
     private bool isSpawnInitial = false;
     // Start is called before the first frame update
     void Start()
@@ -26,7 +26,7 @@ public class EnemySpawner : MonoBehaviour
         int enemySpawnTemplateIndex = Random.Range(0, enemyTemplates.Length);
 
         float spawnTimeDelay = Random.Range(2.5f, 3.5f);
-        StartCoroutine(SpawnDelay(spawnTimeDelay, nSpawns, enemySpawnTemplateIndex));
+        StartCoroutine(SpawnDelay(spawnTimeDelay, totalSpawn, enemySpawnTemplateIndex));
     }
 
     // Update is called once per frame
@@ -81,17 +81,17 @@ public class EnemySpawner : MonoBehaviour
 
         GameManager.Instance.addToEnemyList(enemySpawn);
 
-        nSpawns++;
+        totalSpawn++;
 
         if (GameManager.Instance.gamePhase == 0)
             GameManager.Instance.gamePhase = 1;
 
-        if (nSpawns < enemySpawnLocList.Count)
+        if (totalSpawn < enemySpawnLocList.Count)
         {
             int enemySpawnTemplateIndex = Random.Range(0, enemyTemplates.Length);
 
             float spawnTimeDelay = Random.Range(3f, 5f);
-            StartCoroutine(SpawnDelay(spawnTimeDelay, nSpawns, enemySpawnTemplateIndex));
+            StartCoroutine(SpawnDelay(spawnTimeDelay, totalSpawn, enemySpawnTemplateIndex));
         }
 
     }
@@ -103,8 +103,8 @@ public class EnemySpawner : MonoBehaviour
             GameObject bossObj = GameObject.Instantiate(bossTemplate, enemySpawnLocList[0].transform.position, Quaternion.identity, null);
             bossObj.name = bossTemplate.name;
             bossObj = bossObj.transform.GetChild(0).gameObject;
-            bossObj.GetComponent<BossBehavior>().IntializeBossStats();
-            bossObj.GetComponent<BossBehavior>().SpawnLocList = enemySpawnLocList;
+            bossObj.GetComponent<EnemyBehavior>().IntializeBossStats();
+            bossObj.GetComponent<EnemyBehavior>().SpawnLocList = enemySpawnLocList;
             return bossObj;
         }
 

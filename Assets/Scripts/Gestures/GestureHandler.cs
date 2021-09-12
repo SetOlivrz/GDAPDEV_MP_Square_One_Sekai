@@ -173,7 +173,36 @@ public class GestureHandler : MonoBehaviour
     private void FireTapEvent()
     {
         Debug.Log("Tapped");
-    }
+        Debug.Log("Touch");
+        Ray ray = Camera.main.ScreenPointToRay(trackedFinger1.position);
+        RaycastHit hit = new RaycastHit();
+
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+        {
+            Debug.Log("Touching " + hit.transform.name);
+            if (hit.transform.name == "Soul")
+            {
+                Debug.Log("Destroy");
+                GameManager.Instance.enemyList.Remove(hit.transform.gameObject);
+                Destroy(hit.transform.gameObject);
+                PlayerData.nCollectedSouls++;
+                PlayerData.gold += 5;
+            }
+            else if (hit.transform.name == "Eyeball(Boss)")
+            {
+                hit.transform.gameObject.GetComponent<EnemyBehavior>().TakeDamage(PlayerData.tapDMG);
+                hit.transform.gameObject.GetComponent<EnemyBehavior>().DisplayStats();
+            }
+            else if (hit.transform.name == "Eyeball(Soul)")
+            {
+                Debug.Log("Destroy");
+                Destroy(hit.transform.gameObject);
+                PlayerData.nCollectedSouls += 100;
+                PlayerData.gold += 100;
+                GameManager.Instance.levelComplete = true;
+            }
+        }
+        }
 
 
     private void FireSwipeEvent()

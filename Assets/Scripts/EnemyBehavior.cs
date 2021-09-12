@@ -4,17 +4,39 @@ using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour
 {
-
     [SerializeField] GameObject player;
     [SerializeField] GameObject projectile;
 
-    float idleTime;
-    float timer = 0.0f;
-    private GameObject target;
-    private Vector3 directionToTarget;
+  
+    
     private float moveSpeed = 50;
 
-  
+    // STATS
+    public int TYPE;
+    public string ID;
+    public float HP;
+    public int DEF;
+
+    // GENERAL COMPONENTS
+    public Animator animator;
+    public bool isDead = false;
+    public bool spawnSoul = false;
+
+    private GameObject target;
+    private Vector3 directionToTarget;
+
+    // MOB COMPONENT
+    float idleTime;
+    float timer = 0.0f;
+
+    // BOSS COMPONENT
+    [SerializeField] public List<GameObject> SpawnLocList;
+
+    float attackRate = 2.0f;
+    float attackTimer = 0.0f;
+    int attackHand = -1;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,50 +47,58 @@ public class EnemyBehavior : MonoBehaviour
     void Update()
     {
         this.transform.LookAt(player.transform);
-        if (timer < idleTime)
-        {
-           timer += Time.deltaTime;
-        }
 
-        else if (GameManager.Instance.gamePhase == 1 && this.ID != "" && this.ID != "Soul")
+        //
+        if (this.TYPE ==1)
         {
-            //Debug.Log(this.gameObject.name + " damages player, ID: " + this.ID);
-            //GameManager.Instance.takeDamage(5.0f);
-            ThrowProjectile();
-            timer = 0.0f;
+            if (timer < idleTime)
+            {
+               timer += Time.deltaTime;
+            }
+            else if (this.gameObject.name != "Soul" || this.gameObject.name != "Boss Soul")
+            {
+                ThrowProjectile();
+                timer = 0.0f;
+            }
         }
+        else if (this.TYPE ==3)
+        {
+            // FOR BOSS
+            if (attackTimer < attackRate)
+            {
+                attackTimer += Time.deltaTime;
+            }
+            else
+            {
+                BossAttack();
+                attackTimer = 0.0f;
+            }
+        }
+       
 
-        //else if(target != null)
+       
+
+        //else if (GameManager.Instance.gamePhase == 1 && this.ID != "" && this.ID != "Soul")
         //{
-        //    if (Vector3.Distance(gameObject.transform.position, target.transform.position) > 1)
-        //        gameObject.transform.position += directionToTarget * Time.deltaTime * moveSpeed;
-
-        //    else GameObject.Destroy(this.gameObject);
-
+        //    //Debug.Log(this.gameObject.name + " damages player, ID: " + this.ID);
+        //    //GameManager.Instance.takeDamage(5.0f);
+        //    ThrowProjectile();
+        //    timer = 0.0f;
         //}
     }
 
-    public void setTarget(GameObject target)
+    // GENERAL FUNCTION
+    public void setTarget(GameObject targetObj)
     {
-        this.target = target;
-        directionToTarget = (target.transform.position - gameObject.transform.position).normalized;
-        Debug.DrawRay(gameObject.transform.position, directionToTarget, Color.black, 20);
+        this.target = targetObj;
     }
 
     public GameObject getTarget()
     {
         return target;
     }
-    //-------------------------------------------------------------------------------------------------------------------------//
 
-    public string ID;
-    public float HP;
-    public int DEF;
-    public Animator animator;
-    public bool isDead = false;
-    public bool spawnSoul = false;
-
-
+    // MINIONS
     public void IntializeEnemyStats()
     {
        
@@ -76,6 +106,7 @@ public class EnemyBehavior : MonoBehaviour
         {
             case "Ghost":
                 {
+                    TYPE = 1;
                     HP = 3;
                     DEF = 0;
                     ID = "Ghost";
@@ -83,6 +114,7 @@ public class EnemyBehavior : MonoBehaviour
 
             case "Bat":
                 {
+                    TYPE = 1;
                     HP = 6;
                     DEF = 0;
                     ID = "Bat";
@@ -90,6 +122,7 @@ public class EnemyBehavior : MonoBehaviour
 
             case "Pumpkin":
                 {
+                    TYPE = 1;
                     HP = 100;
                     DEF = 0;
                     ID = "Pumpkin";
@@ -97,6 +130,7 @@ public class EnemyBehavior : MonoBehaviour
 
             case "Eyeball":
                 {
+                    TYPE = 1;
                     HP = 100;
                     DEF = 0;
                     ID = "Eyeball";
@@ -104,6 +138,7 @@ public class EnemyBehavior : MonoBehaviour
 
             case "Soul":
                 {
+                    TYPE = 2;
                     HP = 100;
                     DEF = 0;
                     ID = "Soul";
@@ -113,7 +148,7 @@ public class EnemyBehavior : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
-        if (isDead == false)
+        if (isDead == false) // not dead
         {
             animator.SetTrigger("takeDamage");
 
@@ -127,13 +162,8 @@ public class EnemyBehavior : MonoBehaviour
                 Die();
             }
         }
-        else
-        {
-            //GetSoul();
-        }
-     
-
     }
+
     public void DisplayStats()
     {
         Debug.Log("Name: " + gameObject.name + "\n" + "HP: " + HP + "DEF: " + DEF + "\n");
@@ -158,5 +188,46 @@ public class EnemyBehavior : MonoBehaviour
     public void ThrowProjectile()
     {
         GameObject.Instantiate(projectile, this.transform);
+    }
+
+    
+    // BOSS
+    public void IntializeBossStats()
+    {
+        switch (gameObject.name)
+        {
+            case "Eyeball(Boss)":
+                {
+                    TYPE = 3;
+                    HP = 150;
+                    DEF = 0;
+                    ID = "Eyeball(Boss)";
+                }; break;
+
+        }
+    }
+
+    private void BossAttack()
+    {
+        if (attackHand == -1)
+        {
+            GameObject.Instantiate(projectile, this.transform.position + (this.transform.right.normalized * -1), Quaternion.identity, this.transform);
+        }
+
+        else if (attackHand == 1)
+        {
+            GameObject.Instantiate(projectile, this.transform.position + (this.transform.right.normalized * 1), Quaternion.identity, this.transform);
+        }
+
+        attackHand *= -1;
+    }
+
+    public void goToSpawnPoints()
+    {
+
+        int index = Random.Range(0, SpawnLocList.Count - 1);
+
+        this.transform.parent.position = SpawnLocList[index].transform.position;
+        Debug.Log("move to" + SpawnLocList[index].name);
     }
 }

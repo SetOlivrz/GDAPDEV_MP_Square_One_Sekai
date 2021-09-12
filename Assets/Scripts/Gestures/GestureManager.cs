@@ -190,8 +190,8 @@ public class GestureManager : MonoBehaviour
                             }
                             else if (hit.transform.name == "Eyeball(Boss)")
                             {
-                                hit.transform.gameObject.GetComponent<BossBehavior>().TakeDamage(PlayerData.tapDMG);
-                                hit.transform.gameObject.GetComponent<BossBehavior>().DisplayStats();
+                                hit.transform.gameObject.GetComponent<EnemyBehavior>().TakeDamage(PlayerData.tapDMG);
+                                hit.transform.gameObject.GetComponent<EnemyBehavior>().DisplayStats();
                             }
                             else if (hit.transform.name == "Eyeball(Soul)")
                             {
