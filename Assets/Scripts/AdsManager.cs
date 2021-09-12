@@ -50,6 +50,19 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
         }
     }
 
+    public void ShowRewardedAd()
+    {
+        if (Advertisement.IsReady(sampleRewarded))
+        {
+            Advertisement.Show(sampleRewarded);
+        }
+
+        else
+        {
+            Debug.Log("No ads: " + sampleRewarded);
+        }
+    }
+
     private IEnumerator ShowBannerRoutine()
     {
         while(!Advertisement.isInitialized)
@@ -89,6 +102,9 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
 
     public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)
     {
-        
+        if(placementId == sampleRewarded)
+        {
+            PlayerData.gold += 100;
+        }
     }
 }
