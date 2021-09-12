@@ -22,7 +22,7 @@ public class AudioManager : MonoBehaviour
     AudioClip flashCamSound;
     AudioClip sonicCamSound;
     AudioClip pumpCamSound;
-
+    AudioClip mobSpawnSound;
     AudioClip purchaseUpgradeSound;
     // Start is called before the first frame update
 
@@ -32,6 +32,7 @@ public class AudioManager : MonoBehaviour
         flashCamSound = assetManager.GetAsset<AudioClip>("sounds", "camera-shutter-click-08");
         sonicCamSound = assetManager.GetAsset<AudioClip>("sounds", "Sonic Cam");
         pumpCamSound = assetManager.GetAsset<AudioClip>("sounds", "Pump Cam");
+        mobSpawnSound = assetManager.GetAsset<AudioClip>("sounds", "MobSpawn");
         purchaseUpgradeSound = assetManager.GetAsset<AudioClip>("sounds", "Upgrade Purchase");
     }
 
@@ -89,5 +90,10 @@ public class AudioManager : MonoBehaviour
         {
             AudioSource.PlayClipAtPoint(purchaseUpgradeSound, Camera.main.gameObject.transform.position, 1);
         }
+    }
+
+    public void playMobSpawnSound()
+    {
+        AudioSource.PlayClipAtPoint(mobSpawnSound, playerAudioSource.gameObject.transform.position);
     }
 }

@@ -84,6 +84,11 @@ public class AssetBundleManager : MonoBehaviour
 
         return ret;
     }
+    
+    private void OnDestroy()
+    {
+        AssetBundle.UnloadAllAssetBundles(true);
+    }
 
 }
 
