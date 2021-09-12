@@ -5445,7 +5445,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 8349518234294137630, guid: 58a1cf9f500c61041972295b8d07b561, type: 3}
-  projectile: {fileID: 7531309561169113518, guid: 2253d088e226ea14d8eb7a4890515d56, type: 3}
+  projectile: {fileID: 299867089556907387, guid: 2253d088e226ea14d8eb7a4890515d56, type: 3}
   ID: 
   HP: 5
   DEF: 0

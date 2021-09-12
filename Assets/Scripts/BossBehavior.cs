@@ -64,15 +64,15 @@ public class BossBehavior : MonoBehaviour
         attackHand *= -1;
     }
 
-    public void setTarget(GameObject targetObj)
-    {
-        this.target = targetObj;
-    }
+    //public void setTarget(GameObject targetObj)
+    //{
+    //    this.target = targetObj;
+    //}
 
-    public GameObject getTarget()
-    {
-        return target;
-    }
+    //public GameObject getTarget()
+    //{
+    //    return target;
+    //}
     public void goToSpawnPoints()
     {
 

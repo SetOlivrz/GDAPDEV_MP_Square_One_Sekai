@@ -7,7 +7,7 @@ public class ProjectileBehavior : MonoBehaviour
     GameObject target;
     private float moveSpeed = 20;
 
-    [SerializeField] GameObject equipmentManager;
+    [SerializeField] GameObject shield;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +16,7 @@ public class ProjectileBehavior : MonoBehaviour
             target = EB.getTarget();
         }
 
-        else if (this.transform.parent.gameObject.TryGetComponent(out BossBehavior BB))
+        else if (this.transform.parent.gameObject.TryGetComponent(out EnemyBehavior BB))
         {
             target = BB.getTarget();
         }
@@ -40,8 +40,10 @@ public class ProjectileBehavior : MonoBehaviour
         Debug.Log("Collided with: " + collisionObj.name);
         if (collisionObj.name == "Player")
         {
-            if(equipmentManager.GetComponent<WeaponsManager>().shieldState != true)
-                GameManager.Instance.takeDamage(5.0f);
+            if(GameManager.Instance.shield.activeInHierarchy == false)
+            {
+                //GameManager.Instance.takeDamage(5.0f);
+            }
 
             Destroy(this.gameObject);
         }

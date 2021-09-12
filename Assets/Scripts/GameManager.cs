@@ -39,9 +39,12 @@ public class GameManager : MonoBehaviour
     public float hp = PlayerData.playerHP;
     public int gamePhase = 0;
 
+    public GameObject shield;
+
     public bool levelComplete = false;
     private bool enemyBossDead = false;
     private bool isResultsDisplayed = false;
+
 
 
 
@@ -79,7 +82,7 @@ public class GameManager : MonoBehaviour
             }
 
             // if defeat all enemy -> phase 2
-            if (enemyList.Count == 0 && spawner.nSpawns >= spawner.getSpawnLocList().Count)
+            if (enemyList.Count == 0 && spawner.totalSpawn >= spawner.getSpawnLocList().Count)
             {
                 InitiateBossFight();
             }
@@ -136,7 +139,11 @@ public class GameManager : MonoBehaviour
         bossFightPopup.transform.parent.gameObject.SetActive(true);
         bossFightPopup.SetActive(true);
         enemyBossInstance = spawner.spawnBoss();
-        enemyBossInstance.GetComponent<BossBehavior>().setTarget(player);
+        if (enemyBossInstance == null)
+        {
+            Debug.Log("Boss instance is null");
+        }
+        enemyBossInstance.GetComponent<EnemyBehavior>().setTarget(player);
     }
 
     private void PlayerLose()
@@ -218,7 +225,7 @@ public class GameManager : MonoBehaviour
             //child = enemyBossInstance.transform.GetChild(0);
 
 
-            if (enemyBossInstance.GetComponent<BossBehavior>().spawnSoul)
+            if (enemyBossInstance.GetComponent<EnemyBehavior>().spawnSoul)
             {
                 soulObj = GameObject.Instantiate(soul, enemyBossInstance.transform.position, Quaternion.identity, null);
                 soulObj.name = "Eyeball(Soul)";
