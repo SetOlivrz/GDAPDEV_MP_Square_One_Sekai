@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3990722073
+CRC: 2355034683
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: ad87ca87c4ad47d2382b98aa3915b569
+    Hash: 97f622724b582db30060656bf46065dd
   TypeTreeHash:
     serializedVersion: 2
     Hash: 9a2ca7bdbd1871f7131daf57de908e0c
@@ -17,6 +17,7 @@ Assets:
 - Assets/Sounds/iPhone Camera_Screenshot Shutter Shot (Apple Sound) - Sound Effect
   for Editing.mp3
 - Assets/Sounds/Pump Cam.wav
+- Assets/Sounds/MobSpawn.wav
 - Assets/Sounds/Sonic Cam.wav
 - Assets/Sounds/Upgrade Purchase.mp3
 - Assets/Sounds/Y2Mate.is - Arcade Game BGM#2 Title-53L0gL16ejw-160k-1628864804614.mp3

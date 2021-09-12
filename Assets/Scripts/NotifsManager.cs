@@ -33,6 +33,18 @@ public class NotifsManager : MonoBehaviour
         AndroidNotificationCenter.RegisterNotificationChannel(defaultChannel);
     }
 
+    private void BuildRepeatNotificationChannel()
+    {
+        string channel_id = "repeat";
+        string title = "Repeat Channel";
+        string description = "Channel for repeating notifs";
+        Importance importance = Importance.Default;
+
+
+        AndroidNotificationChannel repeatChannel = new AndroidNotificationChannel(channel_id, title, description, importance);
+        AndroidNotificationCenter.RegisterNotificationChannel(repeatChannel);
+    }
+
     public void SendSimpleNotif()
     {
         string notif_title = "Simple notif";
@@ -42,5 +54,17 @@ public class NotifsManager : MonoBehaviour
         AndroidNotification notif = new AndroidNotification(notif_title, notif_message, fireTime);
 
         AndroidNotificationCenter.SendNotification(notif, "default");
+    }
+
+    public void SendRepeatNotif()
+    {
+        string notif_title = "Repeat notif";
+        string notif_message = "This is a repeat notif";
+        System.DateTime fireTime = System.DateTime.Now.AddSeconds(10);
+        System.TimeSpan interval = new System.TimeSpan(0, 10, 0);
+
+        AndroidNotification notif = new AndroidNotification(notif_title, notif_message, fireTime, interval);
+
+        AndroidNotificationCenter.SendNotification(notif, "repeat");
     }
 }
