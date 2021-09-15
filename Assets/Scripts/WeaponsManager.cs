@@ -35,6 +35,8 @@ public class WeaponsManager : MonoBehaviour
     // shield
     [SerializeField] GameObject Shield;
 
+    [SerializeField] IconScript icon;
+
 
     public bool shieldState = false;
     bool active = true;
@@ -277,6 +279,7 @@ public class WeaponsManager : MonoBehaviour
                     Mode.text = ("PUMP MODE");
                     break;
         }
+        icon.UpdateIcon();
     }
 
     public void SwitchFilm()

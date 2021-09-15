@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] List<GameObject> enemySpawnLocList;
+    [SerializeField] List<GameObject> enemySpawnGround;
     [SerializeField] GameObject[] enemyTemplates;
     [SerializeField] GameObject bossTemplate = null;
 
@@ -42,6 +43,7 @@ public class EnemySpawner : MonoBehaviour
 
     public void respawnEnemy(GameObject deadEnemy)
     {
+
         for (int i = 0; i < enemySpawnLocList.Count; i++)
         {
             if (deadEnemy.transform.position == enemySpawnLocList[i].transform.position)
@@ -52,24 +54,32 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    private IEnumerator SpawnDelay(float waitTime, int spawnerIndex, int templateIndex)
+    private IEnumerator SpawnDelay(float waitTime, int spawnLocIndex, int enemyIndex)
     {
         yield return new WaitForSeconds(waitTime);
-        GameObject enemySpawn = GameObject.Instantiate(enemyTemplates[templateIndex], enemySpawnLocList[spawnerIndex].transform.position, Quaternion.identity, null);
-        enemySpawn.transform.LookAt(player.transform);
-        enemySpawn.name = enemyTemplates[templateIndex].name;
-        //enemySpawn.GetComponent<EnemyBehavior>().setTarget(player);
+        GameObject enemySpawn;
+        if (enemyTemplates[enemyIndex].name == "Pumpkin(parent)")
+        {
+        
+            spawnLocIndex = Random.Range(0, enemySpawnGround.Count);
+            enemySpawn = GameObject.Instantiate(enemyTemplates[enemyIndex], enemySpawnGround[spawnLocIndex].transform.position, Quaternion.identity, null);
+        }
+        else
+        {
+            enemySpawn = GameObject.Instantiate(enemyTemplates[enemyIndex], enemySpawnLocList[spawnLocIndex].transform.position, Quaternion.identity, null);
 
-        if(GameManager.Instance.gamePhase != -1 && GameManager.Instance.gamePhase != 3)
+        }
+
+        enemySpawn.transform.LookAt(player.transform);
+        enemySpawn.name = enemyTemplates[enemyIndex].name;
+
+        //if(GameManager.Instance.gamePhase != -1 && GameManager.Instance.gamePhase != 3)
         if (enemySpawn.GetComponent<EnemyBehavior>() == null)
         {
             Transform child;
             child = enemySpawn.transform.GetChild(0);
-
             child.GetComponent<EnemyBehavior>().IntializeEnemyStats();
             child.GetComponent<EnemyBehavior>().setTarget(player);
-
-
             enemySpawn = enemySpawn.transform.GetChild(0).gameObject;
         }
         else
@@ -84,7 +94,10 @@ public class EnemySpawner : MonoBehaviour
         totalSpawn++;
 
         if (GameManager.Instance.gamePhase == 0)
+        {
             GameManager.Instance.gamePhase = 1;
+
+        }
 
         if (totalSpawn < enemySpawnLocList.Count)
         {
