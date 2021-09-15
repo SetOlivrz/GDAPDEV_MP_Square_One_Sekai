@@ -62,7 +62,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1239088360715868919}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.74, y: -0.7, z: 0}
+  m_LocalPosition: {x: 0.12, y: -0.102, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1129721022402696848}
@@ -76,7 +76,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1239088360715868919}
   serializedVersion: 7
-  lengthInSec: 1
+  lengthInSec: 0.5
   simulationSpeed: 2.98
   stopAction: 0
   cullingMode: 0
@@ -204,8 +204,8 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 10
-      minScalar: 5
+      scalar: 5
+      minScalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -320,8 +320,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.7
-      minScalar: 0.3
+      scalar: 0.05
+      minScalar: 0.01
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4925,8 +4925,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2069051706222647993}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 20, z: 0}
-  m_LocalScale: {x: 2.4648, y: 2.4648, z: 2.4648}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 1129721022402696848}
   m_RootOrder: 1
@@ -5019,7 +5019,7 @@ RectTransform:
   m_GameObject: {fileID: 3243175805400290722}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.019712547, y: 0.019712547, z: 0.019712547}
+  m_LocalScale: {x: 0.0023722986, y: 0.0023680362, z: 0.0023680362}
   m_Children:
   - {fileID: 5748603608396180520}
   - {fileID: 6304608233968759069}
@@ -5029,7 +5029,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.7192, y: 0.95}
+  m_AnchoredPosition: {x: 0.127, y: -0.009}
   m_SizeDelta: {x: 160.9299, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &9114920180783284852
@@ -5347,12 +5347,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 8349518234294137630, guid: 58a1cf9f500c61041972295b8d07b561, type: 3}
   projectile: {fileID: 299867089556907387, guid: 2253d088e226ea14d8eb7a4890515d56, type: 3}
+  TYPE: 0
   ID: 
   HP: 0
   DEF: 0
   animator: {fileID: 842083859768973116}
   isDead: 0
   spawnSoul: 0
+  SpawnLocList: []
+  particle: {fileID: 150071477743113825}
 --- !u!114 &575238273199040669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5379,8 +5382,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.6, y: 2.4, z: 0.2}
-  m_Center: {x: 0.8, y: -1.2, z: 0}
+  m_Size: {x: 0.26666668, y: 0.4, z: 0.2}
+  m_Center: {x: 0.13333334, y: -0.2, z: 0}
 --- !u!114 &8488091549510543337
 MonoBehaviour:
   m_ObjectHideFlags: 0

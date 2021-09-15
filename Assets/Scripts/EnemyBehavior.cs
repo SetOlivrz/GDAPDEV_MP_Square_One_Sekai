@@ -36,6 +36,8 @@ public class EnemyBehavior : MonoBehaviour
     float attackTimer = 0.0f;
     int attackHand = -1;
 
+    [SerializeField] ParticleSystem particle;
+
 
     // Start is called before the first frame update
     void Start()
@@ -91,6 +93,7 @@ public class EnemyBehavior : MonoBehaviour
     public void setTarget(GameObject targetObj)
     {
         this.target = targetObj;
+        this.player = targetObj;
     }
 
     public GameObject getTarget()
@@ -183,6 +186,21 @@ public class EnemyBehavior : MonoBehaviour
     public void TurnToSoul()
     {
         spawnSoul = true;
+        
+    }
+
+    public void deathParticles()
+    {
+        if (!(particle.gameObject.activeSelf))
+        {
+            particle.gameObject.SetActive(true);
+        }
+        particle.Play();
+
+        if (particle.gameObject.activeInHierarchy == true && !(particle.IsAlive()))
+        {
+            particle.gameObject.SetActive(false);
+        }
     }
 
     public void ThrowProjectile()
@@ -225,9 +243,9 @@ public class EnemyBehavior : MonoBehaviour
     public void goToSpawnPoints()
     {
 
-        int index = Random.Range(0, SpawnLocList.Count - 1);
+        //int index = Random.Range(0, SpawnLocList.Count - 1);
 
-        this.transform.parent.position = SpawnLocList[index].transform.position;
-        Debug.Log("move to" + SpawnLocList[index].name);
+        //this.transform.parent.position = SpawnLocList[index].transform.position;
+        //Debug.Log("move to" + SpawnLocList[index].name);
     }
 }

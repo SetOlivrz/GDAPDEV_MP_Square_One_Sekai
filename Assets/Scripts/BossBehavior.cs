@@ -76,10 +76,10 @@ public class BossBehavior : MonoBehaviour
     public void goToSpawnPoints()
     {
 
-        int index = Random.Range(0, SpawnLocList.Count - 1);
+        //int index = Random.Range(0, SpawnLocList.Count - 1);
 
-        this.transform.parent.position = SpawnLocList[index].transform.position;
-        Debug.Log("move to" + SpawnLocList[index].name);
+        //this.transform.parent.position = SpawnLocList[index].transform.position;
+        //Debug.Log("move to" + SpawnLocList[index].name);
     }
 
     public void IntializeBossStats()
