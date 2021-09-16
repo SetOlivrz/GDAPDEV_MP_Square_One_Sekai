@@ -257,6 +257,14 @@ public class EnemyBehavior : MonoBehaviour
                     DEF = 0;
                     ID = "Ghost(Boss)";
                 }; break;
+
+            case "Spirit(Boss)":
+                {
+                    TYPE = 3;
+                    HP = 100;
+                    DEF = 0;
+                    ID = "Spirit(Boss)";
+                }; break;
         }
     }
 
