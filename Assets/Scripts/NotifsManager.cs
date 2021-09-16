@@ -9,6 +9,7 @@ public class NotifsManager : MonoBehaviour
     private void Awake()
     {
         BuildNotificationChannel();
+        BuildRepeatNotificationChannel()
     }
     void Start()
     {
@@ -61,7 +62,7 @@ public class NotifsManager : MonoBehaviour
         string notif_title = "Repeat notif";
         string notif_message = "This is a repeat notif";
         System.DateTime fireTime = System.DateTime.Now.AddSeconds(10);
-        System.TimeSpan interval = new System.TimeSpan(0, 10, 0);
+        System.TimeSpan interval = new System.TimeSpan(0, 2, 0);
 
         AndroidNotification notif = new AndroidNotification(notif_title, notif_message, fireTime, interval);
 

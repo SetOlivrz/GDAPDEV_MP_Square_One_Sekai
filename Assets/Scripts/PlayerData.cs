@@ -13,4 +13,8 @@ public static class PlayerData
     public static float weapon3DMG = 30.0f; // pump
     public static float tapDMG = 11.0f; // 
     public static float playerHP = 100.0f;
+    public static float healPercentage = 0.10f;
+
+    public static bool level2Unlocked = false;
+    public static bool level3unlocked = false;
 }
