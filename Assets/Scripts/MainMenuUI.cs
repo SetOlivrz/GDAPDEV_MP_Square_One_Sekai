@@ -43,18 +43,27 @@ public class MainMenuUI : MonoBehaviour
     public void startLevel1()
     {
         SceneManager.LoadScene("Level 1");
+        PlayerData.currentLevel = 1;
     }
 
     public void startLevel2()
     {
         if (PlayerData.level2Unlocked)
+        {
             SceneManager.LoadScene("Level 2");
+            PlayerData.currentLevel = 2;
+        }
+            
     }
 
     public void startLevel3()
     {
         if(PlayerData.level3Unlocked)
+        {
             SceneManager.LoadScene("Level 3");
+            PlayerData.currentLevel = 3;
+        }
+            
     }
     public void upgradeCam1()
     {
