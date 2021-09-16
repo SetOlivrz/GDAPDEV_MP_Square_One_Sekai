@@ -15,6 +15,7 @@ public static class PlayerData
     public static float playerHP = 100.0f;
     public static float healPercentage = 0.10f;
 
+    public static int currentLevel = 0;
     public static bool level2Unlocked = false;
     public static bool level3Unlocked = false;
 }

@@ -43,6 +43,25 @@ public class EnemyBehavior : MonoBehaviour
     void Start()
     {
         idleTime = Random.Range(8.0f, 12.0f);
+
+        if (PlayerData.currentLevel == 1)
+        {
+            attackRate = 2.0f;
+            idleTime = Random.Range(10.0f, 14.0f);
+        }
+            
+
+        else if (PlayerData.currentLevel == 2)
+        {
+            attackRate = 4.0f;
+            idleTime = Random.Range(8.0f, 12.0f);
+        }
+
+        else if (PlayerData.currentLevel == 3)
+        {
+            attackRate = 5.5f;
+            idleTime = Random.Range(7.0f, 8.0f);
+        }
     }
 
     // Update is called once per frame
@@ -50,6 +69,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         this.transform.LookAt(player.transform);
 
+        
         //
         if (this.TYPE ==1)
         {
