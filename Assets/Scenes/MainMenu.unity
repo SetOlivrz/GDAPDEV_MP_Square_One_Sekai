@@ -5131,6 +5131,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goldTxt: {fileID: 1701307222}
+  flashCamTxt: {fileID: 951671320}
+  sonicCamTxt: {fileID: 1981513548}
+  pumpCamTxt: {fileID: 443213292}
+  hpTxt: {fileID: 1857554656}
+  healTxt: {fileID: 1254075947}
 --- !u!4 &1267172268
 Transform:
   m_ObjectHideFlags: 0
@@ -6711,13 +6716,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1267172266}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1267172267}
+        m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
+        m_MethodName: upgradeHeal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
