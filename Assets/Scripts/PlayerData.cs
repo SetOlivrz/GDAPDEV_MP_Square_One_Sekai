@@ -16,5 +16,5 @@ public static class PlayerData
     public static float healPercentage = 0.10f;
 
     public static bool level2Unlocked = false;
-    public static bool level3unlocked = false;
+    public static bool level3Unlocked = false;
 }
