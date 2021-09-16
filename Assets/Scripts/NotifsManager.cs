@@ -9,7 +9,7 @@ public class NotifsManager : MonoBehaviour
     private void Awake()
     {
         BuildNotificationChannel();
-        BuildRepeatNotificationChannel()
+        BuildRepeatNotificationChannel();
     }
     void Start()
     {
