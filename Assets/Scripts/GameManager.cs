@@ -233,7 +233,7 @@ public class GameManager : MonoBehaviour
             if (enemyBossInstance.GetComponent<EnemyBehavior>().spawnSoul)
             {
                 soulObj = GameObject.Instantiate(soul, enemyBossInstance.transform.position, Quaternion.identity, null);
-                soulObj.name = "Eyeball(Soul)";
+                soulObj.name = "Boss(Soul)";
                 soulObj.GetComponent<EnemyBehavior>().IntializeEnemyStats();
                 soulObj.GetComponent<EnemyBehavior>().setTarget(player.gameObject);
 
