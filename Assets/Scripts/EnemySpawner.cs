@@ -61,15 +61,15 @@ public class EnemySpawner : MonoBehaviour
         if (enemyTemplates[enemyIndex].name == "Pumpkin(parent)")
         {
         
-            spawnLocIndex = Random.Range(0, enemySpawnGround.Count);
+            spawnLocIndex = Random.Range(0, enemySpawnGround.Count-1);
             enemySpawn = GameObject.Instantiate(enemyTemplates[enemyIndex], enemySpawnGround[spawnLocIndex].transform.position, Quaternion.identity, null);
+            enemySpawnGround.Remove(enemySpawnGround[spawnLocIndex]);
         }
         else
         {
             enemySpawn = GameObject.Instantiate(enemyTemplates[enemyIndex], enemySpawnLocList[spawnLocIndex].transform.position, Quaternion.identity, null);
 
         }
-
         enemySpawn.transform.LookAt(player.transform);
         enemySpawn.name = enemyTemplates[enemyIndex].name;
 

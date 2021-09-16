@@ -5,7 +5,7 @@ using UnityEngine;
 public class ProjectileBehavior : MonoBehaviour
 {
     GameObject target;
-    private float moveSpeed = 20;
+    private float moveSpeed = 3;
 
     [SerializeField] GameObject shield;
     // Start is called before the first frame update
@@ -38,13 +38,17 @@ public class ProjectileBehavior : MonoBehaviour
         }
 
         Debug.Log("Collided with: " + collisionObj.name);
+
         if (collisionObj.name == "Player")
         {
             if(GameManager.Instance.shield.activeInHierarchy == false)
             {
                 //GameManager.Instance.takeDamage(5.0f);
             }
-
+            Destroy(this.gameObject);
+        }
+        else if (collisionObj.name == "shield")
+        {
             Destroy(this.gameObject);
         }
     }
