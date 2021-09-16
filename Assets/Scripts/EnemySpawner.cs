@@ -58,7 +58,7 @@ public class EnemySpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         GameObject enemySpawn;
-        if (enemyTemplates[enemyIndex].name == "Pumpkin(parent)")
+        if (enemyTemplates[enemyIndex].name == "Pumpkin(parent)" && enemySpawnGround.Count != 0)
         {
         
             spawnLocIndex = Random.Range(0, enemySpawnGround.Count-1);
