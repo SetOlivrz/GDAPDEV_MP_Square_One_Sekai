@@ -5,11 +5,27 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class MainMenuUI : MonoBehaviour
 {
-    [SerializeField] Text goldTxt;
+    [SerializeField] Text goldTxt = null;
+    [SerializeField] Text flashCamTxt = null;
+    [SerializeField] Text sonicCamTxt = null;
+    [SerializeField] Text pumpCamTxt = null;
+    [SerializeField] Text hpTxt = null;
+    [SerializeField] Text healTxt = null;
     // Start is called before the first frame update
     void Start()
     {
         goldTxt.text = PlayerData.gold.ToString() + "G";
+
+        if(flashCamTxt != null)
+            flashCamTxt.text = "[50G]\nFlash Cam Dmg: " + PlayerData.weapon1DMG.ToString();
+        if (sonicCamTxt != null)
+            sonicCamTxt.text = "[50G]\nSonic Cam Dmg: " + PlayerData.weapon2DMG.ToString();
+        if (pumpCamTxt != null)
+            pumpCamTxt.text = "[50G]\nPump Cam Dmg: " + PlayerData.weapon3DMG.ToString();
+        if (hpTxt != null)
+            hpTxt.text = "[50G]\nStarting HP: " + PlayerData.playerHP.ToString();
+        if (healTxt != null)
+            healTxt.text = "[50G]\nHeal Percentage: " + PlayerData.healPercentage.ToString();
     }
 
     // Update is called once per frame
@@ -18,6 +34,11 @@ public class MainMenuUI : MonoBehaviour
         
     }
 
+    public void addGold()
+    {
+        PlayerData.gold += 1000;
+        goldTxt.text = PlayerData.gold.ToString() + "G";
+    }
 
     public void startLevel1()
     {
@@ -43,20 +64,17 @@ public class MainMenuUI : MonoBehaviour
 
             PlayerData.gold -= 50;
             goldTxt.text = PlayerData.gold.ToString() + "G";
+
+            if (flashCamTxt != null)
+                flashCamTxt.text = "[50G]\nFlash Cam Dmg: " + PlayerData.weapon1DMG.ToString();
+
             Debug.Log("Upgraded Cam1");
 
             AudioManager.Instance.playPurchaseUpgradeSound();
         }
-
-
-
     }
 
-    public void GoToDebugMenu()
-    {
-        SceneManager.LoadScene("DebugMenu");
 
-    }
 
     public void upgradeCam2()
     {
@@ -66,6 +84,10 @@ public class MainMenuUI : MonoBehaviour
 
             PlayerData.gold -= 50;
             goldTxt.text = PlayerData.gold.ToString() + "G";
+
+            if (sonicCamTxt != null)
+                sonicCamTxt.text = "[50G]\nSonic Cam Dmg: " + PlayerData.weapon2DMG.ToString();
+
             Debug.Log("Upgraded Cam2");
 
             AudioManager.Instance.playPurchaseUpgradeSound();
@@ -82,6 +104,9 @@ public class MainMenuUI : MonoBehaviour
             goldTxt.text = PlayerData.gold.ToString() + "G";
             Debug.Log("Upgraded Cam3");
 
+            if (pumpCamTxt != null)
+                pumpCamTxt.text = "[50G]\nPump Cam Dmg: " + PlayerData.weapon3DMG.ToString();
+
             AudioManager.Instance.playPurchaseUpgradeSound();
         }
     }
@@ -94,10 +119,46 @@ public class MainMenuUI : MonoBehaviour
 
             PlayerData.gold -= 50;
             goldTxt.text = PlayerData.gold.ToString() + "G";
+
+            if (hpTxt != null)
+                hpTxt.text = "[50G]\nStarting HP: " + PlayerData.playerHP.ToString();
+
             Debug.Log("Upgraded HP");
+
+            AudioManager.Instance.playPurchaseUpgradeSound();
         }
             
     }
 
-    
+    public void upgradeHeal()
+    {
+        if (PlayerData.gold >= 50)
+        {
+            PlayerData.healPercentage += 0.0125f;
+
+            PlayerData.gold -= 50;
+            goldTxt.text = PlayerData.gold.ToString() + "G";
+
+            if (healTxt != null)
+                healTxt.text = "[50G]\nMax HP % Heal: " + PlayerData.healPercentage.ToString();
+
+            Debug.Log("Upgraded Heal Percentage");
+
+            AudioManager.Instance.playPurchaseUpgradeSound();
+        }
+
+    }
+
+    public void unlockAllLevels()
+    {
+        PlayerData.level2Unlocked = true;
+        PlayerData.level3Unlocked = true;
+    }
+    public void GoToDebugMenu()
+    {
+        SceneManager.LoadScene("DebugMenu");
+
+    }
+
+
 }
