@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        hp = PlayerData.playerHP;
+        hp = PlayerData.playerHP/2;
     }
 
     // Update is called once per frame
