@@ -173,7 +173,9 @@ public class WeaponsManager : MonoBehaviour
         {
             if (hit.transform.TryGetComponent(out EnemyBehavior EB))
             {
-                if (EB.ID == "Ghost")
+                Debug.Log(EB.ID);
+
+                if (EB.ID == "Ghost" || EB.ID == "Ghost(Boss)")
                 {
                     Debug.Log("click");
 

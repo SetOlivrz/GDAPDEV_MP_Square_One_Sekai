@@ -146,6 +146,14 @@ public class EnemyBehavior : MonoBehaviour
                     DEF = 0;
                     ID = "Soul";
                 }; break;
+
+            case "Ghost(Boss)":
+                {
+                    TYPE = 3;
+                    HP = 100;
+                    DEF = 0;
+                    ID = "Ghost(Boss)";
+                }; break;
         }
     }
 
@@ -205,7 +213,7 @@ public class EnemyBehavior : MonoBehaviour
 
     public void ThrowProjectile()
     {
-        GameObject.Instantiate(projectile, this.transform);
+        GameObject.Instantiate(projectile, this.transform.position +(this.transform.forward *0.2f), Quaternion.identity, this.transform);
     }
 
     
@@ -217,11 +225,18 @@ public class EnemyBehavior : MonoBehaviour
             case "Eyeball(Boss)":
                 {
                     TYPE = 3;
-                    HP = 150;
+                    HP = 200;
                     DEF = 0;
                     ID = "Eyeball(Boss)";
                 }; break;
 
+            case "Ghost(Boss)":
+                {
+                    TYPE = 3;
+                    HP = 100;
+                    DEF = 0;
+                    ID = "Ghost(Boss)";
+                }; break;
         }
     }
 

@@ -296,7 +296,7 @@ GameObject:
   - component: {fileID: 4204569407220768833}
   - component: {fileID: 2828423983054561374}
   m_Layer: 8
-  m_Name: Ghost
+  m_Name: Ghost(Boss)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -310,8 +310,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4204569407220768832}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.3847, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -0.3153, z: 0}
+  m_LocalScale: {x: 1.6708, y: 1.6708, z: 1.6708}
   m_Children:
   - {fileID: 7092772676178863091}
   - {fileID: 6956195675242297417}
@@ -360,7 +360,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 1961375382278889419, guid: 44f3d0329033d5c4689a04e681d924ca, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -550,7 +550,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6880791266540304399}
   m_Layer: 0
-  m_Name: Ghost(parent)
+  m_Name: Ghost(parent) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
