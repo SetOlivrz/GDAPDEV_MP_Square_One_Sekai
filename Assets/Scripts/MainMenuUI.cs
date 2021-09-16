@@ -24,9 +24,20 @@ public class MainMenuUI : MonoBehaviour
         SceneManager.LoadScene("Level 1");
     }
 
+    public void startLevel2()
+    {
+        if (PlayerData.level2Unlocked)
+            SceneManager.LoadScene("Level 2");
+    }
+
+    public void startLevel3()
+    {
+        if(PlayerData.level3Unlocked)
+            SceneManager.LoadScene("Level 3");
+    }
     public void upgradeCam1()
     {
-        if(PlayerData.gold > 50)
+        if (PlayerData.gold > 50)
         {
             PlayerData.weapon1DMG *= 1.25f;
 
@@ -36,7 +47,15 @@ public class MainMenuUI : MonoBehaviour
 
             AudioManager.Instance.playPurchaseUpgradeSound();
         }
-        
+
+
+
+    }
+
+    public void GoToDebugMenu()
+    {
+        SceneManager.LoadScene("DebugMenu");
+
     }
 
     public void upgradeCam2()
