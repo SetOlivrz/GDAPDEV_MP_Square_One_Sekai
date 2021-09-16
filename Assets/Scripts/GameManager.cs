@@ -118,6 +118,12 @@ public class GameManager : MonoBehaviour
                 victoryPopup.transform.parent.gameObject.SetActive(true);
                 victoryPopup.SetActive(true);
                 isResultsDisplayed = true;
+
+                if (PlayerData.currentLevel == 1)
+                    PlayerData.level2Unlocked = true;
+
+                else if (PlayerData.currentLevel == 2)
+                    PlayerData.level3Unlocked = true;
             }
         }
 
