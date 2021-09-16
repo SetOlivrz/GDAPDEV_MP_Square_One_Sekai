@@ -564,7 +564,7 @@ MonoBehaviour:
   - {fileID: 5003276402320310493, guid: 0cf38e2125bafc844aabd7f228636100, type: 3}
   - {fileID: 4667176235619577110, guid: 792d2e224c4cc6648b8b758ba7949f74, type: 3}
   - {fileID: 1645647086217346171, guid: 8f606baab1c0a264c996e63a2da260d8, type: 3}
-  bossTemplate: {fileID: 5003276402320310493, guid: 7b784564856491f49b26d36705e6c402, type: 3}
+  bossTemplate: {fileID: 5003276402320310493, guid: 236446687e502564db73cfac69682c0c, type: 3}
   player: {fileID: 3690122499708129829}
   totalSpawn: 0
 --- !u!4 &366205168

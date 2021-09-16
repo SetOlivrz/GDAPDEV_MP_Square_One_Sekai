@@ -296,7 +296,7 @@ GameObject:
   - component: {fileID: 4204569407220768833}
   - component: {fileID: 2828423983054561374}
   m_Layer: 8
-  m_Name: Ghost(Boss)
+  m_Name: Spirit(Boss)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -359,7 +359,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1961375382278889419, guid: 44f3d0329033d5c4689a04e681d924ca, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b034854004b606a44b29b4ca9879ab82, type: 3}
   m_Color: {r: 1, g: 0, b: 0.5443487, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -380,7 +380,7 @@ Animator:
   m_GameObject: {fileID: 4204569407220768832}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 73b2159ecb8b2164c86f49c351c2ab07, type: 2}
+  m_Controller: {fileID: 9100000, guid: d23c204feb12567429c3856fe09cadf4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -411,7 +411,6 @@ MonoBehaviour:
   isDead: 0
   spawnSoul: 0
   SpawnLocList: []
-  spawner: {fileID: 5019003885235565076, guid: 03f0f061baa646d4793c6fefac77b12a, type: 3}
   particle: {fileID: 8400466110207993602}
 --- !u!65 &4204569407220768833
 BoxCollider:
@@ -424,7 +423,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.32, y: 0.32, z: 0.2}
+  m_Size: {x: 0.73142856, y: 0.73142856, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2828423983054561374
 MonoBehaviour:
@@ -551,7 +550,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6880791266540304399}
   m_Layer: 0
-  m_Name: Ghost(parent) 1
+  m_Name: Spirit(parent)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

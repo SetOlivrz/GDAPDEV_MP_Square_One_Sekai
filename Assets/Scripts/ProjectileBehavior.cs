@@ -43,7 +43,7 @@ public class ProjectileBehavior : MonoBehaviour
         {
             if(GameManager.Instance.shield.activeInHierarchy == false)
             {
-                //GameManager.Instance.takeDamage(5.0f);
+                GameManager.Instance.takeDamage(5.0f);
             }
             Destroy(this.gameObject);
         }

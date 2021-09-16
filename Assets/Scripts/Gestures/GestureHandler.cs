@@ -188,7 +188,7 @@ public class GestureHandler : MonoBehaviour
                 PlayerData.nCollectedSouls++;
                 PlayerData.gold += 5;
             }
-            else if (hit.transform.name == "Eyeball(Boss)")
+            else if (hit.transform.name == "Eyeball(Boss)"|| hit.transform.name == "Spirit(Boss)")
             {
                 hit.transform.gameObject.GetComponent<EnemyBehavior>().TakeDamage(PlayerData.tapDMG);
                 hit.transform.gameObject.GetComponent<EnemyBehavior>().DisplayStats();
