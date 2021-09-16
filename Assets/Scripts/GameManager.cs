@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
@@ -32,6 +33,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject victoryPopup;
     [SerializeField] GameObject defeatPopup;
     [SerializeField] GameObject bossFightPopup;
+
+    [SerializeField] Text soulsCol;
     GameObject enemyBossInstance;
     GameObject enemyFound;
 
@@ -60,6 +63,8 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+
+        soulsCol.text = PlayerData.nCollectedSouls.ToString();
         // if dead -> phase -1
         if (gamePhase == -1)
         {

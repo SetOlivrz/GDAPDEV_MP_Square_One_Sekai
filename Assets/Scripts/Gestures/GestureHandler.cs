@@ -193,7 +193,7 @@ public class GestureHandler : MonoBehaviour
                 hit.transform.gameObject.GetComponent<EnemyBehavior>().TakeDamage(PlayerData.tapDMG);
                 hit.transform.gameObject.GetComponent<EnemyBehavior>().DisplayStats();
             }
-            else if (hit.transform.name == "Eyeball(Soul)")
+            else if (hit.transform.name == "Boss(Soul)")
             {
                 Debug.Log("Destroy");
                 Destroy(hit.transform.gameObject);
