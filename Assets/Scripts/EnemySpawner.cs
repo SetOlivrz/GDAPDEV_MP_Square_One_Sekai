@@ -6,17 +6,19 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] List<GameObject> enemySpawnLocList;
     [SerializeField] List<GameObject> enemySpawnGround;
-    [SerializeField] GameObject[] enemyTemplates;
-    [SerializeField] GameObject bossTemplate = null;
+    GameObject[] enemyTemplates;
+    GameObject bossTemplate = null;
 
     [SerializeField] GameObject player;
 
+    AssetBundleManager assetManager;
     private int numEnemy = 0; // enemy alive
     public int totalSpawn = 0;  // number of totalSpawn
     private bool isSpawnInitial = false;
     // Start is called before the first frame update
     void Start()
     {
+        assetManager = AssetBundleManager.Instance;
         //while(enemySpawnList.Count != 0)
         //{
         //    GameObject enemySpawn = GameObject.Instantiate(enemyObj, enemySpawnList[0].transform.position, Quaternion.identity, null);
@@ -24,6 +26,35 @@ public class EnemySpawner : MonoBehaviour
         //    targetHolder.addTarget(enemySpawn);
         //    enemySpawnList.RemoveAt(0);
         //}
+        if(PlayerData.currentLevel == 1)
+        {
+            enemyTemplates = new GameObject[2];
+            enemyTemplates[0] = assetManager.GetAsset<GameObject>("characters", "Bat(parent)");
+            enemyTemplates[1] = assetManager.GetAsset<GameObject>("characters", "Ghost(parent)");
+
+            bossTemplate = assetManager.GetAsset<GameObject>("characters", "Eyeball(parent)");
+        }
+
+        else if (PlayerData.currentLevel == 2)
+        {
+            enemyTemplates = new GameObject[3];
+            enemyTemplates[0] = assetManager.GetAsset<GameObject>("characters", "Bat(parent)");
+            enemyTemplates[1] = assetManager.GetAsset<GameObject>("characters", "Ghost(parent)");
+            enemyTemplates[2] = assetManager.GetAsset<GameObject>("characters", "Pumpkin(parent)");
+
+            bossTemplate = assetManager.GetAsset<GameObject>("characters", "Ghost(parent) 1");
+        }
+
+        else if (PlayerData.currentLevel == 3)
+        {
+            enemyTemplates = new GameObject[3];
+            enemyTemplates[0] = assetManager.GetAsset<GameObject>("characters", "Bat(parent)");
+            enemyTemplates[1] = assetManager.GetAsset<GameObject>("characters", "Ghost(parent)");
+            enemyTemplates[2] = assetManager.GetAsset<GameObject>("characters", "Pumpkin(parent)");
+
+            bossTemplate = assetManager.GetAsset<GameObject>("characters", "Spirit(parent)");
+        }
+        
         int enemySpawnTemplateIndex = Random.Range(0, enemyTemplates.Length);
 
         float spawnTimeDelay = Random.Range(2.5f, 3.5f);
