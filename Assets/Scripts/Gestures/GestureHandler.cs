@@ -113,13 +113,7 @@ public class GestureHandler : MonoBehaviour
             }
             else if (trackedFinger.phase == TouchPhase.Moved)
             {
-                Debug.Log("moved");
 
-                //if (Vector2.Distance(trackedFinger1.position, trackedFinger2.position) >= (Screen.dpi * rotateProperty.minDistance))
-                //{
-                //    CheckForRotation();
-
-                //}
             }
             else if (trackedFinger.phase == TouchPhase.Ended)
             {
@@ -136,9 +130,6 @@ public class GestureHandler : MonoBehaviour
                 }
             }
         }
-
-       
-        
     }
 
     private void SingleFingerTracking()
