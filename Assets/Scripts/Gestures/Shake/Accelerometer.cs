@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Accelerometer : MonoBehaviour
 {
-    public float minChange = 1.5f;
+    public float minChange = 4f;
     public bool cooldown = false;
     public float percentHeal = 0.10f;
     public int cooldownTime = 3;

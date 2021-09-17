@@ -32,7 +32,7 @@ public class EnemySpawner : MonoBehaviour
             enemyTemplates[0] = assetManager.GetAsset<GameObject>("characters", "Bat(parent)");
             enemyTemplates[1] = assetManager.GetAsset<GameObject>("characters", "Ghost(parent)");
 
-            bossTemplate = assetManager.GetAsset<GameObject>("characters", "Eyeball(parent)");
+            bossTemplate = assetManager.GetAsset<GameObject>("characters", "Eyeball (parent)");
         }
 
         else if (PlayerData.currentLevel == 2)

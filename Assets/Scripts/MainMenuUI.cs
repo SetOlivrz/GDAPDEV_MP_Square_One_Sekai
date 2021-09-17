@@ -54,12 +54,12 @@ public class MainMenuUI : MonoBehaviour
             }
         }
 
+        goldTxt.text = PlayerData.gold.ToString() + "G";
     }
 
     public void addGold()
     {
         PlayerData.gold += 1000;
-        goldTxt.text = PlayerData.gold.ToString() + "G";
     }
 
     public void startLevel1()
@@ -94,7 +94,6 @@ public class MainMenuUI : MonoBehaviour
             PlayerData.weapon1DMG *= 1.25f;
 
             PlayerData.gold -= 50;
-            goldTxt.text = PlayerData.gold.ToString() + "G";
 
             if (flashCamTxt != null)
                 flashCamTxt.text = "[50G]\nFlash Cam Dmg: " + PlayerData.weapon1DMG.ToString();
@@ -114,7 +113,6 @@ public class MainMenuUI : MonoBehaviour
             PlayerData.weapon2DMG *= 1.25f;
 
             PlayerData.gold -= 50;
-            goldTxt.text = PlayerData.gold.ToString() + "G";
 
             if (sonicCamTxt != null)
                 sonicCamTxt.text = "[50G]\nSonic Cam Dmg: " + PlayerData.weapon2DMG.ToString();
@@ -132,7 +130,6 @@ public class MainMenuUI : MonoBehaviour
             PlayerData.weapon3DMG *= 1.25f;
 
             PlayerData.gold -= 50;
-            goldTxt.text = PlayerData.gold.ToString() + "G";
             Debug.Log("Upgraded Cam3");
 
             if (pumpCamTxt != null)
@@ -149,7 +146,6 @@ public class MainMenuUI : MonoBehaviour
             PlayerData.playerHP += 10.0f;
 
             PlayerData.gold -= 50;
-            goldTxt.text = PlayerData.gold.ToString() + "G";
 
             if (hpTxt != null)
                 hpTxt.text = "[50G]\nStarting HP: " + PlayerData.playerHP.ToString();
@@ -168,7 +164,7 @@ public class MainMenuUI : MonoBehaviour
             PlayerData.healPercentage += 0.0125f;
 
             PlayerData.gold -= 50;
-            goldTxt.text = PlayerData.gold.ToString() + "G";
+            
 
             if (healTxt != null)
                 healTxt.text = "[50G]\nMax HP % Heal: " + PlayerData.healPercentage.ToString();
