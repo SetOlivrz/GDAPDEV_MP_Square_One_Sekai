@@ -199,7 +199,9 @@ public class GestureHandler : MonoBehaviour
                 Destroy(hit.transform.gameObject);
                 PlayerData.nCollectedSouls += 100;
                 PlayerData.gold += 100;
+                PlayerData.nEnemyBossesKilled++;
                 GameManager.Instance.levelComplete = true;
+
             }
         }
         }
