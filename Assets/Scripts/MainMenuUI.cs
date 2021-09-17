@@ -11,6 +11,11 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField] Text pumpCamTxt = null;
     [SerializeField] Text hpTxt = null;
     [SerializeField] Text healTxt = null;
+    [SerializeField] GameObject level2Btn = null;
+    [SerializeField] GameObject level3Btn = null;
+
+    private bool level2Unlocked = false;
+    private bool level3Unlocked = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +36,24 @@ public class MainMenuUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(level2Btn != null)
+        {
+            if (PlayerData.level2Unlocked && !level2Unlocked)
+            {
+                level2Btn.GetComponent<Image>().color = new Color(1, 1, 1);
+                level2Unlocked = true;
+            }
+        }
+
+        if (level3Btn != null)
+        {
+            if (PlayerData.level3Unlocked && !level3Unlocked)
+            {
+                level3Btn.GetComponent<Image>().color = new Color(1, 1, 1);
+                level3Unlocked = true;
+            }
+        }
+
     }
 
     public void addGold()
