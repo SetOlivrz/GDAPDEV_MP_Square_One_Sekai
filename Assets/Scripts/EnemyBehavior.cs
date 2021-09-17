@@ -261,7 +261,7 @@ public class EnemyBehavior : MonoBehaviour
             case "Spirit(Boss)":
                 {
                     TYPE = 3;
-                    HP = 100;
+                    HP = 300;
                     DEF = 0;
                     ID = "Spirit(Boss)";
                 }; break;

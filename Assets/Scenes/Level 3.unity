@@ -614,11 +614,6 @@ MonoBehaviour:
   - {fileID: 1398880558}
   - {fileID: 797323911}
   - {fileID: 836027921}
-  enemyTemplates:
-  - {fileID: 5003276402320310493, guid: 0cf38e2125bafc844aabd7f228636100, type: 3}
-  - {fileID: 4667176235619577110, guid: 792d2e224c4cc6648b8b758ba7949f74, type: 3}
-  - {fileID: 1645647086217346171, guid: 8f606baab1c0a264c996e63a2da260d8, type: 3}
-  bossTemplate: {fileID: 5003276402320310493, guid: edfba87bb213c57408c12888e6c1749f, type: 3}
   player: {fileID: 3690122499708129829}
   totalSpawn: 0
 --- !u!4 &366205168
@@ -14865,7 +14860,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e099cbf041d84574b8f168098c45d392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minChange: 1.5
+  minChange: 2
   cooldown: 0
   percentHeal: 0.1
   cooldownTime: 3

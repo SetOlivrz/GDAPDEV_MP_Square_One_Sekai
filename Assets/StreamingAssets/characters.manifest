@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1897313919
+CRC: 1348519791
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 029ca82dfa92145cb1bb3c160c9fea53
+    Hash: 8ca30ae603edf4cabcf76f496a402715
   TypeTreeHash:
     serializedVersion: 2
     Hash: a10945679c9ef2564e1846dfa0056be1
@@ -83,9 +83,10 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
+- Assets/Characters/Bosses/Spirit/Spirit(parent).prefab
 - Assets/Characters/Pumpkin/Pumpkin(parent).prefab
 - Assets/Characters/Bosses/EyeBall/Eyeball (parent).prefab
-- Assets/Characters/Ghost/Ghost(parent).prefab
 - Assets/Characters/Bosses/Ghost/Ghost(parent) 1.prefab
+- Assets/Characters/Ghost/Ghost(parent).prefab
 - Assets/Characters/Bat/Bat(parent).prefab
 Dependencies: []

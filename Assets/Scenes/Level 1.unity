@@ -14731,7 +14731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e099cbf041d84574b8f168098c45d392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minChange: 1.5
+  minChange: 2
   cooldown: 0
   percentHeal: 0.1
   cooldownTime: 3
