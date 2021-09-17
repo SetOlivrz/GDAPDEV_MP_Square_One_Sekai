@@ -14774,7 +14774,7 @@ MonoBehaviour:
     tapTime: 0.7
     tapMaxDistance: 0.1
   swipeProperty:
-    minSwipeDistance: 2
+    minSwipeDistance: 0.85
     swipeTime: 0.7
   spreadProperty:
     MinDistanceChange: 0.3
@@ -14883,7 +14883,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1578734713519309174, guid: 3cf64deabcf02ae44bcf336f051e965c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1578734714131864611, guid: 3cf64deabcf02ae44bcf336f051e965c, type: 3}
       propertyPath: m_Enabled
@@ -14895,7 +14895,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1578734714131864637, guid: 3cf64deabcf02ae44bcf336f051e965c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1578734714701945868, guid: 3cf64deabcf02ae44bcf336f051e965c, type: 3}
       propertyPath: m_Name
@@ -14911,7 +14911,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1578734715219420695, guid: 3cf64deabcf02ae44bcf336f051e965c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1578734715254614596, guid: 3cf64deabcf02ae44bcf336f051e965c, type: 3}
       propertyPath: m_Enabled
@@ -14923,7 +14923,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1578734715254614598, guid: 3cf64deabcf02ae44bcf336f051e965c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1578734715355195874, guid: 3cf64deabcf02ae44bcf336f051e965c, type: 3}
       propertyPath: m_RootOrder
@@ -14979,7 +14979,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1578734715421149063, guid: 3cf64deabcf02ae44bcf336f051e965c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2493737635292517504, guid: 3cf64deabcf02ae44bcf336f051e965c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15059,23 +15059,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2493737635292517536, guid: 3cf64deabcf02ae44bcf336f051e965c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2493737635292517540, guid: 3cf64deabcf02ae44bcf336f051e965c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2493737635292517541, guid: 3cf64deabcf02ae44bcf336f051e965c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2493737635292517542, guid: 3cf64deabcf02ae44bcf336f051e965c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2493737635292517543, guid: 3cf64deabcf02ae44bcf336f051e965c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2493737635292517544, guid: 3cf64deabcf02ae44bcf336f051e965c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15087,15 +15087,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2493737635292517545, guid: 3cf64deabcf02ae44bcf336f051e965c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2493737635292517546, guid: 3cf64deabcf02ae44bcf336f051e965c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2493737635292517547, guid: 3cf64deabcf02ae44bcf336f051e965c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2493737635292517548, guid: 3cf64deabcf02ae44bcf336f051e965c, type: 3}
       propertyPath: m_LocalPosition.y
