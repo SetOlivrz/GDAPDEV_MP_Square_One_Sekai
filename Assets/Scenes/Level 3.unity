@@ -14903,7 +14903,7 @@ MonoBehaviour:
     tapTime: 0.7
     tapMaxDistance: 0.1
   swipeProperty:
-    minSwipeDistance: 2
+    minSwipeDistance: 0.85
     swipeTime: 0.7
   spreadProperty:
     MinDistanceChange: 0.3
