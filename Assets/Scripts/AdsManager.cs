@@ -102,6 +102,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
 
     public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)
     {
+        Debug.Log("Watched ad");
         if(placementId == sampleRewarded)
         {
             PlayerData.gold += 100;
