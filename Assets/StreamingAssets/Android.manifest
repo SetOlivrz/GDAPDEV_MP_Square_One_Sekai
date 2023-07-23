@@ -1,10 +1,10 @@
 ManifestFileVersion: 0
-CRC: 1997429506
+CRC: 232292948
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: sounds
+      Name: characters
       Dependencies: {}
     Info_1:
-      Name: characters
+      Name: sounds
       Dependencies: {}

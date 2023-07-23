@@ -28,7 +28,7 @@ public class GestureHandler : MonoBehaviour
     public bool onSwipe = false;
     public int swipeDirection = 0;
 
-    bool bothSidesTracked = false;
+    //bool bothSidesTracked = false;
     public bool twoFingerHold = false;
 
 

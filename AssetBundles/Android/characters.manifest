@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 1348519791
+CRC: 2302395967
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 8ca30ae603edf4cabcf76f496a402715
+    Hash: 26983faffac0afb37e9c3f8a94877d0c
   TypeTreeHash:
     serializedVersion: 2
-    Hash: a10945679c9ef2564e1846dfa0056be1
+    Hash: a0390d89224fa3534ba830c6e092d5ed
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -81,7 +81,21 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 224
   Script: {instanceID: 0}
-SerializeReferenceClassIdentifiers: []
+SerializeReferenceClassIdentifiers:
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentCallGroup
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.AnimationTriggers
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.ColorBlock
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Navigation
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Slider/SliderEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.SpriteState
 Assets:
 - Assets/Characters/Bosses/Spirit/Spirit(parent).prefab
 - Assets/Characters/Pumpkin/Pumpkin(parent).prefab

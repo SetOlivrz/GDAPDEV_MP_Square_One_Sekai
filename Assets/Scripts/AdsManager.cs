@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Advertisements;
 
-public class AdsManager : MonoBehaviour, IUnityAdsListener
+public class AdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
 {
 
     public string GameID
@@ -13,7 +13,10 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
 #if UNITY_ANDROID
             return "4302981";
 #elif UNITY_IOS
-            return "4302980";
+                return "4302980";
+#else
+                // Provide a default value here
+            return "4302981";
 #endif
         }
     }
@@ -27,7 +30,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
     }
     void Start()
     {
-        Advertisement.AddListener(this);
+        //Advertisement.AddListener(this);
 
     }
 
@@ -39,28 +42,15 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
 
     public void ShowInterstitialAd()
     {
-        if(Advertisement.IsReady(sampleInterstitial))
-        {
-            Advertisement.Show(sampleInterstitial);
-        }
 
-        else
-        {
-            Debug.Log("No ads: " + sampleInterstitial);
-        }
+        Advertisement.Load(sampleInterstitial, this);
+        Advertisement.Show(sampleInterstitial, this);
     }
 
     public void ShowRewardedAd()
     {
-        if (Advertisement.IsReady(sampleRewarded))
-        {
-            Advertisement.Show(sampleRewarded);
-        }
-
-        else
-        {
-            Debug.Log("No ads: " + sampleRewarded);
-        }
+        Advertisement.Load(sampleRewarded, this);
+        Advertisement.Show(sampleRewarded, this);
     }
 
     private IEnumerator ShowBannerRoutine()
@@ -107,5 +97,35 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
         {
             PlayerData.gold += 100;
         }
+    }
+
+    public void OnUnityAdsAdLoaded(string placementId)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnUnityAdsFailedToLoad(string placementId, UnityAdsLoadError error, string message)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnUnityAdsShowFailure(string placementId, UnityAdsShowError error, string message)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnUnityAdsShowStart(string placementId)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnUnityAdsShowClick(string placementId)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnUnityAdsShowComplete(string placementId, UnityAdsShowCompletionState showCompletionState)
+    {
+        throw new System.NotImplementedException();
     }
 }
