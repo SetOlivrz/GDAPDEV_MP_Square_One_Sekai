@@ -63,7 +63,7 @@ TextureImporter:
       213: 2284130327909697684
     second: Eyeball_24
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -84,6 +84,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -122,6 +123,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -149,6 +151,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -592,6 +606,27 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Eyeball_0: -2792402802363126846
+      Eyeball_1: 112571745976006824
+      Eyeball_10: -5118414881637855136
+      Eyeball_11: 1343987463295443880
+      Eyeball_12: -5459812569046549345
+      Eyeball_13: 3192425259646650665
+      Eyeball_14: -1505946986294218185
+      Eyeball_15: 8094998680276224429
+      Eyeball_16: 8691396837579471808
+      Eyeball_17: -3585724762064130786
+      Eyeball_2: 4696390048660997592
+      Eyeball_23: -4860793884792443995
+      Eyeball_24: 2284130327909697684
+      Eyeball_3: -7149191858110582771
+      Eyeball_4: -4539880026570852370
+      Eyeball_5: -8802191901591396175
+      Eyeball_6: -7401047152809302156
+      Eyeball_7: -3755351595799010515
+      Eyeball_8: -6532215143079718499
+      Eyeball_9: -4898622871031195346
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

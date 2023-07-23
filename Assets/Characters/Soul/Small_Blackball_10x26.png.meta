@@ -180,7 +180,7 @@ TextureImporter:
       213: 8119185024839713412
     second: Small_Blackball_10x26_58
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -201,6 +201,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -239,6 +240,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -266,6 +268,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -1528,6 +1542,66 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Small_Blackball_10x26_0: 2409798844838815082
+      Small_Blackball_10x26_1: 8619581607618392794
+      Small_Blackball_10x26_10: 1083965651241277217
+      Small_Blackball_10x26_11: 7413573692778922296
+      Small_Blackball_10x26_12: -5260879092198996259
+      Small_Blackball_10x26_13: -5070228130871254693
+      Small_Blackball_10x26_14: 1023754924632476794
+      Small_Blackball_10x26_15: -1370324040207173582
+      Small_Blackball_10x26_16: 8290332629318791326
+      Small_Blackball_10x26_17: -8290036917440935760
+      Small_Blackball_10x26_18: 1034953661832104530
+      Small_Blackball_10x26_19: 1987467188491781648
+      Small_Blackball_10x26_2: 5136880023664975161
+      Small_Blackball_10x26_20: -4831296729106316261
+      Small_Blackball_10x26_21: 4616563038194823370
+      Small_Blackball_10x26_22: 5633448911411874541
+      Small_Blackball_10x26_23: 7202571618651596923
+      Small_Blackball_10x26_24: -8734155425539255172
+      Small_Blackball_10x26_25: -6298102979502184585
+      Small_Blackball_10x26_26: -323215619099520889
+      Small_Blackball_10x26_27: -6553941905826772797
+      Small_Blackball_10x26_28: 1316137135894791824
+      Small_Blackball_10x26_29: 1461286085126598909
+      Small_Blackball_10x26_3: -8959249038902408445
+      Small_Blackball_10x26_30: -8145282356122069252
+      Small_Blackball_10x26_31: -984895783057208118
+      Small_Blackball_10x26_32: -4540596205094845949
+      Small_Blackball_10x26_33: -8294270287940348118
+      Small_Blackball_10x26_34: 2860440161063737271
+      Small_Blackball_10x26_35: -4069210037699732755
+      Small_Blackball_10x26_36: 8763332483617365802
+      Small_Blackball_10x26_37: 1211275483312713409
+      Small_Blackball_10x26_38: 2320983826355099966
+      Small_Blackball_10x26_39: 1086217346421177547
+      Small_Blackball_10x26_4: -1491346681321739352
+      Small_Blackball_10x26_40: -7692908610772313463
+      Small_Blackball_10x26_41: 2587914656264924426
+      Small_Blackball_10x26_42: -7525212811990486611
+      Small_Blackball_10x26_43: 3269233387704626360
+      Small_Blackball_10x26_44: 654187678703745758
+      Small_Blackball_10x26_45: -9107299059985491530
+      Small_Blackball_10x26_46: 2875129208802148163
+      Small_Blackball_10x26_47: 3929798685821322602
+      Small_Blackball_10x26_48: 3819632401868709610
+      Small_Blackball_10x26_49: -911232881854248488
+      Small_Blackball_10x26_5: -142451163425347856
+      Small_Blackball_10x26_50: -1907281733459042791
+      Small_Blackball_10x26_51: 1309645794943875417
+      Small_Blackball_10x26_52: -4409921403046591504
+      Small_Blackball_10x26_53: -8248805479576656589
+      Small_Blackball_10x26_54: 1511812627827892656
+      Small_Blackball_10x26_55: -3098781956398723664
+      Small_Blackball_10x26_56: 9145597552714499120
+      Small_Blackball_10x26_57: 2796051116410463567
+      Small_Blackball_10x26_58: 8119185024839713412
+      Small_Blackball_10x26_6: -4391230431600611511
+      Small_Blackball_10x26_7: -2928223432200468506
+      Small_Blackball_10x26_8: 7365301391324215124
+      Small_Blackball_10x26_9: 2922322598693744905
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

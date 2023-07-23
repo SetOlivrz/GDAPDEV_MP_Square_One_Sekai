@@ -81,7 +81,7 @@ TextureImporter:
       213: -4329198064176485392
     second: NEwSprSht_CutePump_25
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -102,6 +102,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -140,6 +141,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -167,6 +169,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -694,6 +708,31 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      NEwSprSht_CutePump_0: 8842641007129781869
+      NEwSprSht_CutePump_1: 4784860429708971887
+      NEwSprSht_CutePump_10: -26628719638185118
+      NEwSprSht_CutePump_11: -9103703732485471904
+      NEwSprSht_CutePump_12: -4152757501468749775
+      NEwSprSht_CutePump_13: -2712811721675041674
+      NEwSprSht_CutePump_14: 2029197218123478091
+      NEwSprSht_CutePump_15: 5820204876933498152
+      NEwSprSht_CutePump_18: -1362264343354020641
+      NEwSprSht_CutePump_19: -5835826579642219858
+      NEwSprSht_CutePump_2: 328048617757148988
+      NEwSprSht_CutePump_20: 6239434756786688558
+      NEwSprSht_CutePump_21: 5161872910946727396
+      NEwSprSht_CutePump_22: -7052225901103640621
+      NEwSprSht_CutePump_23: -501581848011449257
+      NEwSprSht_CutePump_24: 6056313312316542878
+      NEwSprSht_CutePump_25: -4329198064176485392
+      NEwSprSht_CutePump_3: 6583195164827294273
+      NEwSprSht_CutePump_4: 6643444036593877194
+      NEwSprSht_CutePump_5: -8010863172849898188
+      NEwSprSht_CutePump_6: -1252331934728069170
+      NEwSprSht_CutePump_7: -5641787853718103314
+      NEwSprSht_CutePump_8: 8852626859363958854
+      NEwSprSht_CutePump_9: 6463847165874589819
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -204,7 +204,7 @@ TextureImporter:
       213: 289350937118102655
     second: Jumping_Small_Fireball_14x45_76
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -225,6 +225,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -263,6 +264,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -290,6 +292,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -1720,6 +1734,74 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Jumping_Small_Fireball_14x45_0: -2997438928433538884
+      Jumping_Small_Fireball_14x45_1: -5209779109012696852
+      Jumping_Small_Fireball_14x45_10: -5548819068779029683
+      Jumping_Small_Fireball_14x45_11: 5984271846745610451
+      Jumping_Small_Fireball_14x45_12: -4865399537246511684
+      Jumping_Small_Fireball_14x45_13: 5043195411314058331
+      Jumping_Small_Fireball_14x45_14: 2925602574219272339
+      Jumping_Small_Fireball_14x45_15: -1865259348337356813
+      Jumping_Small_Fireball_14x45_16: 2681042001080439445
+      Jumping_Small_Fireball_14x45_17: -2754422722702380063
+      Jumping_Small_Fireball_14x45_18: 8448801765223196916
+      Jumping_Small_Fireball_14x45_19: -986025721784931204
+      Jumping_Small_Fireball_14x45_2: -2310422957300063864
+      Jumping_Small_Fireball_14x45_20: -4370762914201653606
+      Jumping_Small_Fireball_14x45_21: -1152981765558835994
+      Jumping_Small_Fireball_14x45_22: -6498326168010098870
+      Jumping_Small_Fireball_14x45_23: -9019958673125704815
+      Jumping_Small_Fireball_14x45_24: -320120176825169361
+      Jumping_Small_Fireball_14x45_28: 7206900929690865627
+      Jumping_Small_Fireball_14x45_3: 7420111162295138190
+      Jumping_Small_Fireball_14x45_30: -7678634280229941717
+      Jumping_Small_Fireball_14x45_31: 3846342769564402280
+      Jumping_Small_Fireball_14x45_32: 5503336922119093494
+      Jumping_Small_Fireball_14x45_33: -2894976783003464760
+      Jumping_Small_Fireball_14x45_37: -6293117936211762279
+      Jumping_Small_Fireball_14x45_38: -5707915370199557711
+      Jumping_Small_Fireball_14x45_4: -8594414187967533043
+      Jumping_Small_Fireball_14x45_40: 6361482602823985299
+      Jumping_Small_Fireball_14x45_43: 6941294721960789337
+      Jumping_Small_Fireball_14x45_44: -5924549103775698917
+      Jumping_Small_Fireball_14x45_45: 8436514019730979193
+      Jumping_Small_Fireball_14x45_46: -1846152789393226758
+      Jumping_Small_Fireball_14x45_47: -3028430763674412548
+      Jumping_Small_Fireball_14x45_48: -838941661407207191
+      Jumping_Small_Fireball_14x45_49: -911012256121215662
+      Jumping_Small_Fireball_14x45_5: 3012423697274797077
+      Jumping_Small_Fireball_14x45_50: 4069040647056937019
+      Jumping_Small_Fireball_14x45_51: 939021864820389176
+      Jumping_Small_Fireball_14x45_52: -3763929028710656269
+      Jumping_Small_Fireball_14x45_53: -6929737055174133797
+      Jumping_Small_Fireball_14x45_54: 7463158308705896821
+      Jumping_Small_Fireball_14x45_55: 6490814012441238097
+      Jumping_Small_Fireball_14x45_56: -969754343090226902
+      Jumping_Small_Fireball_14x45_57: -5123000006431434575
+      Jumping_Small_Fireball_14x45_58: -2466979128538290223
+      Jumping_Small_Fireball_14x45_59: 1005185654146130897
+      Jumping_Small_Fireball_14x45_6: -6341313248857940355
+      Jumping_Small_Fireball_14x45_60: -2738505318203909210
+      Jumping_Small_Fireball_14x45_61: 450218574663890691
+      Jumping_Small_Fireball_14x45_62: -6893541430925140481
+      Jumping_Small_Fireball_14x45_63: -5437383127159220793
+      Jumping_Small_Fireball_14x45_64: -6007459204973852629
+      Jumping_Small_Fireball_14x45_65: 4505944482884022594
+      Jumping_Small_Fireball_14x45_66: -4845224165917463600
+      Jumping_Small_Fireball_14x45_67: -2988228682069608368
+      Jumping_Small_Fireball_14x45_68: 3658916526372331995
+      Jumping_Small_Fireball_14x45_69: -7527722392490103716
+      Jumping_Small_Fireball_14x45_7: 3510365896854788990
+      Jumping_Small_Fireball_14x45_70: -492940230819857107
+      Jumping_Small_Fireball_14x45_71: 4897593266985603028
+      Jumping_Small_Fireball_14x45_72: -30562353480173651
+      Jumping_Small_Fireball_14x45_73: -459673545823857001
+      Jumping_Small_Fireball_14x45_74: -3013184590018674746
+      Jumping_Small_Fireball_14x45_75: 7959377626165010108
+      Jumping_Small_Fireball_14x45_76: 289350937118102655
+      Jumping_Small_Fireball_14x45_8: 1489906313097704732
+      Jumping_Small_Fireball_14x45_9: -3568785482020872865
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
